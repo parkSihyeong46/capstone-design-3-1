@@ -14,13 +14,12 @@ public class Item_Get : MonoBehaviour
         // Awake에서 player 넣어주려고 하니까 Null 참조 에러 뜸
         // 그래서 Start로 바꿈
         playerPos = GameManager.instance.player.transform;
-        
+        DisapearItem(); // Update에서 사용하면 Update가 돌 때마다 실행이 되어버려서 Start에서 사용하도록 함(조언이 필요하다...)
     }
 
     private void Update()
     {
         PickUpItem();
-        DisapearItem();
     }
 
     void PickUpItem()
@@ -34,14 +33,14 @@ public class Item_Get : MonoBehaviour
         }
         transform.position = Vector3.MoveTowards(transform.position, playerPos.position, speed * Time.deltaTime);
 
-        // 아이템과 플레이어의 거리가 거의 겹쳤을 때 아이템 오브젝트 destroy(나중에는 프리펩으로 만들고 오브젝트풀링해서 SetActive false로 바꾸는게 좋을 수 있음) 
+        // 아이템과 플레이어의 거리가 거의 겹쳤을 때 아이템 오브젝트 destroy(나중에 프리펩 만들면 오브젝트풀링해서 SetActive false로 바꾸는게 좋을 수 있음) 
         if (distance < 0.1f)
         {
             Destroy(gameObject);
         }
     }
 
-    void DisapearItem()
+    public void DisapearItem()
     {
         if (timeToLeave > 0)
         {
@@ -51,10 +50,11 @@ public class Item_Get : MonoBehaviour
 
     IEnumerator DisapearItem_Co()
     {
-        Debug.Log(timeToLeave);
+        
 
         while (timeToLeave >= 0)
         {
+            Debug.Log(timeToLeave);
             timeToLeave -= 1f;
             yield return new WaitForSeconds(1);
         }

@@ -17,27 +17,37 @@ public class Tool : MonoBehaviour
 
     void Update()
     {
+
+    }
+
+    public void UseTool()
+    {
         if (Input.GetMouseButtonDown(0))
         {
-            UseTool();
-        }
-    }
+            float h = Input.GetAxisRaw("Horizontal");
+            float v = Input.GetAxisRaw("Vertical");
 
-    private void UseTool()
-    {
-        Vector2 position = rigidbody.position + player.directionVector * offsetDistance;
+            player.animator.SetBool("usingTool", true);
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(position, sizeofInteractiveArea);
+            Vector2 position = rigidbody.position + player.directionVector * offsetDistance;
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(position, sizeofInteractiveArea);
 
-        foreach(Collider2D c in colliders)
-        {
-            // 도구에 맞을 콜라이더를 hit에 저장
-            Tool_Hit hit = c.GetComponent<Tool_Hit>();
-            if (hit != null)
+            foreach (Collider2D c in colliders)
             {
-                hit.Hit();
-                break;
+                // 도구에 맞을 콜라이더를 hit에 저장
+                Tool_Hit hit = c.GetComponent<Tool_Hit>();
+                if (hit != null)
+                {
+                    hit.Hit();
+                    break;
+                }
             }
         }
+        if (player.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+        {
+            player.animator.SetBool("usingTool", false);
+        }
     }
+
+    
 }
