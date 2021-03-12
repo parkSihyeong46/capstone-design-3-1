@@ -2,19 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crop : ScriptableObject
+public class Character : MonoBehaviour
 {
-
-    public int timetoGrow = 10;
-    public Item yield;
-    public int count = 1;
-
+    // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    
+    // Update is called once per frame
     void Update()
     {
         

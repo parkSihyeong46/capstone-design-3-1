@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    Tool tool;
-
     public Animator animator;
     Rigidbody2D rigidbody;
     SpriteRenderer spriteRenderer;
@@ -17,22 +15,14 @@ public class Player : MonoBehaviour
     [Header("Player Stat")]
     public float moveSpeed = 5f;
 
-
     [Header("Player Status")]
-    bool isMoving;
+    public bool isMoving;
 
     void Start()
     {
-        tool = GetComponent<Tool>();
-
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
-    void Update()
-    {     
-        tool.UseTool();
     }
 
     void FixedUpdate()
@@ -48,7 +38,7 @@ public class Player : MonoBehaviour
         float v = Input.GetAxisRaw("Vertical");
         moveVector = new Vector2(h, v);
 
-        rigidbody.velocity = moveVector * moveSpeed;
+        rigidbody.velocity = moveVector.normalized * moveSpeed;     // normalized해서 대각선 이동속도 빨라지는 것 방지
 
         isMoving = h != 0 || v != 0;        // 키입력 하거나 끝나면 true false 전환
         animator.SetBool("isMoving", isMoving);
