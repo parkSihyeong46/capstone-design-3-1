@@ -9,6 +9,6 @@ public class ImageManager : MonoBehaviour
 
     private void Start()
     {
-        itemSprites = Resources.LoadAll<Sprite>("Assets/Sprites/Item");
+
     }
 }
