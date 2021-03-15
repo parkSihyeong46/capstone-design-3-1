@@ -12,4 +12,6 @@ public class GameManager : MonoBehaviour
     }
 
     public GameObject player; 
+    public Item_Container itemContainer;
+    public Item_DragDrop itemDragDrop;
 }
