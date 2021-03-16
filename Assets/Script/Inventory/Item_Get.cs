@@ -25,6 +25,15 @@ public class Item_Get : MonoBehaviour
         PickUpItem();
     }
 
+    public void Set(Item item, int count)
+    {
+        this.item = item;
+        this.count = count;
+
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = item.icon;
+    }
+
     void PickUpItem()
     {
         float distance = Vector3.Distance(transform.position, playerPos.position);

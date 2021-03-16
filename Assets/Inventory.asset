@@ -15,10 +15,10 @@ MonoBehaviour:
   slots:
   - item: {fileID: 11400000, guid: 18924f3738d07e3498081d479750e863, type: 2}
     count: 0
-  - item: {fileID: 11400000, guid: eb965a44a29bd184f940487d22994fce, type: 2}
-    count: 3
   - item: {fileID: 11400000, guid: 86f2934c8e5fb024eae788adbf7bed29, type: 2}
     count: 0
+  - item: {fileID: 11400000, guid: eb965a44a29bd184f940487d22994fce, type: 2}
+    count: 21
   - item: {fileID: 0}
     count: 0
   - item: {fileID: 0}

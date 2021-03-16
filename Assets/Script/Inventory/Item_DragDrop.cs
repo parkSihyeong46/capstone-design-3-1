@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Item_DragDrop : MonoBehaviour
 {
@@ -23,6 +24,23 @@ public class Item_DragDrop : MonoBehaviour
         if (itemIcon.activeInHierarchy == true)
         {
             iconTransform.position = Input.mousePosition;
+
+            if (Input.GetMouseButton(0))
+            {
+                if (EventSystem.current.IsPointerOverGameObject() == false)
+                {
+                    Debug.Log("패널 밖을 클릭함");
+                    Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+                    worldPosition.z = 0;
+
+                    Item_SpawnManager.instance.SpawnItem(worldPosition, itemSlot.item, itemSlot.count);
+
+                    itemSlot.Clear();
+                    itemIcon.SetActive(false);
+                }
+
+            }
         }
     }
 

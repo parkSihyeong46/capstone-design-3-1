@@ -8,6 +8,7 @@ public class Inventory_Button : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] Image icon;
     [SerializeField] Text itemText;
+    [SerializeField] Image highlight;
 
     int myIndex;
 
@@ -18,17 +19,20 @@ public class Inventory_Button : MonoBehaviour, IPointerClickHandler
 
     public void Set(ItemSlot slot)
     {
-        icon.sprite = slot.item.icon;
+        icon.sprite = slot.item.icon;   // 아이템칸 이미지를 아이템 아이콘으로
 
         // 한 칸에 여러개 적재 가능한 아이템
         if(slot.item.stackable == true)
         {
             itemText.gameObject.SetActive(true);
+            icon.gameObject.SetActive(true);
             itemText.text = slot.count.ToString();
         }
         else
         {
-            itemText.gameObject.SetActive(false);
+            itemText.gameObject.SetActive(false);   // 개수가 단 하나뿐이므로 숫자 표시 X
+            icon.gameObject.SetActive(true);        // 이미지는 당연히 보여줘야함
+
         }
     }
 
@@ -43,8 +47,12 @@ public class Inventory_Button : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Item_Container inventory = GameManager.instance.itemContainer;
-        GameManager.instance.itemDragDrop.OnClick(inventory.slots[myIndex]);
-        transform.parent.GetComponent<Inventory_Panel>().Show();
+        Item_Panel itemPanel = transform.parent.GetComponent<Item_Panel>();
+        itemPanel.OnClick(myIndex);
+    }
+
+    public void Highlight(bool act)
+    {
+        highlight.gameObject.SetActive(act);
     }
 }

@@ -5,8 +5,11 @@ using UnityEngine;
 public class Tree_Cut : Interactable
 {
     [SerializeField] GameObject pickUpDrops;
-    [SerializeField] int dropCount;
     [SerializeField] float spread = 0.7f;
+
+    [SerializeField] Item item;
+    [SerializeField] int itemCountInOneDrop = 1;
+    [SerializeField] int dropCount = 5;
 
     Item_Get itemGet;
     Bounds bound;
@@ -20,8 +23,8 @@ public class Tree_Cut : Interactable
             Vector3 dropPosition = new Vector2(transform.position.x, transform.position.y - this.bound.extents.y * 10f);
             dropPosition.x += spread * UnityEngine.Random.value - spread / 2;
             dropPosition.y += spread * UnityEngine.Random.value - spread / 2;
-            GameObject go = Instantiate(pickUpDrops);
-            go.transform.position = dropPosition;
+
+            Item_SpawnManager.instance.SpawnItem(dropPosition, item, itemCountInOneDrop);
             
         }
 
