@@ -12,25 +12,9 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
-        items[0] = new Item();
-        items[0].ItemName = Item.ItmeNames.FriedEgg;
-        items[3] = new Item();
-        items[3].ItemName = Item.ItmeNames.Axe;
+
     }
 
-    public void TestAdd()
-    {
-        for (int i = 0; i < inventorySize; i++)
-        {
-            if (items[i] == null)
-            {
-                Debug.Log(i + "과연");
-                items[i] = new Item();
-                onChangeItem.Invoke();
-                return;
-            }
-        }
-    }
     public void AddItem(Item item)
     {
         for (int i = 0; i < inventorySize; i++)

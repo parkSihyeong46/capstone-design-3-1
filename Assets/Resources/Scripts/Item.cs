@@ -3,14 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Item : MonoBehaviour
+public class Item
 {
-    private ItmeNames itemName;  // 이름
-    private string itemExplain; // 설명
-    private Sprite itemImage;   // 이미지
-    private ItemTypes itemType;  // 타입
+    public Item(ItemID itemId, string itemName, string itemExplain, ItemTypes itemType, Sprite itemImage,  int count)
+    {
+        this.itemId = itemId;
+        this.itemName = itemName;
+        this.itemExplain = itemExplain;
+        this.itemType = itemType;
+        this.itemImage = itemImage;
+        this.count = count;
+    }
 
-    public ItmeNames ItemName
+    private ItemID itemId;      // 아이템 고유 ID
+    private string itemName;    // 이름
+    private string itemExplain; // 설명
+    private ItemTypes itemType; // 타입
+    private Sprite itemImage;   // 이미지
+    private int count = 1;      // 개수
+
+    public Item DeepCopy()
+    {
+        return new Item(itemId, itemName, itemExplain, itemType, itemImage, count);
+    }
+
+    public ItemID ItemId
+    {
+        set { itemId = value; }
+        get { return itemId; }
+    }
+    public string ItemName
     {
         set { itemName = value; }
         get { return itemName; }
@@ -30,21 +52,14 @@ public class Item : MonoBehaviour
         set { itemType = value; }
         get { return itemType; }
     }
-
-    public Item DeepCopy()
+    public int Count
     {
-        Item deepCopyItem = new Item
-        {
-            itemName = itemName,
-            itemExplain = itemExplain,
-            itemImage = itemImage,
-            itemType = itemType
-        };
-
-        return deepCopyItem;
+        set { count = value; }
+        get { return count; }
     }
+
     // 도구, 열매, 씨앗, 음식 순
-    public enum ItmeNames
+    public enum ItemID
     {
         Axe,
         Pick,

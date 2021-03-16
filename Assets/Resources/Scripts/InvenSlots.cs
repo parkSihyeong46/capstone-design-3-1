@@ -16,7 +16,10 @@ public class InvenSlots : MonoBehaviour
 
     public void UpdateSlotUI()
     {
-        //itemIcon.sprite = item.ItemImage;
+        if (item == null)
+            return;
+
+        itemIcon.sprite = item.ItemImage;
         itemIcon.gameObject.SetActive(true);
     }
 
