@@ -37,7 +37,9 @@ public class ItemManager
                     row[1],
                     row[2],
                     (Item.ItemTypes)Enum.Parse(typeof(Item.ItemTypes), row[3]),
-                    Resources.Load<Sprite>(row[4].Replace("\r", "")),
+                    Resources.Load<Sprite>(row[4]),
+                    row[5].Equals("TRUE"),
+                    Int32.Parse(row[6]),
                     1));
             }
             catch

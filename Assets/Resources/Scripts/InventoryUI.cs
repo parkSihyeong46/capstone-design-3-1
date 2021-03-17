@@ -6,13 +6,11 @@ public class InventoryUI : MonoBehaviour
 {
     [SerializeField]
     private UILocation uiLocation;
-    [SerializeField]
-    private Inventory inventory;
     private InvenSlots[] invenSlot;
 
     private void Start()
     {
-        inventory.onChangeItem += RedrawUI;
+        Inventory.Instance.onChangeItem += RedrawUI;
         switch(uiLocation)
         {
             case UILocation.Inven:
@@ -28,12 +26,17 @@ public class InventoryUI : MonoBehaviour
                 break;
         }
 
+        for(int i = 0; i <Inventory.inventorySize; i ++)
+        {
+            invenSlot[i].SlotNumber = i;
+        }
+
         RedrawUI();
     }
 
     public void RedrawUI()
     {
-        Item[] items = inventory.GetItems();
+        Item[] items = Inventory.Instance.GetItems();
 
         for (int i = 0; i < Inventory.inventorySize; i++)
         {
