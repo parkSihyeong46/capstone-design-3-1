@@ -9,7 +9,15 @@ public class ItemCreateTestScripts : MonoBehaviour
 
     public void test()
     {
-        inventory.GetComponent<Inventory>().AddItem(ItemManager.Instance.GetItem(0));
-        Debug.Log(ItemManager.Instance.GetItem(0).ItemId);
+        for(int i = 0; i <15; i ++)
+        {
+            inventory.GetComponent<Inventory>().AddItem(ItemManager.Instance.GetItem(i));
+            Debug.Log(ItemManager.Instance.GetItem(i).ItemName);
+        }
+    }
+
+    public void deleteTest()
+    {
+        inventory.GetComponent<Inventory>().DeleteItem(1);
     }
 }

@@ -20,13 +20,13 @@ public class InvenSlots : MonoBehaviour
             return;
 
         itemIcon.sprite = item.ItemImage;
-        itemIcon.gameObject.SetActive(true);
+        itemIcon.enabled = true;
     }
 
     public void RemoveSlot()
     {
         item = null;
-        itemIcon.gameObject.SetActive(false);
+        itemIcon.enabled = false;
     }
 
 }
