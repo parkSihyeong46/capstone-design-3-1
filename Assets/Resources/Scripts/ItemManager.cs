@@ -52,7 +52,10 @@ public class ItemManager
     public Item GetItem(int index)
     {
         if (0 <= index && index < itemList.Count)
-            return itemList[index];
+            return new Item(itemList[index].ItemId, itemList[index].ItemName, 
+                itemList[index].ItemExplain, itemList[index].ItemType, 
+                itemList[index].ItemImage, itemList[index].IsPrintCount, 
+                itemList[index].MaxCount, itemList[index].Count);
         else
             return null;
     }

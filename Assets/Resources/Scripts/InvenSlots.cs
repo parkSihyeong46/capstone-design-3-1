@@ -10,14 +10,11 @@ public class InvenSlots : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     private int slotNumber;
     private Image itemIcon;
     private Text itemCountText;
-    private static int beginDragSlotNumber = -1;
-    private bool isDragging = false;
 
-    private Vector3 savePosition;
     private void Start()
     {
-        itemCountText = transform.GetChild(0).GetComponent<Text>();
-        itemIcon = transform.GetChild(1).GetComponent<Image>();
+        itemIcon = transform.GetChild(0).GetComponent<Image>();
+        itemCountText = transform.GetChild(1).GetComponent<Text>();
     }
 
     public int SlotNumber
@@ -54,30 +51,28 @@ public class InvenSlots : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         if (item == null)
             return;
 
-        savePosition = transform.position;
-        beginDragSlotNumber = slotNumber;
-        itemIcon.raycastTarget = false;
-        isDragging = true;
+        DragSlot.instance.dragSlot = this;
+        DragSlot.instance.DragSetImage(itemIcon);
+
+        DragSlot.instance.transform.position = eventData.position;
     }
     public void OnDrag(PointerEventData eventData)
     {
-        if (!isDragging)
+        if (item == null)
             return;
 
-        transform.position = eventData.position;
+        DragSlot.instance.transform.position = eventData.position;
     }
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (!isDragging)
-            return;
-
-        transform.position = savePosition;
-        itemIcon.raycastTarget = true;
-
-        Inventory.Instance.SwitchItem(beginDragSlotNumber, slotNumber);
+        DragSlot.instance.SetColor(0);
+        DragSlot.instance.dragSlot = null;
     }
     public void OnDrop(PointerEventData eventData)
     {
-        beginDragSlotNumber = slotNumber;
+        if(DragSlot.instance.dragSlot != null)
+        {
+            Inventory.Instance.SwitchItem(slotNumber, DragSlot.instance.dragSlot.slotNumber);
+        }
     }
 }

@@ -30,9 +30,9 @@ public class Inventory
 
         for (int i = 0; i < inventorySize; i++)
         {
-            if(items[i] != null)
+            if (items[i] != null)
             {
-                if (items[i].ItemId == item.ItemId && item.IsPrintCount)
+                if ((items[i].ItemId == item.ItemId) && item.IsPrintCount)
                 {
                     if (items[i].Count <= items[i].MaxCount)
                     {
@@ -42,7 +42,11 @@ public class Inventory
                     }
                 }
             }
-            else
+        }
+
+        for (int i = 0; i < inventorySize; i++)
+        {
+            if (items[i] == null)
             {
                 items[i] = item;
                 onChangeItem.Invoke();
