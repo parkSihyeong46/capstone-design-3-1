@@ -7645,6 +7645,7 @@ GameObject:
   - component: {fileID: 1070940634}
   - component: {fileID: 1070940635}
   - component: {fileID: 1070940636}
+  - component: {fileID: 1070940637}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -7801,6 +7802,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickUpItemPrefeb: {fileID: 494299829324157355, guid: 8e9e852d1f0db73498289c6f85168599,
     type: 3}
+--- !u!114 &1070940637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070940630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bdffdd8855f1ab49a3d7dac72688e77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemap: {fileID: 361908624}
+  tileDatas:
+  - {fileID: 11400000, guid: 8f6e0de6bbc44e74a8a6613d100f03ca, type: 2}
+  - {fileID: 11400000, guid: f5ffb52567b4e284fafcf7abbea96883, type: 2}
 --- !u!1001 &1073069901
 PrefabInstance:
   m_ObjectHideFlags: 0

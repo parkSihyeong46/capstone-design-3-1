@@ -15,7 +15,7 @@ public class ToolBar : MonoBehaviour
         float delta = Input.mouseScrollDelta.y;
         if (delta != 0)
         {
-            if(delta > 0)
+            if(delta < 0)
             {
                 selectedItem += 1;
                 selectedItem = selectedItem >= toolBarSize ? 0 : selectedItem;
@@ -23,7 +23,7 @@ public class ToolBar : MonoBehaviour
             else
             {
                 selectedItem -= 1;
-                selectedItem = selectedItem <= 0 ? toolBarSize - 1 : selectedItem;
+                selectedItem = selectedItem < 0 ? toolBarSize - 1 : selectedItem;
             }
             onChange?.Invoke(selectedItem);
         }
