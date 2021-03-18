@@ -11,7 +11,6 @@ public class Inventory
         {
             if (null == instance)
             {
-                //게임 인스턴스가 없다면 하나 생성해서 넣어준다.
                 instance = new Inventory();
             }
             return instance;
@@ -70,6 +69,23 @@ public class Inventory
         onChangeItem.Invoke();
     }
 
+    public void SwitchItem(int index1, int index2)
+    {
+        if (index1 == index2)
+            return;
+        if (!(0 <= index1 && index1 < items.Length))
+            return;
+        if (!(0 <= index2 && index2 < items.Length))
+            return;
+
+        Item tempItem;
+
+        tempItem = items[index1];
+        items[index1] = items[index2];
+        items[index2] = tempItem;
+
+        onChangeItem.Invoke();
+    }
     public Item[] GetItems()
     {
         return items;

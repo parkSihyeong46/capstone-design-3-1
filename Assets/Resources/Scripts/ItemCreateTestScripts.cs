@@ -17,4 +17,9 @@ public class ItemCreateTestScripts : MonoBehaviour
     {
         Inventory.Instance.DeleteItem(1);
     }
+
+    public void switchTest()
+    {
+        Inventory.Instance.SwitchItem(1,20);
+    }
 }
