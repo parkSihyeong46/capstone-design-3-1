@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4401849978127001664}
   - component: {fileID: 6757770933739525072}
-  - component: {fileID: 79621534538715965}
   - component: {fileID: -4569054675514205023}
   - component: {fileID: 2226256807198774785}
+  - component: {fileID: 79621534538715965}
+  - component: {fileID: -1026413151303701441}
   m_Layer: 0
   m_Name: TempTree
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2862840468530539502}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.0164304, y: 1.1887391, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,22 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &79621534538715965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2862840468530539502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f9139a4f204c3a47b3c25529639106c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pickUpDrops: {fileID: 494299829324157355, guid: 8e9e852d1f0db73498289c6f85168599,
-    type: 3}
-  dropCount: 3
-  spread: 1
 --- !u!61 &-4569054675514205023
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -114,7 +99,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.04240966, y: -2.4173396}
+  m_Offset: {x: 0, y: -2.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -125,7 +110,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9279933, y: 1.1653208}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!61 &2226256807198774785
 BoxCollider2D:
@@ -153,3 +138,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8189399, y: 2.6072412}
   m_EdgeRadius: 0
+--- !u!114 &79621534538715965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2862840468530539502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9139a4f204c3a47b3c25529639106c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickUpDrops: {fileID: 494299829324157355, guid: 8e9e852d1f0db73498289c6f85168599,
+    type: 3}
+  spread: 1
+  item: {fileID: 0}
+  itemCountInOneDrop: 1
+  dropCount: 3
+--- !u!114 &-1026413151303701441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2862840468530539502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ffcd5db8c9e2e74396858f4fdbfd2b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

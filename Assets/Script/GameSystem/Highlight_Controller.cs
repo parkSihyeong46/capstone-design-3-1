@@ -15,6 +15,7 @@ public class Highlight_Controller : MonoBehaviour
 
     public void Highlight(GameObject target)
     {
+        //이미 마커가 표시되어있으면 리턴
         if(currentTarget == target)
         {
             return;
@@ -23,14 +24,14 @@ public class Highlight_Controller : MonoBehaviour
 
         bound = currentTarget.GetComponent<Collider2D>().bounds;
 
-        Vector3 position = target.transform.position;
+        Vector3 position = target.transform.position;   // 마커 위치 설정
         Highlight(position);
     }
 
     public void Highlight(Vector3 position)
     {
         highlight.SetActive(true);
-        highlight.transform.position = new Vector3(position.x, position.y + bound.extents.y + 0.2f);
+        highlight.transform.position = new Vector3(position.x, position.y + bound.extents.y + 0.5f);
     }
 
     public void Hide()

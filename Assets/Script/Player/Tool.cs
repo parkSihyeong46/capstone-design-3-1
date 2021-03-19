@@ -8,6 +8,12 @@ public class Tool : MonoBehaviour
     Rigidbody2D rigidbody;
     [SerializeField] float offsetDistance = 1f;
     [SerializeField] float sizeofInteractiveArea = 1.2f;
+    [SerializeField] MarkerManager markerManager;
+    [SerializeField] TilemapRead tilemapRead;
+    [SerializeField] float maxDistance;
+
+    Vector3Int selectedTilePosition;
+    bool selectable;
 
     private void Awake()
     {
@@ -17,8 +23,32 @@ public class Tool : MonoBehaviour
 
     void Update()
     {
-
+        SelectTile();
+        CanSelectCheck();
+        Marker();
+        if (Input.GetMouseButtonDown(0))
+        {
+            UseTool();
+        }
     }
+
+    void SelectTile()
+    {
+        selectedTilePosition = tilemapRead.GetGridPosition(Input.mousePosition, true);
+    }
+
+    void CanSelectCheck()
+    {
+        Vector2 playerPos = transform.position;
+        Vector2 cameraPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        selectable = Vector2.Distance(playerPos, cameraPos) < maxDistance;
+        markerManager.Show(selectable);
+    }
+
+    void Marker()
+    {
+        markerManager.markedCellPosition = selectedTilePosition;
+    }    
 
     public void UseTool()
     {

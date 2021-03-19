@@ -24,10 +24,10 @@ public class TilemapRead : MonoBehaviour
     public Vector3Int GetGridPosition(Vector2 position, bool mousePosition)
     {
         Vector3 worldPosition;
-
+ 
         if (mousePosition)
         {
-            worldPosition = Camera.main.ScreenToWorldPoint(position);
+            worldPosition = Camera.main.ScreenToWorldPoint(position); // 게임 화면상의 Position을 World Position으로 변환. 좌하단(0, 0)
         }
         else
         {
@@ -35,7 +35,7 @@ public class TilemapRead : MonoBehaviour
         }
         Vector3Int gridPosition = tilemap.WorldToCell(worldPosition);
 
-        return gridPosition;
+        return gridPosition; // 그리드 좌표 반환
     }
 
     public TileBase GetTileBase(Vector3Int gridPosition, bool mousePosition = false)

@@ -14,7 +14,7 @@ public class Inventory_Button : MonoBehaviour, IPointerClickHandler
 
     public void SetIndex_Button(int index)
     {
-        myIndex = index;
+        myIndex = index;    //인벤토리 안에 있는 버튼 인덱스(버튼 번호)를 myindex에 대입
     }
 
     public void Set(ItemSlot slot)
@@ -51,7 +51,7 @@ public class Inventory_Button : MonoBehaviour, IPointerClickHandler
         itemPanel.OnClick(myIndex);
     }
 
-    public void Highlight(bool act)
+    public void ToolbarHighlight(bool act)
     {
         highlight.gameObject.SetActive(act);
     }
