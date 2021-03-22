@@ -12,12 +12,11 @@ public class Item_Get : MonoBehaviour
     public Item item;
     public int count = 1;
 
+    // Awake에서 player 넣어주려고 하니까 Null 참조 에러 뜸. 그래서 Start로 바꿈
     private void Start()
     {
-        // Awake에서 player 넣어주려고 하니까 Null 참조 에러 뜸
-        // 그래서 Start로 바꿈
-        playerPos = GameManager.instance.player.transform;
-        DisapearItem(); // Update에서 사용하면 Update가 돌 때마다 실행이 되어버려서 Start에서 사용하도록 함(조언이 필요하다...)
+        playerPos = GameManager.instance.player.transform;  //게임매니저에 플레이어를 넣어놨기 때문에 이 코드를 사용하면 굳이 이 스크립트를 사용하는 오브젝트에 따로 플레이어를 넣지 않아도 됨
+        DisapearItem();                                     // Update에서 사용하면 Update가 돌 때마다 실행이 되어버려서 Start에서 사용하도록 함(조언이 필요하다...)
     }
 
     private void Update()
@@ -36,7 +35,8 @@ public class Item_Get : MonoBehaviour
 
     void PickUpItem()
     {
-        float distance = Vector3.Distance(transform.position, playerPos.position);
+        
+        float distance = Vector3.Distance(transform.position, playerPos.position); 
 
         // 아이템과 플레이어의 거리가 획득 가능 거리보다 크면 그냥 리턴
         if (distance > pickUpDistance)

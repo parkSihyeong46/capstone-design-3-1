@@ -5,18 +5,19 @@ using UnityEngine.Tilemaps;
 
 public class TilemapRead : MonoBehaviour
 {
-    [SerializeField] Tilemap tilemap;
-    [SerializeField] List<TileData> tileDatas;
-    Dictionary<TileBase, TileData> dataFromTiles;
+    [SerializeField] Tilemap tilemap;               // 마커의 기준이 될 타일맵
+    [SerializeField] List<TileData> tileDatas;      // 심을수 있는지 없는지를 저장할 타일데이터
+    Dictionary<TileBase, TileData> dataFromTiles;   // 위 두 데이터를 담을 딕셔너리(구조체같은거)
 
     private void Start()
     {
+        // 새로운 타일데이터 딕셔너리 생성
         dataFromTiles = new Dictionary<TileBase, TileData>();
         foreach (TileData tileData in tileDatas)
         {
             foreach (TileBase tile in tileData.tiles)
             {
-                dataFromTiles.Add(tile, tileData);
+                dataFromTiles.Add(tile, tileData);  // 딕셔너리에 타일과 그 타일이 담고있는 정보(Plowable인지 NotPlowable인지)를 추가
             }
         }
     }

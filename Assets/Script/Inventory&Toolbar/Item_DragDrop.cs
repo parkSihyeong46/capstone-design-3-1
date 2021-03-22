@@ -34,7 +34,7 @@ public class Item_DragDrop : MonoBehaviour
 
                     worldPosition.z = 0;
 
-                    Item_SpawnManager.instance.SpawnItem(worldPosition, itemSlot.item, itemSlot.count);
+                    Item_SpawnManager.instance.SpawnItem(worldPosition, itemSlot.item, itemSlot.count);     //캐릭터 앞에 떨어지도록 바꿔야함(바꾸면 주석 삭제)
 
                     itemSlot.Clear();
                     itemIcon.SetActive(false);
