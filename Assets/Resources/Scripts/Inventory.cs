@@ -22,8 +22,13 @@ public class Inventory
 
     public const int inventorySize = 36;
     private Item[] items = new Item[inventorySize];
-
-    public void AddItem(Item item)
+    private int money = 1000;
+    public int Money
+    {
+        set { money = value; }
+        get { return money; }
+    }
+    public void AddItem(Item item, int count = 1)
     {
         if (item == null)
             return;
@@ -36,8 +41,8 @@ public class Inventory
                 {
                     if (items[i].Count <= items[i].MaxCount)
                     {
-                        items[i].Count += 1;
-                        onChangeItem.Invoke();
+                        items[i].Count += count;
+                        onChangeItem.Invoke();  // 게임매니저를 통해서 인벤, 상점 열린지 확인 후 invoke 할 수 있도록 if문 추가 해야 함
                         return;
                     }
                 }
@@ -49,7 +54,7 @@ public class Inventory
             if (items[i] == null)
             {
                 items[i] = item;
-                onChangeItem.Invoke();
+                onChangeItem.Invoke(); // 게임매니저를 통해서 인벤, 상점 열린지 확인 후 invoke 할 수 있도록 if문 추가 해야 함
                 return;
             }
         }
@@ -61,16 +66,20 @@ public class Inventory
             return;
 
         items[index] = item;
-        onChangeItem.Invoke();
+        onChangeItem.Invoke(); // 게임매니저를 통해서 인벤, 상점 열린지 확인 후 invoke 할 수 있도록 if문 추가 해야 함
     }
 
-    public void DeleteItem(int index)
+    public void DeleteItem(int index, int count = 1)
     {
         if (!(0 <= index && index < inventorySize))
             return;
 
-        items[index] = null;
-        onChangeItem.Invoke();
+        if(items[index].Count > count)
+            items[index].Count -= count;
+        else
+            items[index] = null;
+
+        onChangeItem.Invoke(); // 게임매니저를 통해서 인벤, 상점 열린지 확인 후 invoke 할 수 있도록 if문 추가 해야 함
     }
 
     public void SwitchItem(int index1, int index2)
@@ -88,7 +97,7 @@ public class Inventory
         items[index1] = items[index2];
         items[index2] = tempItem;
 
-        onChangeItem.Invoke();
+        onChangeItem.Invoke(); // 게임매니저를 통해서 인벤, 상점 열린지 확인 후 invoke 할 수 있도록 if문 추가 해야 함
     }
     public Item[] GetItems()
     {

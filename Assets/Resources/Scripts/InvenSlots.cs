@@ -4,15 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class InvenSlots : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
+public class InvenSlots : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler
 {
     private Item item;
     private int slotNumber;
     private Image itemIcon;
     private Text itemCountText;
+    private InventoryUI.UILocation location;
 
     private void Start()
     {
+        location = transform.parent.parent.GetComponent<InventoryUI>().GetUILocation();
         itemIcon = transform.GetChild(0).GetComponent<Image>();
         itemCountText = transform.GetChild(1).GetComponent<Text>();
     }
@@ -73,6 +75,23 @@ public class InvenSlots : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         if(DragSlot.instance.dragSlot != null)
         {
             Inventory.Instance.SwitchItem(slotNumber, DragSlot.instance.dragSlot.slotNumber);
+        }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (item == null)
+            return;
+
+        if(InventoryUI.UILocation.Shop == location)
+        {
+            if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                // 아직 아이템 시세를 반영 안해서 debug로 일단 처리 중
+                Debug.Log(item.ItemName + " 팔기");
+                // 캐릭터 돈 ++
+                Inventory.Instance.DeleteItem(slotNumber);
+            }
         }
     }
 }

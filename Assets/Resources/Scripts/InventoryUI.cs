@@ -8,6 +8,10 @@ public class InventoryUI : MonoBehaviour
     private UILocation uiLocation;
     private InvenSlots[] invenSlot;
 
+    public UILocation GetUILocation()
+    {
+        return uiLocation;
+    }
     private void Start()
     {
         Inventory.Instance.onChangeItem += RedrawUI;
