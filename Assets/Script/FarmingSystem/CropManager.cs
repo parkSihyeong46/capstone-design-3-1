@@ -21,6 +21,11 @@ public class CropManager : MonoBehaviour
         crops = new Dictionary<Vector2Int, Crops>();
     }
 
+    public bool Check(Vector3Int position)
+    {
+        return crops.ContainsKey((Vector2Int)position);
+    }
+
     public void Plow(Vector3Int position)
     {
         //이미 심어져있으면 리턴
@@ -31,6 +36,11 @@ public class CropManager : MonoBehaviour
 
         //심을 수 있으면 심는 함수 실행
         CreatePlowedTile(position);
+    }
+
+    public void Seed(Vector3Int position)
+    {
+        targetTilemap.SetTile(position, seeded);
     }
 
     void CreatePlowedTile(Vector3Int position)

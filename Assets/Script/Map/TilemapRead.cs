@@ -11,24 +11,24 @@ public class TilemapRead : MonoBehaviour
 
     private void Start()
     {
-        // 새로운 타일데이터 딕셔너리 생성
-        dataFromTiles = new Dictionary<TileBase, TileData>();
+        dataFromTiles = new Dictionary<TileBase, TileData>();   //새로운 타일데이터 딕셔너리 생성
         foreach (TileData tileData in tileDatas)
         {
             foreach (TileBase tile in tileData.tiles)
             {
-                dataFromTiles.Add(tile, tileData);  // 딕셔너리에 타일과 그 타일이 담고있는 정보(Plowable인지 NotPlowable인지)를 추가
+                dataFromTiles.Add(tile, tileData);  //딕셔너리에 타일과 그 타일이 담고있는 정보(Plowable인지 NotPlowable인지)를 추가
             }
         }
     }
 
-    public Vector3Int GetGridPosition(Vector2 position, bool mousePosition)
+    //Vector3Int는 정수형 값을 벡터값으로 사용함
+    public Vector3Int GetGridPosition(Vector2 position, bool mousePosition) //마우스가 위치해있을때만 실행되도록 하기위해 
     {
         Vector3 worldPosition;
  
         if (mousePosition)
         {
-            worldPosition = Camera.main.ScreenToWorldPoint(position); // 게임 화면상의 Position을 World Position으로 변환. 좌하단(0, 0)
+            worldPosition = Camera.main.ScreenToWorldPoint(position); //게임 화면상의 Position을 World Position으로 변환. 좌하단(0, 0)
         }
         else
         {
@@ -36,7 +36,7 @@ public class TilemapRead : MonoBehaviour
         }
         Vector3Int gridPosition = tilemap.WorldToCell(worldPosition);
 
-        return gridPosition; // 그리드 좌표 반환
+        return gridPosition; //그리드 좌표 반환
     }
 
     public TileBase GetTileBase(Vector3Int gridPosition, bool mousePosition = false)
