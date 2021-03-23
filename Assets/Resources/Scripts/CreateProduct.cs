@@ -27,6 +27,8 @@ public class CreateProduct : MonoBehaviour
         product.SetParent(transform);
 
         product.GetChild(0).GetComponent<Text>().text = cellItem.item.ItemName;
+        // 가격 설정
         product.GetChild(2).GetComponent<Image>().sprite = cellItem.item.ItemImage;
+        product.GetComponent<Product>().ProductItem = cellItem.item.DeepCopy();
     }
 }
