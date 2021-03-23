@@ -10,9 +10,9 @@ public class Crops
 
 public class CropManager : MonoBehaviour
 {
-    [SerializeField] TileBase plowed;
-    [SerializeField] TileBase seeded;
-    [SerializeField] Tilemap targetTilemap;
+    [SerializeField] TileBase plowed;       //경작한 땅 스프라이트
+    [SerializeField] TileBase seeded;       //씨앗 스프라이트
+    [SerializeField] Tilemap targetTilemap; //위의 것들을 그려질 타일맵
 
     Dictionary<Vector2Int, Crops> crops; // 여기에는 심어질 농작물의 종류와 위치가 들어감
 

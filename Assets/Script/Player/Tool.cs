@@ -39,6 +39,11 @@ public class Tool : MonoBehaviour
         }
     }
 
+    void Marker()
+    {
+        markerManager.markedCellPosition = selectedTilePosition;    //마커매니저에 마킹할 좌표 대입
+    }
+
     void SelectTile()
     {
         selectedTilePosition = tilemapRead.GetGridPosition(Input.mousePosition, true);  //타일맵을 불러와서 그리드 좌표에 입력된 마우스좌표 전달 -> 선택된 타일 좌표 결정
@@ -51,12 +56,6 @@ public class Tool : MonoBehaviour
         selectable = Vector2.Distance(playerPos, cameraPos) < markerMaxDistance;    //범위 안에 마우스 포인터가 있으면 true
         markerManager.Show(selectable);
     }
-
-    void Marker()
-    {
-        markerManager.markedCellPosition = selectedTilePosition;
-        
-    }    
 
     //콜라이더가 있는 물체와 상호작용
     bool UseToolWorld()
@@ -86,8 +85,11 @@ public class Tool : MonoBehaviour
         if (selectable == true)
         {
             TileBase tileBase = tilemapRead.GetTileBase(selectedTilePosition);
+
+            Debug.Log(tileBase);
+
             TileData tileData = tilemapRead.GetTileData(tileBase);
-            if (tileData != plowableTile) { return; }
+
             if (cropManager.Check(selectedTilePosition))
             {
                 cropManager.Seed(selectedTilePosition);
