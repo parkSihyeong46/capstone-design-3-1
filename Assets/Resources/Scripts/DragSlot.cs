@@ -5,16 +5,10 @@ using UnityEngine.UI;
 
 public class DragSlot : MonoBehaviour
 {
-    static public DragSlot instance;
-
     public InvenSlots dragSlot;
 
     [SerializeField]
     private Image imageItem;
-    private void Start()
-    {
-        instance = this;
-    }
 
     public void DragSetImage(Image _itemImage)
     {

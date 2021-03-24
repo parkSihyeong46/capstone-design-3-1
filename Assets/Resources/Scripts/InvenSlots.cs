@@ -11,12 +11,14 @@ public class InvenSlots : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     private Image itemIcon;
     private Text itemCountText;
     private InventoryUI.UILocation location;
+    private DragSlot dragslot;
 
     private void Start()
     {
         location = transform.parent.parent.GetComponent<InventoryUI>().GetUILocation();
         itemIcon = transform.GetChild(0).GetComponent<Image>();
         itemCountText = transform.GetChild(1).GetComponent<Text>();
+        dragslot = transform.parent.parent.GetComponent<InventoryUI>().GetDragSlot();
     }
 
     public int SlotNumber
@@ -53,28 +55,27 @@ public class InvenSlots : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         if (item == null)
             return;
 
-        DragSlot.instance.dragSlot = this;
-        DragSlot.instance.DragSetImage(itemIcon);
-
-        DragSlot.instance.transform.position = eventData.position;
+        dragslot.dragSlot = this;
+        dragslot.DragSetImage(itemIcon);
+        dragslot.transform.position = eventData.position;
     }
     public void OnDrag(PointerEventData eventData)
     {
         if (item == null)
             return;
 
-        DragSlot.instance.transform.position = eventData.position;
+        dragslot.transform.position = eventData.position;
     }
     public void OnEndDrag(PointerEventData eventData)
     {
-        DragSlot.instance.SetColor(0);
-        DragSlot.instance.dragSlot = null;
+        dragslot.SetColor(0);
+        dragslot.dragSlot = null;
     }
     public void OnDrop(PointerEventData eventData)
     {
-        if(DragSlot.instance.dragSlot != null)
+        if(dragslot.dragSlot != null)
         {
-            Inventory.Instance.SwitchItem(slotNumber, DragSlot.instance.dragSlot.slotNumber);
+            Inventory.Instance.SwitchItem(slotNumber, dragslot.dragSlot.slotNumber);
         }
     }
 

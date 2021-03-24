@@ -6,11 +6,18 @@ public class InventoryUI : MonoBehaviour
 {
     [SerializeField]
     private UILocation uiLocation;
+    [SerializeField]
+    private DragSlot dragSlot;
     private InvenSlots[] invenSlot;
 
     public UILocation GetUILocation()
     {
         return uiLocation;
+    }
+
+    public DragSlot GetDragSlot()
+    {
+        return dragSlot;
     }
     private void Start()
     {
