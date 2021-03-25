@@ -35,7 +35,10 @@ public class Tool : MonoBehaviour
             {
                 return;
             }
-            UseToolGrid();                  //그리드와 상호작용(밭갈기, 물뿌리기 등)
+            else
+            {
+                UseToolGrid();              //그리드와 상호작용(밭갈기, 물뿌리기 등)
+            }
         }
     }
 
@@ -69,26 +72,23 @@ public class Tool : MonoBehaviour
         {
             Tool_Hit hit = c.GetComponent<Tool_Hit>();      //Tool_Hit 형 변수 hit에 c(콜라이더) 대입, 도구와 상호작용 할 콜라이더를 hit에 저장
 
-            //콜라이더를 받았을 때 도구와 상호작용할 오브젝트 있으면 true 리턴
+            //콜라이더를 받았을 때 도구와 상호작용할 오브젝트 있음
             if (hit != null)
             {
-                hit.Hit();      // Hit 함수 실행 후 true 리턴
+                hit.Hit();      //콜라이더 c가 가지고 있는 Hit 함수 실행(나무면 나무, 돌이면 돌 등) 후 true 리턴
                 return true;
             }
         }
         return false;           // 아무것도 없으면 false 리턴
     }
 
-    //그리드(콜라이더 없음. 예를들면 농사지을때 사용하는 타일맵)와 상호작용하는 메소드
+    //그리드(콜라이더 없음. 예를들면 농사지을때 사용하는 타일이미지)와 상호작용하는 메소드
     void UseToolGrid()
     {
         if (selectable == true)
         {
-            TileBase tileBase = tilemapRead.GetTileBase(selectedTilePosition);
-
-            Debug.Log(tileBase);
-
-            TileData tileData = tilemapRead.GetTileData(tileBase);
+           // TileBase tileBase = tilemapRead.GetTileBase(selectedTilePosition);  //선택된 타일의 타일베이스 가져와 대입
+           // TileData tileData = tilemapRead.GetTileData(tileBase);
 
             if (cropManager.Check(selectedTilePosition))
             {

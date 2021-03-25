@@ -34,7 +34,7 @@ public class CropManager : MonoBehaviour
             return;
         }
 
-        //심을 수 있으면 심는 함수 실행
+        //경작한 땅 생성
         CreatePlowedTile(position);
     }
 

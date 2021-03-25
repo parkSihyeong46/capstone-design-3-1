@@ -1034,7 +1034,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offsetDistance: 1
   sizeofInteractiveArea: 1.2
+  markerMaxDistance: 2
   highlightController: {fileID: 1070940633}
+  markerManager: {fileID: 2036848388}
+  tilemapRead: {fileID: 1070940637}
+  cropManager: {fileID: 1070940638}
+  plowableTile: {fileID: 11400000, guid: 8f6e0de6bbc44e74a8a6613d100f03ca, type: 2}
 --- !u!114 &100106817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1069,7 +1074,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100106808}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5df6225b07b2b2b4da316011a705513d, type: 3}
   m_Name: 
@@ -1643,61 +1648,7 @@ Tilemap:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 219618551}
   m_Enabled: 1
-  m_Tiles:
-  - first: {x: -2, y: -3, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 8
-      m_TileSpriteIndex: 8
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      m_AllTileFlags: 1073741825
-  - first: {x: -1, y: -3, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 8
-      m_TileSpriteIndex: 8
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      m_AllTileFlags: 1073741825
-  - first: {x: 0, y: -3, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 8
-      m_TileSpriteIndex: 8
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      m_AllTileFlags: 1073741825
-  - first: {x: -2, y: -2, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 8
-      m_TileSpriteIndex: 8
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      m_AllTileFlags: 1073741825
-  - first: {x: -1, y: -2, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 8
-      m_TileSpriteIndex: 8
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      m_AllTileFlags: 1073741825
-  - first: {x: 0, y: -2, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 8
-      m_TileSpriteIndex: 8
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      m_AllTileFlags: 1073741825
+  m_Tiles: {}
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 0
@@ -1716,8 +1667,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 6
-    m_Data: {fileID: 11400000, guid: 98edf4a4ec290fd45b738399fbc816f1, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -1735,31 +1686,33 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 6
-    m_Data: {fileID: 8715267684319016994, guid: a37e6739ef10dca44886c9775972dba5,
-      type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
-  - m_RefCount: 6
+  - m_RefCount: 0
     m_Data:
-      e00: 1
+      e00: NaN
       e01: 0
       e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
+      e03: NaN
+      e10: NaN
+      e11: 0
       e12: 0
-      e13: 0
-      e20: 0
+      e13: NaN
+      e20: 4.7146592e-12
       e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
+      e22: 2.9141006e+35
+      e23: -1410549.1
+      e30: 8.95e-43
       e31: 0
-      e32: 0
-      e33: 1
+      e32: 8.95e-43
+      e33: 4.5905e-41
   m_TileColorArray:
-  - m_RefCount: 6
-    m_Data: {r: 1, g: 1, b: 1, a: 1}
+  - m_RefCount: 0
+    m_Data: {r: -0.0000000012755521, g: -0.0000000012755521, b: -0.0000000012755521,
+      a: -0.0000000012755521}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -10976,7 +10929,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1070940630}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db4580c71cbe0574d8a7d5529d085a77, type: 3}
   m_Name: 
@@ -11097,7 +11050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bdffdd8855f1ab49a3d7dac72688e77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 219618554}
+  tilemap: {fileID: 361908624}
   tileDatas:
   - {fileID: 11400000, guid: f5ffb52567b4e284fafcf7abbea96883, type: 2}
   - {fileID: 11400000, guid: 8f6e0de6bbc44e74a8a6613d100f03ca, type: 2}
@@ -11113,7 +11066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a60e389b9eef614f807d88995736167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plowed: {fileID: 11400000, guid: 98edf4a4ec290fd45b738399fbc816f1, type: 2}
+  plowed: {fileID: 11400000, guid: 8299ce9679883c64baf30820018c9d93, type: 2}
   seeded: {fileID: 11400000, guid: b87b7d2dc7c182f4e97a98fd37efb6c2, type: 2}
   targetTilemap: {fileID: 719918758}
 --- !u!1001 &1073069901
