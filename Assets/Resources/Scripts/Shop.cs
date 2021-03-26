@@ -78,7 +78,7 @@ public class Shop : MonoBehaviour
         {
             string[] row = line[i].Split('\t');
 
-            if(-1 == PriceDataManager.instance.GetPrice(row[2]))
+            if(0 <= PriceDataManager.instance.GetPrice(row[2]))
             {
                 try
                 {

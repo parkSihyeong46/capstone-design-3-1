@@ -50,7 +50,7 @@ public class InvenSlots : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         itemIcon.color = new Color(itemIcon.color.r, itemIcon.color.g, itemIcon.color.b, 0);
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
+    public void OnBeginDrag(PointerEventData eventData) // 드래그 시작 시
     {
         if (item == null)
             return;
@@ -59,34 +59,34 @@ public class InvenSlots : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         dragslot.DragSetImage(itemIcon);
         dragslot.transform.position = eventData.position;
     }
-    public void OnDrag(PointerEventData eventData)
+    public void OnDrag(PointerEventData eventData)  // 드래그 중일 경우
     {
         if (item == null)
             return;
 
         dragslot.transform.position = eventData.position;
     }
-    public void OnEndDrag(PointerEventData eventData)
+    public void OnEndDrag(PointerEventData eventData)   // 드래그 중지 시
     {
         dragslot.SetColor(0);
         dragslot.dragSlot = null;
     }
-    public void OnDrop(PointerEventData eventData)
+    public void OnDrop(PointerEventData eventData)  // 드래그 드롭 시 
     {
         if(dragslot.dragSlot != null)
         {
-            Inventory.Instance.SwitchItem(slotNumber, dragslot.dragSlot.slotNumber);
+            Inventory.Instance.SwitchItem(slotNumber, dragslot.dragSlot.slotNumber);    // 아이템 스위치
         }
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData)  // 클릭 처리
     {
         if (item == null)
             return;
 
-        if(InventoryUI.UILocation.Shop == location)
+        if(InventoryUI.UILocation.Shop == location) // 상점 UI의 인벤토리 인 경우
         {
-            if (eventData.button == PointerEventData.InputButton.Right)
+            if (eventData.button == PointerEventData.InputButton.Right) // 우클릭 시
             {
                 // 아직 아이템 시세를 반영 안해서 debug로 일단 처리 중
                 Debug.Log(item.ItemName + " 팔기");
@@ -94,5 +94,18 @@ public class InvenSlots : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
                 Inventory.Instance.DeleteItem(slotNumber);
             }
         }
+    }
+
+    private void OnMouseEnter()
+    {
+        Debug.Log("onMuseEnter");
+    }
+    private void OnMouseOver()
+    {
+        Debug.Log("onMuseOver");
+    }
+    private void OnMouseExit()
+    {
+        Debug.Log("onmouseExit");
     }
 }
