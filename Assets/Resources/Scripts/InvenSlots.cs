@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class InvenSlots : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler
+public class InvenSlots : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler,
+    IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private Item item;
     private int slotNumber;
@@ -12,7 +13,14 @@ public class InvenSlots : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     private Text itemCountText;
     private InventoryUI.UILocation location;
     private DragSlot dragslot;
-
+    private GameObject toolTipObject;
+    private ToolTip toolTipScript;
+    private bool isMouseOver = false;
+    private void Awake()
+    {
+        toolTipObject = GameObject.FindWithTag("ToolTip");
+        toolTipScript = toolTipObject.GetComponent<ToolTip>();
+    }
     private void Start()
     {
         location = transform.parent.parent.GetComponent<InventoryUI>().GetUILocation();
@@ -20,7 +28,16 @@ public class InvenSlots : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         itemCountText = transform.GetChild(1).GetComponent<Text>();
         dragslot = transform.parent.parent.GetComponent<InventoryUI>().GetDragSlot();
     }
+    private void Update()
+    {
+        if (!isMouseOver)
+            return;
 
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition = new Vector3(mousePosition.x + 20, mousePosition.y + 20, mousePosition.z);
+
+        toolTipObject.transform.position = mousePosition;
+    }
     public int SlotNumber
     {
         set { slotNumber = value; }
@@ -96,16 +113,22 @@ public class InvenSlots : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         }
     }
 
-    private void OnMouseEnter()
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("onMuseEnter");
+        if (item == null)
+            return;
+
+        isMouseOver = true;
+        toolTipScript.SetColor(1);
+        toolTipScript.SetToolTipItem(this.item);
     }
-    private void OnMouseOver()
+
+    public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("onMuseOver");
-    }
-    private void OnMouseExit()
-    {
-        Debug.Log("onmouseExit");
+        if (item == null)
+            return;
+
+        isMouseOver = false;
+        toolTipScript.SetColor(0);
     }
 }
