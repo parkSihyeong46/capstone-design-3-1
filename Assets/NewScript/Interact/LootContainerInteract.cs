@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LootContainerInteract : Interactable
+public class LootContainerInteract : Interact
 {
     [SerializeField] GameObject closed;
     [SerializeField] GameObject opened;
     [SerializeField] bool isOpened;
 
-    public override void Interact(Character character)
+    public override void DoInteract(Character character)
     {
         if(isOpened == false)
         {

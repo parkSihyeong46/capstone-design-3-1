@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tree_Cut : Interactable
+public class Interact_TreeCut : Interact
 {
     BoxCollider2D boxCollider;
     Bounds bound;
@@ -20,7 +20,7 @@ public class Tree_Cut : Interactable
         bound = GetComponent<BoxCollider2D>().bounds;
     }
 
-    public override void Interact(Character character)
+    public override void DoInteract(Character character)
     {
         while (dropCount > 0)
         {

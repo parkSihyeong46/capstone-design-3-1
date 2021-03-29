@@ -67,14 +67,14 @@ public class Player_InteractController : MonoBehaviour
         highlightController.Hide();
     }
 
-    void Marker()
-    {
-        markerManager.markedCellPosition = selectedTilePosition;    //마커매니저에 마킹할 좌표 대입
-    }
-
     void SelectTile()
     {
         selectedTilePosition = tilemapRead.GetGridPosition(Input.mousePosition, true);  //타일맵을 불러와서 그리드 좌표에 입력된 마우스좌표 전달 -> 선택된 타일 좌표 결정
+    }
+
+    void Marker()
+    {
+        markerManager.markedCellPosition = selectedTilePosition;    //마커매니저에 마킹할 좌표 대입
     }
 
     bool UseToolWorld()
@@ -110,6 +110,7 @@ public class Player_InteractController : MonoBehaviour
             if (cropManager.Check(selectedTilePosition))
             {
                 cropManager.Plow(selectedTilePosition);
+                Debug.Log("Plow");
             }
         }
     }

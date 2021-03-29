@@ -42,18 +42,18 @@ public class TilemapRead : MonoBehaviour
     public TileData SelectedTile(Vector3Int gridPosition, bool mousePosition = false)
     {
         TileBase tile = tilemap.GetTile(gridPosition);
-        Debug.Log("타일 : " + tile);    //여기까지 실행됨
-        return dataFromTiles[tile];     //키값이 딕셔너리에 없다고 함. 타일베이스 값 넣었는데 왜이런지 모르겠음
+        Debug.Log("타일: " + tile + "타일데이터: " + dataFromTiles[tile]);    // 타일맵을 DefaultTile로 그리니까 해결
+        return dataFromTiles[tile];     //키값이 딕셔너리에 없다고 함. 타일베이스 값 넣었는데 왜이런지 모르겠음 -> 데이터를 가져올 타일은 DefaultTile인데 이미 그려져있던 타일맵은 그 타일맵으로 그리지 않았기 때문
     }
 
-    //public TileBase GetTileBase(Vector3Int gridPosition, bool mousePosition = false)
-    //{
-    //    TileBase tile = tilemap.GetTile(gridPosition);
-    //    return tile;    //타일 반환
-    //}
+    public TileBase GetTileBase(Vector3Int gridPosition, bool mousePosition = false)
+    {
+        TileBase tile = tilemap.GetTile(gridPosition);
+        return tile;    //타일 반환
+    }
 
-    //public TileData GetTileData(TileBase tileBase)
-    //{
-    //    return dataFromTiles[tileBase]; //타일베이스에 있는 데이터 반환
-    //}
+    public TileData GetTileData(TileBase tileBase)
+    {
+        return dataFromTiles[tileBase]; //타일베이스에 있는 데이터 반환
+    }
 }

@@ -8,10 +8,6 @@ public class Highlight_Controller : MonoBehaviour
     GameObject currentTarget;
     Bounds bound;
 
-    private void Start()
-    {
-        
-    }
 
     public void Highlight(GameObject target)
     {

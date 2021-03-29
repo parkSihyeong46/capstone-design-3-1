@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interact_Talk : Interactable
+public class Interact_Talk : Interact
 {
-    public override void Interact(Character character)
+    public override void DoInteract(Character character)
     {
         Debug.Log("Talking");
     }

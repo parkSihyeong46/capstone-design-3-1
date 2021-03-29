@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class MarkerManager : MonoBehaviour
+public class Tilemap_Marker : MonoBehaviour
 {
     [SerializeField] Tilemap targetTilemap;     //마커가 그려질 타일맵
     [SerializeField] TileBase marked;           //마커에 사용될 스프라이트
@@ -23,7 +23,7 @@ public class MarkerManager : MonoBehaviour
         isShow = selectable;
         targetTilemap.gameObject.SetActive(isShow);
     }
-    
+
     void Marking()
     {
         if (isShow == false) { return; }                    //마킹할 수 없으면 마커 표시 안함
