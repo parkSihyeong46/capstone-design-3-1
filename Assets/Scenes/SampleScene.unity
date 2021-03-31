@@ -676,7 +676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ee7e169a3d96c499fa8f6215d80cea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerManager: {fileID: 2036848388}
+  highlightController: {fileID: 1070940633}
   interactRange: 1.5
 --- !u!114 &84672880
 MonoBehaviour:
@@ -1259,7 +1259,7 @@ MonoBehaviour:
   sizeofInteractiveArea: 1.2
   markerMaxDistance: 2
   highlightController: {fileID: 1070940633}
-  markerManager: {fileID: 2036848388}
+  markerManager: {fileID: 0}
   tilemapRead: {fileID: 1070940637}
   cropManager: {fileID: 1070940638}
   plowableTile: {fileID: 11400000, guid: 8f6e0de6bbc44e74a8a6613d100f03ca, type: 2}
@@ -1305,7 +1305,7 @@ MonoBehaviour:
   offsetDistance: 1
   sizeofInteractiveArea: 1.2
   markerMaxDistance: 2
-  markerManager: {fileID: 2036848388}
+  markerManager: {fileID: 0}
   tilemapRead: {fileID: 1070940637}
   cropManager: {fileID: 1070940638}
   plowableTile: {fileID: 11400000, guid: 8f6e0de6bbc44e74a8a6613d100f03ca, type: 2}
@@ -11080,12 +11080,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1070940632}
   - component: {fileID: 1070940631}
-  - component: {fileID: 1070940633}
   - component: {fileID: 1070940634}
+  - component: {fileID: 1070940633}
   - component: {fileID: 1070940635}
   - component: {fileID: 1070940636}
   - component: {fileID: 1070940637}
   - component: {fileID: 1070940638}
+  - component: {fileID: 1070940639}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -11258,7 +11259,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1070940630}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8bdffdd8855f1ab49a3d7dac72688e77, type: 3}
   m_Name: 
@@ -11282,6 +11283,26 @@ MonoBehaviour:
   plowed: {fileID: 11400000, guid: 8299ce9679883c64baf30820018c9d93, type: 2}
   seeded: {fileID: 11400000, guid: b87b7d2dc7c182f4e97a98fd37efb6c2, type: 2}
   targetTilemap: {fileID: 719918758}
+--- !u!114 &1070940639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070940630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53aeb1f9528dac54eb903f69c05c72f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemap: {fileID: 361908624}
+  tileDatas:
+  - {fileID: 11400000, guid: f5ffb52567b4e284fafcf7abbea96883, type: 2}
+  - {fileID: 11400000, guid: 8f6e0de6bbc44e74a8a6613d100f03ca, type: 2}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  isEmpty: 0
 --- !u!1001 &1073069901
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11740,7 +11761,7 @@ GameObject:
   - component: {fileID: 1321023718}
   - component: {fileID: 1321023717}
   - component: {fileID: 1321023716}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pods
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12528,6 +12549,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2226256807198774785, guid: c43ddc48a98cb7448a03a4f95a988e53,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226256807198774785, guid: c43ddc48a98cb7448a03a4f95a988e53,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226256807198774785, guid: c43ddc48a98cb7448a03a4f95a988e53,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2226256807198774785, guid: c43ddc48a98cb7448a03a4f95a988e53,
+        type: 3}
+      propertyPath: m_UsedByComposite
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2862840468530539502, guid: c43ddc48a98cb7448a03a4f95a988e53,
         type: 3}
       propertyPath: m_Name
@@ -16000,7 +16041,6 @@ GameObject:
   - component: {fileID: 2036848390}
   - component: {fileID: 2036848389}
   - component: {fileID: 2036848388}
-  - component: {fileID: 2036848391}
   m_Layer: 0
   m_Name: TilemapMarker
   m_TagString: Untagged
@@ -16029,14 +16069,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2036848386}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8161198fcfef3f94395086c46262180f, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a2ccb0d166c04244a75153f2e77628b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player_Manager: {fileID: 84672878}
+  tilemap_Reader: {fileID: 1070940639}
   targetTilemap: {fileID: 2036848390}
-  marked: {fileID: 0}
-  nonMarked: {fileID: 0}
+  marked: {fileID: 11400000, guid: 6ea1ebfe868b76e4f8ccd3d4f5ff7fcd, type: 2}
+  nonMarked: {fileID: 11400000, guid: bbdfd5b9c47470440a60924380c4cfdc, type: 2}
   markedCellPosition: {x: 0, y: 0, z: 0}
 --- !u!483693784 &2036848389
 TilemapRenderer:
@@ -16123,22 +16165,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &2036848391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2036848386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a2ccb0d166c04244a75153f2e77628b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTilemap: {fileID: 2036848390}
-  marked: {fileID: 11400000, guid: 6ea1ebfe868b76e4f8ccd3d4f5ff7fcd, type: 2}
-  nonMarked: {fileID: 11400000, guid: bbdfd5b9c47470440a60924380c4cfdc, type: 2}
-  markedCellPosition: {x: 0, y: 0, z: 0}
 --- !u!224 &2043904514 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1190910886785411516, guid: a4e29e78d7770514eb1d698e9d4a6ab9,
@@ -16201,6 +16227,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a2ccb0d166c04244a75153f2e77628b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player_Manager: {fileID: 0}
+  tilemap_Reader: {fileID: 0}
   targetTilemap: {fileID: 0}
   marked: {fileID: 11400000, guid: 6ea1ebfe868b76e4f8ccd3d4f5ff7fcd, type: 2}
   nonMarked: {fileID: 11400000, guid: bbdfd5b9c47470440a60924380c4cfdc, type: 2}
