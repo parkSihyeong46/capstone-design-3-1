@@ -7,32 +7,34 @@ public class ToolTip : MonoBehaviour
 {
     private Item item = null;
 
-    private Image toolTipBackground;
-    private Image itemImage;
+    [SerializeField]
+    private Image toolTipTitleBackground;
+    [SerializeField]
+    private Image toolTipExplainBackground;
+    [SerializeField]
     private Text itemTitleText;
+    [SerializeField]
+    private Text itemTypeText;
+    [SerializeField]
     private Text itemExplainText;
-
-    private void Awake()
-    {
-        toolTipBackground = transform.GetComponent<Image>();
-        itemImage = transform.GetChild(0).GetComponent<Image>();
-        itemTitleText = transform.GetChild(1).GetComponent<Text>();
-        itemExplainText = transform.GetChild(2).GetComponent<Text>();
-    }
 
     public void SetColor(float alpha)
     {
-        Color color = toolTipBackground.color;
+        Color color = toolTipTitleBackground.color;
         color.a = alpha;
-        toolTipBackground.color = color;
+        toolTipTitleBackground.color = color;
 
-        color = itemImage.color;
+        color = toolTipExplainBackground.color;
         color.a = alpha;
-        itemImage.color = color;
+        toolTipExplainBackground.color = color;
 
         color = itemTitleText.color;
         color.a = alpha;
         itemTitleText.color = color;
+
+        color = itemTypeText.color;
+        color.a = alpha;
+        itemTypeText.color = color;
 
         color = itemExplainText.color;
         color.a = alpha;
@@ -51,8 +53,32 @@ public class ToolTip : MonoBehaviour
         if (item == null)
             return;
 
-        itemImage.sprite = item.ItemImage;
         itemTitleText.text = item.ItemName;
         itemExplainText.text = item.ItemExplain;
+
+        string itemTypeString;
+        switch (item.ItemType)
+        {
+            case Item.ItemTypes.Tool:
+                itemTypeString = "도구";
+                break;
+            case Item.ItemTypes.Seed:
+                itemTypeString = "씨앗";
+                break;
+            case Item.ItemTypes.Food:
+                itemTypeString = "음식";
+                break;
+            case Item.ItemTypes.Equipment:
+                itemTypeString = "장비";
+                break;
+            case Item.ItemTypes.Material:
+                itemTypeString = "재료";
+                break;
+            default:
+                itemTypeString = "";
+                break;
+        }
+
+        itemTypeText.text = itemTypeString;
     }
 }
