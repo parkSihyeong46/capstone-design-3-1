@@ -42,6 +42,7 @@ public class Player_Interact : MonoBehaviour
         }
     }
 
+    //작동을 안하네...
     void Highlight()
     {
         Vector2 position = player_Manager.rigidbody.position + player_Movement.playerDirection * interactRange;

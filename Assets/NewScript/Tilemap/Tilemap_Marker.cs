@@ -7,16 +7,16 @@ using UnityEngine.Tilemaps;
 public class Tilemap_Marker : MonoBehaviour
 {
     [SerializeField] Player_Manager player_Manager;
-
     [SerializeField]Tilemap_Reader tilemap_Reader;
-    [SerializeField] Tilemap targetTilemap;     //마커가 그려질 타일맵
-    [SerializeField] TileBase marked;           //마커에 사용될 스프라이트
-    [SerializeField] TileBase nonMarked;        //상호작용 안될때 사용될 스프라이트
+    [SerializeField] Tilemap targetTilemap;             //마커가 그려질 타일맵
+    [SerializeField] TileBase marked;                   //마커에 사용될 스프라이트
+    [SerializeField] TileBase nonMarked;                //상호작용 안될때 사용될 스프라이트
 
-    public Vector3Int markedCellPosition;       //마킹될 타일 위치
+    
     Vector3Int oldCellPosition;                 //이전에 마킹되었던 타일
-    bool isShow;                                //마커를 표시할지 결정할 값
-    float markerMaxDistance = 2f;
+    public Vector3Int markedCellPosition;       //마킹될 타일 위치
+    public bool isShow;                         //마커를 표시할지 결정할 값
+    float markerMaxDistance = 2f;               //마커가 표시될 최대 거리
 
     void Update()
     {
