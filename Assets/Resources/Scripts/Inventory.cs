@@ -35,17 +35,20 @@ public class Inventory
 
         for (int i = 0; i < inventorySize; i++)
         {
-            if (items[i] != null)
+            if (items[i] == null)
+                continue;
+
+            if (!((items[i].ItemId == item.ItemId) && item.IsPrintCount))
+                continue;
+
+            if (items[i].Count <= items[i].MaxCount)
             {
-                if ((items[i].ItemId == item.ItemId) && item.IsPrintCount)
-                {
-                    if (items[i].Count <= items[i].MaxCount)
-                    {
-                        items[i].Count += count;
-                        onChangeItem.Invoke();  // 게임매니저를 통해서 인벤, 상점 열린지 확인 후 invoke 할 수 있도록 if문 추가 해야 함
-                        return;
-                    }
-                }
+                items[i].Count += count;
+
+                if(onChangeItem != null)
+                    onChangeItem.Invoke();
+
+                return;
             }
         }
 
@@ -54,7 +57,9 @@ public class Inventory
             if (items[i] == null)
             {
                 items[i] = item;
-                onChangeItem.Invoke(); // 게임매니저를 통해서 인벤, 상점 열린지 확인 후 invoke 할 수 있도록 if문 추가 해야 함
+
+                if (onChangeItem != null)
+                    onChangeItem.Invoke();
                 return;
             }
         }
@@ -66,7 +71,9 @@ public class Inventory
             return;
 
         items[index] = item;
-        onChangeItem.Invoke(); // 게임매니저를 통해서 인벤, 상점 열린지 확인 후 invoke 할 수 있도록 if문 추가 해야 함
+
+        if (onChangeItem != null)
+            onChangeItem.Invoke();
     }
 
     public void DeleteItem(int index, int count = 1)
@@ -74,12 +81,16 @@ public class Inventory
         if (!(0 <= index && index < inventorySize))
             return;
 
+        if (items[index] == null)
+            return;
+
         if(items[index].Count > count)
             items[index].Count -= count;
         else
             items[index] = null;
 
-        onChangeItem.Invoke(); // 게임매니저를 통해서 인벤, 상점 열린지 확인 후 invoke 할 수 있도록 if문 추가 해야 함
+        if (onChangeItem != null)
+            onChangeItem.Invoke();
     }
 
     public void SwitchItem(int index1, int index2)
@@ -97,7 +108,8 @@ public class Inventory
         items[index1] = items[index2];
         items[index2] = tempItem;
 
-        onChangeItem.Invoke(); // 게임매니저를 통해서 인벤, 상점 열린지 확인 후 invoke 할 수 있도록 if문 추가 해야 함
+        if (onChangeItem != null)
+            onChangeItem.Invoke();
     }
     public Item[] GetItems()
     {

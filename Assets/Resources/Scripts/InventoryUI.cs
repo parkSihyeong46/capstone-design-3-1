@@ -19,9 +19,12 @@ public class InventoryUI : MonoBehaviour
     {
         return dragSlot;
     }
-    private void Start()
+    private void OnEnable()
     {
         Inventory.Instance.onChangeItem += RedrawUI;
+    }
+    private void Start()
+    {
         switch(uiLocation)
         {
             case UILocation.Inven:
@@ -43,6 +46,11 @@ public class InventoryUI : MonoBehaviour
         }
 
         RedrawUI();
+    }
+
+    private void OnDestroy()
+    {
+        Inventory.Instance.onChangeItem-= RedrawUI;
     }
 
     public void RedrawUI()
