@@ -666,6 +666,7 @@ MonoBehaviour:
   rigidbody: {fileID: 0}
   toolSelected: 0
   seedSelected: 0
+  wateringToolSelected: 0
 --- !u!114 &84672879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11303,10 +11304,14 @@ MonoBehaviour:
   tileDatas:
   - {fileID: 11400000, guid: f5ffb52567b4e284fafcf7abbea96883, type: 2}
   - {fileID: 11400000, guid: 8f6e0de6bbc44e74a8a6613d100f03ca, type: 2}
-  layerMask:
+  layerMask_Object:
     serializedVersion: 2
     m_Bits: 256
-  isEmpty: 0
+  layerMask_Crop:
+    serializedVersion: 2
+    m_Bits: 512
+  isObjectEmpty: 0
+  isCropEmpty: 0
 --- !u!114 &1070940640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11324,7 +11329,7 @@ MonoBehaviour:
   farmingTilemap: {fileID: 219618554}
   plowedTile: {fileID: 11400000, guid: 8299ce9679883c64baf30820018c9d93, type: 2}
   wateringTilemap: {fileID: 884774876}
-  wateredTile: {fileID: 11400000, guid: 93d6f32a48f7c8841a8b3772bc77c38b, type: 2}
+  wateringTile: {fileID: 11400000, guid: 93d6f32a48f7c8841a8b3772bc77c38b, type: 2}
   tempCrop: {fileID: 3285628382912576876, guid: f64976436197c1a49944a1cf43474109,
     type: 3}
 --- !u!1001 &1073069901

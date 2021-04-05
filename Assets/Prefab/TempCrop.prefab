@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 1568082498230001425}
   - component: {fileID: 4025968507995360269}
   - component: {fileID: 8208940676682307991}
-  m_Layer: 8
+  - component: {fileID: 3717329076158789254}
+  - component: {fileID: -2403990921226843102}
+  m_Layer: 9
   m_Name: TempCrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1996458249
-  m_SortingLayer: 2
-  m_SortingOrder: -1000
+  m_SortingLayer: -1
+  m_SortingOrder: -30000
   m_Sprite: {fileID: -6772013665464216415, guid: 4ac4397416ea46f459395ae93c29e3e7,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -109,3 +111,35 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &3717329076158789254
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3285628382912576876}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7719095aeb2a2aa43887375f73022fe0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-2403990921226843102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3285628382912576876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7ce2a55142603e4f963a2124f23dbe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFullyGrown: 0

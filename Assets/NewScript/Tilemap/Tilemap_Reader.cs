@@ -14,8 +14,10 @@ public class Tilemap_Reader : MonoBehaviour
     [SerializeField] List<TileData> tileDatas;      //하이라키창에서 여기에 타일데이터 넣어줌(Plowable, NotPlowable)
     Dictionary<TileBase, TileData> tileDictionary;  //경작지 타일 리스트
 
-    [SerializeField] LayerMask layerMask;   //오브젝트 판별 레이어
-    public bool isEmpty;                    //마우스가 있는 곳에 오브젝트 있는지 확인
+    [SerializeField] LayerMask layerMask_Object;    //오브젝트 판별 레이어
+    [SerializeField] LayerMask layerMask_Crop;      //작물 판별 레이어
+    public bool isObjectEmpty;                            //마우스가 있는 곳에 오브젝트 있는지 확인
+    public bool isCropEmpty;                        //마우스가 있는 곳에 작물 있는지 확인
 
     private void Start()
     {
@@ -29,27 +31,35 @@ public class Tilemap_Reader : MonoBehaviour
         }
     }
 
+    //Vector3형을 Vector3Int형으로 변환하는 메소드(타일맵 마커 등에 사용)
     public Vector3Int MousePosToGridPos(Vector3 mousePos)
     {
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePos);
 
-        RaycastHit2D hit = Physics2D.Raycast(worldPosition, transform.forward, 15f, layerMask);
+        RaycastHit2D hit_Object = Physics2D.Raycast(worldPosition, transform.forward, 15f, layerMask_Object);
+        RaycastHit2D hit_Crop = Physics2D.Raycast(worldPosition, transform.forward, 15f, layerMask_Crop);
 
-        //여기서 오브젝트 유무 판별
-        if (hit) { isEmpty = false; }
-        else { isEmpty = true; }
+        //오브젝트 유무 판별
+        if (hit_Object) { isObjectEmpty = false; }
+        else { isObjectEmpty = true; }
+
+        //작물 유무 판별
+        if (hit_Crop) { isCropEmpty = false; }
+        else { isCropEmpty = true; }
 
         Vector3Int gridPosition = tilemap.WorldToCell(worldPosition);    //마우스좌표를 Vector3Int형으로 변환 하기위해 WorldToCell(마우스 좌표) 사용
         
         return gridPosition;
     }
-
+    
+    //Vector3Int형을 Vector3형으로 변환하는 메소드(작물 심기 등에 사용)
     public Vector3 GridPosToMousePos(Vector3Int gridPos)
     {
         Vector3 cellPos = tilemap.CellToWorld(gridPos);
         return cellPos;
     }
 
+    //경작 여부 판별 메소드
     public bool GetMousePosTileData(Vector3Int gridPos)
     {
         TileBase tileBase = tilemap.GetTile(gridPos);   //마우스 좌표가 있는 곳의 타일

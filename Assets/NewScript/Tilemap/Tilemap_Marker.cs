@@ -41,7 +41,7 @@ public class Tilemap_Marker : MonoBehaviour
 
         if (isShow == true)
         {
-            if (isPlowable == true && tilemap_Reader.isEmpty == true)
+            if (isPlowable == true && tilemap_Reader.isObjectEmpty == true)
             {
                 targetTilemap.SetTile(oldCellPosition, null);       //이전에 마킹된 타일을 null로 바꿈. SetTile : SetTile(타일맵에서 타일의 위치, 배치될 타일)
                 targetTilemap.SetTile(markedCellPosition, marked);  //마킹될 위치에 마커 표시

@@ -15,4 +15,9 @@ public class Player_Farming : MonoBehaviour
     {
         tilemap_Farm.SeedGround();
     }
+
+    public void Watering()
+    {
+        tilemap_Farm.WateringGround();
+    }
 }

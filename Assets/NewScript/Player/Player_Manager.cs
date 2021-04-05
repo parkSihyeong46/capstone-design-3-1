@@ -15,6 +15,7 @@ public class Player_Manager : MonoBehaviour
     [Header("Temp State")]
     [SerializeField] bool toolSelected;
     [SerializeField] bool seedSelected;
+    [SerializeField] bool wateringToolSelected;
 
     private void Start()
     {
@@ -42,9 +43,11 @@ public class Player_Manager : MonoBehaviour
             //도구 선택했을 때(게임오브젝트 태그를 확인해서 어떤 도구인지 확인하고 그 도구에 맞는 동작 수행)
             if (toolSelected == true) { player_Farming.Plow(); }    //아직은 땅 갈기만 있음. 물뿌리개 추가 예정
 
+            if(wateringToolSelected == true) { player_Farming.Watering(); } //지금은 임시로 물뿌리개 따로 떼놨는데 toolSelected에서 먼저 확인하고 그 다음 어떤 도구인지 확인하도록 변경하도록 할거임
+
             //아이템(묘목, 씨앗 등) 선택했을 때
             if (seedSelected == true) { player_Farming.Seed(); }    //임시 작물 프리펩 사용해서 현재는 하나만 심을 수 있음
-            
+
             //그 외 상황은 상호작용
             else { player_Interact.Interact(); }
         }
