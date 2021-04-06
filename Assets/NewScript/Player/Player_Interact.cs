@@ -18,11 +18,12 @@ public class Player_Interact : MonoBehaviour
         player_Movement = GetComponent<Player_Movement>();
     }
 
-    private void Update()
+    void Update()
     {
         Highlight();
     }
 
+    //상호작용 범위 축소, 현재 마우스 포인터가 위치한 곳의 오브젝트를 받아오도록 수정하기 >> 그러면 작물 하나하나 수확하는것 가능할 듯
     public void Interact()
     {
         player_Manager.animator.SetBool("usingTool", true);
@@ -43,14 +44,17 @@ public class Player_Interact : MonoBehaviour
     }
 
     //작동을 안하네...
-    void Highlight()
+    public void Highlight()
     {
-        Vector2 position = player_Manager.rigidbody.position + player_Movement.playerDirection * interactRange;
+        Vector2 position = player_Manager.rigidbody.position + player_Movement.playerDirection;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(position, interactRange);
 
         foreach (Collider2D c in colliders)
         {
             Interactable hit = c.GetComponent<Interactable>();
+
+            Debug.Log(hit);
+
             if (hit != null)
             {
                 highlightController.Highlight(hit.gameObject);

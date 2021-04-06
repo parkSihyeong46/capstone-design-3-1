@@ -5,13 +5,20 @@ using UnityEngine;
 public class Crop_Grow : MonoBehaviour
 {
     Animator animator;
+    SpriteRenderer spriteRenderer;
 
     public bool isFullyGrown;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         StartCoroutine("CropGrowing");
+    }
+
+    private void Update()
+    {
+        spriteRenderer.sortingOrder = -(Mathf.RoundToInt(transform.position.y));
     }
 
     IEnumerator CropGrowing()

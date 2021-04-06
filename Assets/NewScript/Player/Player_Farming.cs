@@ -20,4 +20,9 @@ public class Player_Farming : MonoBehaviour
     {
         tilemap_Farm.WateringGround();
     }
+
+    public void Harvesting()
+    {
+        tilemap_Farm.CropHarvest();
+    }
 }

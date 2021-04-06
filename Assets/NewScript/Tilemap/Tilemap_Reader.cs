@@ -14,10 +14,12 @@ public class Tilemap_Reader : MonoBehaviour
     [SerializeField] List<TileData> tileDatas;      //하이라키창에서 여기에 타일데이터 넣어줌(Plowable, NotPlowable)
     Dictionary<TileBase, TileData> tileDictionary;  //경작지 타일 리스트
 
-    [SerializeField] LayerMask layerMask_Object;    //오브젝트 판별 레이어
-    [SerializeField] LayerMask layerMask_Crop;      //작물 판별 레이어
+    public LayerMask layerMask_Object;    //오브젝트 판별 레이어
+    public LayerMask layerMask_Crop;      //작물 판별 레이어
     public bool isObjectEmpty;                            //마우스가 있는 곳에 오브젝트 있는지 확인
     public bool isCropEmpty;                        //마우스가 있는 곳에 작물 있는지 확인
+
+    public Vector3 worldPosition;
 
     private void Start()
     {
@@ -34,7 +36,7 @@ public class Tilemap_Reader : MonoBehaviour
     //Vector3형을 Vector3Int형으로 변환하는 메소드(타일맵 마커 등에 사용)
     public Vector3Int MousePosToGridPos(Vector3 mousePos)
     {
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePos);
+        worldPosition = Camera.main.ScreenToWorldPoint(mousePos);
 
         RaycastHit2D hit_Object = Physics2D.Raycast(worldPosition, transform.forward, 15f, layerMask_Object);
         RaycastHit2D hit_Crop = Physics2D.Raycast(worldPosition, transform.forward, 15f, layerMask_Crop);

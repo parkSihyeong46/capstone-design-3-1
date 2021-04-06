@@ -50,7 +50,7 @@ public class Tilemap_Farm : MonoBehaviour
     {
         cellPos = tilemap_Marker.markedCellPosition;
 
-        //타일이 있을 때, 오브젝트가 없을 때, 만 모종(타일이 있다는 건 경작지라는 뜻)
+        //타일이 있을 때, 오브젝트가 없을 때만 모종(타일이 있다는 건 경작지라는 뜻)
         if (tilemap_Marker.isShow == true)
         {
             if (farmingTilemap.GetTile(cellPos) != null && tilemap_Reader.isObjectEmpty == true && tilemap_Reader.isCropEmpty == true)
@@ -58,7 +58,7 @@ public class Tilemap_Farm : MonoBehaviour
                 //씨앗 심기
                 float spread = UnityEngine.Random.Range(0.4f, 0.6f);
                 isPlowed = true;
-                Vector3 cropPos = new Vector3(cellPos.x + spread, cellPos.y + spread, 0);   //0.5씩 더해서 셀 중심에 위치되도록 함(0.5를 spread로 바꿀 예정)
+                Vector3 cropPos = new Vector3(cellPos.x + 0.5f, cellPos.y, 0);
                 Instantiate(tempCrop, cropPos, Quaternion.identity);
             }
             else
@@ -78,13 +78,13 @@ public class Tilemap_Farm : MonoBehaviour
     IEnumerator CropGrowing()
     {
         //작물이 자라는 코루틴(알아서 잘 자라게 해야하나? 아니면 단계별로 물줘야 자라게 해야하나?)
-
+        //지금은 애니메이션으로 구현해놓음
         return null;
     }
 
     IEnumerator CropRusting()
     {
-        //관리하지 않으면 썩는 코루틴
+        //수확하지 않으면 썩는 코루틴
         return null;
     }
     #endregion
@@ -105,6 +105,30 @@ public class Tilemap_Farm : MonoBehaviour
         }
 
         //시간 지나면 없어지도록 함, 땅은 젖은 땅으로 교체되도록 해야함
+    }
+
+    public void CropHarvest()
+    {
+        RaycastHit2D hit_Crop = Physics2D.Raycast(tilemap_Reader.worldPosition, transform.forward, tilemap_Reader.layerMask_Crop);
+        GameObject selectedCrop = hit_Crop.collider.gameObject;
+
+        bool checkCrop = GetComponent<Crop_Grow>().isFullyGrown;
+
+        if (selectedCrop != null)
+        {
+            //if (여기에 작물이 다 자랐는지 여부 판별)
+            //{
+            //    //추후 획득 애니메이션 추가
+
+            //    //아이템 획득
+            //    //Destroy(selectedCrop)
+            //}
+            Destroy(selectedCrop);
+        }
+        else
+        {
+            return;
+        }
     }
 
 
