@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d25aaa0026a3aa64782ce9e4ac3a760c, type: 3}
+  m_Script: {fileID: 11500000, guid: 57a021bb31dcddf45bb2249bd2d90ac1, type: 3}
   m_Name: NotPlowalbe
   m_EditorClassIdentifier: 
   tiles:
