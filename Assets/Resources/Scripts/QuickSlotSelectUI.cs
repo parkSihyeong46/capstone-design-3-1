@@ -9,8 +9,12 @@ public class QuickSlotSelectUI : MonoBehaviour
     private const int FIRST_SELECT_UI_X = -302;
     private const int LAST_SELECT_UI_X = 303;
 
-    [SerializeField]
     private Transform quickSlotSelectUI;
+
+    private void Start()
+    {
+        quickSlotSelectUI = this.transform;
+    }
 
     private void Update()
     {

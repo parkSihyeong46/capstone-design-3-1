@@ -725,13 +725,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b4b301dca87ce429f5ec29416b6985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  rigidbody: {fileID: 0}
-  spriteRenderer: {fileID: 0}
-  moveVector: {x: 0, y: 0}
-  directionVector: {x: 0, y: 0}
-  moveSpeed: 5
-  isMoving: 0
 --- !u!114 &100106815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -756,19 +749,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a8bd5a5903b6c5419a6f1224d676854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  character: {fileID: 0}
-  rigidbody: {fileID: 0}
-  offsetDistance: 1
-  sizeofInteractiveArea: 1.2
-  markerMaxDistance: 2
-  highlightController: {fileID: 1070940633}
-  markerManager: {fileID: 0}
-  tilemapRead: {fileID: 1070940637}
-  cropManager: {fileID: 1070940638}
-  plowableTile: {fileID: 11400000, guid: 8f6e0de6bbc44e74a8a6613d100f03ca, type: 2}
-  selectedTilePosition: {x: 0, y: 0, z: 0}
-  selectable: 0
 --- !u!114 &100106817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -781,8 +761,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd25b5eee4b79b34da090aed82a39485, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 0}
-  toolBarPanel: {fileID: 0}
 --- !u!114 &100106818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -795,8 +773,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4458a9f5ae4c63546bb002c1f2d52a6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toolBarSize: 11
-  selectedItem: 0
 --- !u!114 &100106819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -809,17 +785,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5df6225b07b2b2b4da316011a705513d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  rigidbody: {fileID: 0}
-  offsetDistance: 1
-  sizeofInteractiveArea: 1.2
-  markerMaxDistance: 2
-  markerManager: {fileID: 0}
-  tilemapRead: {fileID: 1070940637}
-  cropManager: {fileID: 1070940638}
-  plowableTile: {fileID: 11400000, guid: 8f6e0de6bbc44e74a8a6613d100f03ca, type: 2}
-  selectedTilePosition: {x: 0, y: 0, z: 0}
-  selectable: 0
 --- !u!1 &119100553
 GameObject:
   m_ObjectHideFlags: 0
@@ -2989,7 +2954,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09f51dac57c2bd3449a7bed2c4261934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quickSlotSelectUI: {fileID: 0}
 --- !u!114 &264319093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15589,10 +15553,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c97888f8205722a4d88cecb85304595d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSlot: {item: {fileID: 0}, count: 0}
-  itemIcon: {fileID: 0}
-  iconTransform: {fileID: 0}
-  itemIconImage: {fileID: 0}
 --- !u!114 &1070940636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15605,8 +15565,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 545f2aa50906fb444a93153ae0335eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpItemPrefeb: {fileID: 494299829324157355, guid: 8e9e852d1f0db73498289c6f85168599,
-    type: 3}
 --- !u!114 &1070940637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15619,10 +15577,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bdffdd8855f1ab49a3d7dac72688e77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 361908624}
-  tileDatas:
-  - {fileID: 11400000, guid: f5ffb52567b4e284fafcf7abbea96883, type: 2}
-  - {fileID: 11400000, guid: 8f6e0de6bbc44e74a8a6613d100f03ca, type: 2}
 --- !u!114 &1070940638
 MonoBehaviour:
   m_ObjectHideFlags: 0
