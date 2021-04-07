@@ -13,7 +13,7 @@ public class Interact_TreeCut : Interact
     [SerializeField] int itemCountInOneDrop = 1; //한번 드롭할 때 개수(예를들면 통나무 한토막이 2개로 카운트 되는 것)
     [SerializeField] int dropCount = 5;          //드롭할 아이템 개수
 
-    Item_Get itemGet;
+    //Item_Get itemGet;
 
     private void Start()
     {
@@ -30,7 +30,7 @@ public class Interact_TreeCut : Interact
             dropPosition.x += spread * UnityEngine.Random.value - spread / 2;   // 분산값만큼 x좌표를 랜덤으로 배치
             dropPosition.y += spread * UnityEngine.Random.value - spread / 2;   // 분산값만큼 y좌표를 랜덤으로 배치
 
-            Item_SpawnManager.instance.SpawnItem(dropPosition, item, itemCountInOneDrop);
+            //Item_SpawnManager.instance.SpawnItem(dropPosition, item, itemCountInOneDrop);
         }
 
         // 도구에 맞았으면 이 오브젝트를 Destroy 한다

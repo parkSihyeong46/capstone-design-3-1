@@ -17,8 +17,8 @@ public class DayTime_Controller : MonoBehaviour
     float Hours { get { return time / 3600f; } }
     float Minutes { get { return time % 3600f / 60f; } }
 
-    [SerializeField] Text text;
-    [SerializeField] Light2D globalLight;
+    //[SerializeField] Text text;
+    //[SerializeField] Light2D globalLight;
     private int day;
 
     void Update()
@@ -33,10 +33,10 @@ public class DayTime_Controller : MonoBehaviour
         int hour = (int)Hours;
         int min = (int)Minutes;
 
-        text.text = hour.ToString("00") + ":" + min.ToString("00");
+        //text.text = hour.ToString("00") + ":" + min.ToString("00");
         float v = nightTimeCurve.Evaluate(Hours);
         Color c = Color.Lerp(dayLightColor, nightLightColor, v);
-        globalLight.color = c;
+        //globalLight.color = c;
         if (time > secondsInDay)
         {
             NextDay();

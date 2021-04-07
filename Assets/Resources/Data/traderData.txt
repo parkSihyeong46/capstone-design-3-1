@@ -1,0 +1,5 @@
+id	name	dataName	count
+7	씨앗 모음	seeds	1
+8	파스닙 씨앗	parsnipSeed	1
+9	콜리플라워 씨앗	cauliflowerSeed	1
+10	딸기 씨앗	strawberrySeed	1
