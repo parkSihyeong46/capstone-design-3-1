@@ -9,7 +9,6 @@ public class TimeUI : MonoBehaviour
     private Text dayText;
     private Text curTimeText;
     private Text ampmText;
-    private Text moneyText;
 
     // 현재 시간 가져오는 코드 필요함
     private void Awake()
@@ -18,13 +17,8 @@ public class TimeUI : MonoBehaviour
         dayText = transform.GetChild(2).GetComponent<Text>();
         curTimeText = transform.GetChild(3).GetComponent<Text>();
         ampmText = transform.GetChild(4).GetComponent<Text>();
-        moneyText = transform.GetChild(5).GetComponent<Text>();
     }
 
-    private void Start()
-    {
-        SetMoneyText();
-    }
     private void SetWeekText()
     {
         // switch의 0 나중에 현재 요일로 바꾸기
@@ -79,9 +73,4 @@ public class TimeUI : MonoBehaviour
         }
         
     }
-    private void SetMoneyText()
-    {
-        moneyText.text = Inventory.Instance.Money.ToString();
-    }
-
 }
