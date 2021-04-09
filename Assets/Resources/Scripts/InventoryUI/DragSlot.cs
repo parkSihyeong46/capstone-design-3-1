@@ -7,9 +7,11 @@ public class DragSlot : MonoBehaviour
 {
     public InvenSlots dragSlot;
 
-    [SerializeField]
     private Image imageItem;
-
+    private void Awake()
+    {
+        imageItem = GetComponent<Image>();
+    }
     public void DragSetImage(Image _itemImage)
     {
         imageItem.sprite = _itemImage.sprite;

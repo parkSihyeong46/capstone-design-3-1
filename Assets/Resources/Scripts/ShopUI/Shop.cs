@@ -12,7 +12,6 @@ public class Shop : MonoBehaviour
 
     [SerializeField]
     private Transform productParent;
-    [SerializeField]
     private Transform productPrefab;
 
     private List<Product> productList = new List<Product>();
@@ -37,6 +36,8 @@ public class Shop : MonoBehaviour
 
     private void Awake()
     {
+        productPrefab = Resources.Load<Transform>("Prefabs/shop/productButton");
+
         textAsset = Resources.Load<TextAsset>(traderDataPath);
         InitCellItemList();
         for (int i = 0; i < cellItemList.Count; i++)

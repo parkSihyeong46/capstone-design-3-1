@@ -9,6 +9,8 @@ public class QuickSlotSelectUI : MonoBehaviour
     private const int FIRST_SELECT_UI_X = -302;
     private const int LAST_SELECT_UI_X = 303;
 
+    public int selectSlotNumber = 0;
+
     private Transform quickSlotSelectUI;
 
     private void Start()
@@ -24,7 +26,7 @@ public class QuickSlotSelectUI : MonoBehaviour
         {
             quickSlotSelectUI.Translate(Vector3.left * 55);
 
-            if (quickSlotSelectUI.localPosition.x < FIRST_SELECT_UI_X)
+            if (quickSlotSelectUI.localPosition.x < FIRST_SELECT_UI_X)  // 범위 초과
             {
                 quickSlotSelectUI.localPosition = new Vector3(LAST_SELECT_UI_X, quickSlotSelectUI.localPosition.y, 0);
             }
@@ -33,10 +35,12 @@ public class QuickSlotSelectUI : MonoBehaviour
         {
             quickSlotSelectUI.Translate(Vector3.right * 55);
 
-            if (quickSlotSelectUI.localPosition.x > LAST_SELECT_UI_X)
+            if (quickSlotSelectUI.localPosition.x > LAST_SELECT_UI_X)   // 범위 초과
             {
                 quickSlotSelectUI.localPosition = new Vector3(FIRST_SELECT_UI_X, quickSlotSelectUI.localPosition.y, 0);
             }
         }
+
+        selectSlotNumber = (int)(quickSlotSelectUI.localPosition.x - FIRST_SELECT_UI_X) / 55;
     }
 }

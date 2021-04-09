@@ -63,7 +63,8 @@ public class PriceDataManager : MonoBehaviour
             Debug.Log("error");
         }
 
-        onChangePriceData.Invoke();
+        if(onChangePriceData != null)
+            onChangePriceData.Invoke();
     }
 
     public int GetPrice(string itemName)

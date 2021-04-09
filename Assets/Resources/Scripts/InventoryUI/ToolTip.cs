@@ -7,17 +7,20 @@ public class ToolTip : MonoBehaviour
 {
     private Item item = null;
 
-    [SerializeField]
     private Image toolTipTitleBackground;
-    [SerializeField]
     private Image toolTipExplainBackground;
-    [SerializeField]
     private Text itemTitleText;
-    [SerializeField]
     private Text itemTypeText;
-    [SerializeField]
     private Text itemExplainText;
 
+    private void Awake()
+    {
+        toolTipTitleBackground = transform.GetChild(0).GetComponent<Image>();
+        toolTipExplainBackground = transform.GetChild(1).GetComponent<Image>();
+        itemTitleText = transform.GetChild(0).GetChild(0).GetComponent<Text>();
+        itemTypeText = transform.GetChild(0).GetChild(1).GetComponent<Text>();
+        itemExplainText = transform.GetChild(1).GetChild(0).GetComponent<Text>();
+    }
     public void SetColor(float alpha)
     {
         Color color = toolTipTitleBackground.color;
@@ -41,7 +44,7 @@ public class ToolTip : MonoBehaviour
         itemExplainText.color = color;
     }
 
-        public void SetToolTipItem(Item item)
+    public void SetToolTipItem(Item item)
     {
         this.item = item;
 

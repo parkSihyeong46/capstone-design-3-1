@@ -77,29 +77,29 @@ public class Item
     // 도구, 열매, 씨앗, 음식 순
     public enum ItemID
     {
-        Axe,
-        Pick,
-        Hoe,
-        WateringCans,
-        Parsnip,
-        Cauliflower,
-        Strawberry,
-        Seeds,
-        ParsnipSeed,
-        CauliflowerSeed,
-        StrawberrySeed,
-        Icecream,
-        SurvivalHambuger,
-        FriedEgg,
-        CheeseCauliflower
+        Axe = 0,
+        Pick = 1,
+        Hoe = 2,
+        WateringCans = 3,
+        Parsnip = 4,
+        Cauliflower = 5,
+        Strawberry = 6,
+        Seeds = 7,
+        ParsnipSeed = 8,
+        CauliflowerSeed = 9,
+        StrawberrySeed = 10,
+        Icecream = 11,
+        SurvivalHambuger = 12,
+        FriedEgg = 13,
+        CheeseCauliflower = 14,
     }
     // 도구, 씨앗, 음식, 재료 순
     public enum ItemTypes
     {
-        Tool,
-        Seed,
-        Food,
-        Equipment,
-        Material,
+        Tool = 0,
+        Seed = 1,
+        Food = 2,
+        Equipment = 3,
+        Material = 4,
     }
 }
