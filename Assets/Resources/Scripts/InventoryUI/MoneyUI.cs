@@ -23,7 +23,7 @@ public class MoneyUI : MonoBehaviour
     {
         Inventory.Instance.onChangeItem += UpdateMoneyText;
     }
-    private void OnDestroy()
+    private void OnDisable()
     {
         Inventory.Instance.onChangeItem -= UpdateMoneyText;
     }

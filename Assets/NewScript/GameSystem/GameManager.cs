@@ -21,5 +21,12 @@ public class GameManager : MonoBehaviour
         inventory.AddItem(ItemManager.Instance.GetItem((int)Item.ItemID.WateringCans));
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyUp(KeyCode.I))
+        {
+            InputEventManager.Instance.OpenInventory();
+        }
 
+    }
 }

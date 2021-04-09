@@ -23,6 +23,13 @@ public class Inventory
     public const int inventorySize = 36;
     private Item[] items = new Item[inventorySize];
     private int money = 1000;
+    private bool isOpenInventory = false;
+    public bool IsOpen
+    {
+        set { isOpenInventory = value; }
+        get { return isOpenInventory; }
+    }
+
     public int Money
     {
         set { money = value; }
