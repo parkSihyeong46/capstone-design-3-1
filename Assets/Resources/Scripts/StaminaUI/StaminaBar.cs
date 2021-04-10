@@ -5,16 +5,20 @@ using UnityEngine.UI;
 
 public class StaminaBar : MonoBehaviour
 {
-    private int maxStamina = 300;
-    private int stamina = 200;
+    public int maxStamina = 300;
+    public int stamina;
     private const int staminaBarHeight = 40;
 
     RectTransform rectTransform;
     private float gaugePercent = 1.0f;
 
-    private void Start()
+    private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
+        stamina = maxStamina;
+    }
+    private void Start()
+    {
         TransformStaminaGauge();
     }
     public void AddStamina(int stamina)

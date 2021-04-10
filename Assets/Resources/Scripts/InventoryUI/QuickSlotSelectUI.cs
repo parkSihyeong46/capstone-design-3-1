@@ -30,6 +30,8 @@ public class QuickSlotSelectUI : MonoBehaviour
             {
                 quickSlotSelectUI.localPosition = new Vector3(LAST_SELECT_UI_X, quickSlotSelectUI.localPosition.y, 0);
             }
+
+            SetSelectItem();
         }
         else if (wheelInput.y < 0) // 휠 내렸을 때
         {
@@ -39,8 +41,15 @@ public class QuickSlotSelectUI : MonoBehaviour
             {
                 quickSlotSelectUI.localPosition = new Vector3(FIRST_SELECT_UI_X, quickSlotSelectUI.localPosition.y, 0);
             }
-        }
 
-        selectSlotNumber = (int)(quickSlotSelectUI.localPosition.x - FIRST_SELECT_UI_X) / 55;
+            SetSelectItem();
+        }
+    }
+
+    void SetSelectItem()
+    {
+        selectSlotNumber = (int)(quickSlotSelectUI.localPosition.x - FIRST_SELECT_UI_X) / 55;   // 선택중인 퀵슬롯 아이템 인덱스 찾기
+
+        Player_Manager.instance.handItem = Inventory.Instance.GetItems()[selectSlotNumber]; // 선택중인 아이템을 playerManager에서 참조하도록 설정
     }
 }
