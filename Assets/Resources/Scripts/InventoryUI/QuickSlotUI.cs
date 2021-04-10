@@ -24,7 +24,7 @@ public class QuickSlotUI : MonoBehaviour
         Inventory.Instance.onChangeItem += UpdateUI;
         UpdateUI();
     }
-    private void OnDestroy()
+    private void OnDisable()
     {
         Inventory.Instance.onChangeItem -= UpdateUI;
     }
