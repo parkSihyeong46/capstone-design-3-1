@@ -6,7 +6,8 @@ public class Player_Interact : MonoBehaviour
 {
     Character character;
 
-    [SerializeReference] Highlight_Controller highlightController;
+    [SerializeField] Tilemap_Reader tilemap_Reader;
+    [SerializeField] Highlight_Controller highlightController;
 
     Player_Manager player_Manager;
     Player_Movement player_Movement;
@@ -23,27 +24,29 @@ public class Player_Interact : MonoBehaviour
         Highlight();
     }
 
-    //상호작용 범위 축소, 현재 마우스 포인터가 위치한 곳의 오브젝트를 받아오도록 수정하기 >> 그러면 작물 하나하나 수확하는것 가능할 듯
-    public void Interact()
+    //플레이어 앞 1칸으로 상호작용 범위 축소, 현재 마우스 포인터가 위치한 곳의 오브젝트를 받아오도록 수정하기 >> 그러면 작물 하나하나 수확하는것 가능할 듯
+    public Interact Interact()
     {
-        player_Manager.animator.SetBool("usingTool", true);
+        //기존 오버랩서클 >> 마우스 위치한 곳에 레이캐스트(또는 박스캐스트)로 오브젝트 받기
 
-        Vector2 position = player_Manager.rigidbody.position + player_Movement.playerDirection * interactRange;        //플레이어가 바라보는 방향으로 일정 범위
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(position, interactRange);   //중심축(플레이어 좌표)을 기준으로 상호작용범위(원)에 들어온 콜라이더
+        player_Manager.animator.SetBool("usingTool", true);     //플레이어 애니메이션 실행(오브젝트에 따라서 수행하는 동작 다르게하기)
 
-        foreach (Collider2D c in colliders)
+        RaycastHit2D checkedObject = tilemap_Reader.ObjectCheck(Input.mousePosition);   //마우스 위치에 있는 레이캐스트 정보 가져오기
+        Collider2D c = checkedObject.collider;                                          //레이에 맞은 오브젝트의 콜라이더 대입
+
+        Debug.Log(c.gameObject);
+
+        if (checkedObject)
         {
-            Interact hit = c.GetComponent<Interact>();      //Tool_Hit 형 변수 hit에 c(콜라이더) 대입, 도구와 상호작용 할 콜라이더를 hit에 저장
+            Interact hit = c.GetComponent<Interact>();
 
-            //콜라이더를 받았을 때 도구와 상호작용할 오브젝트 있음
-            if (hit != null)
-            {
-                hit.DoInteract(character);    //c가 가지고 있는 Hit 함수 실행(나무면 나무, 돌이면 돌 등) 후 true 리턴
-            }
+            return hit;
         }
+
+        return null;
     }
 
-    //작동을 안하네...
+    //작동을 안하네... 상호작용 범위 줄이면 필요 없을 수 있음
     public void Highlight()
     {
         Vector2 position = player_Manager.rigidbody.position + player_Movement.playerDirection;

@@ -13,15 +13,16 @@ public class Interact_TreeCut : Interact
     [SerializeField] int itemCountInOneDrop = 1; //한번 드롭할 때 개수(예를들면 통나무 한토막이 2개로 카운트 되는 것)
     [SerializeField] int dropCount = 5;          //드롭할 아이템 개수
 
-    //Item_Get itemGet;
-
     private void Start()
     {
         bound = GetComponent<BoxCollider2D>().bounds;
+        useTool = UseTool.Axe;
     }
 
     public override void DoInteract(Character character)
     {
+        //상호작용에 사용될 아이템이 맞을 때만 실행(도끼를 선택하고 있을 때)
+        
         while (dropCount > 0)
         {
             dropCount -= 1;
