@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player_Manager : MonoBehaviour
 {
+    [SerializeField] Character character;
+
     Player_Movement player_Movement;
     Player_Interact player_Interact;
     Player_Farming player_Farming;
@@ -15,9 +17,7 @@ public class Player_Manager : MonoBehaviour
     public Rigidbody2D rigidbody;
 
     [Header("Temp State")]
-    [SerializeField] bool toolSelected;
     [SerializeField] bool seedSelected;
-    [SerializeField] bool wateringToolSelected;
 
     public Item handItem;  // 손에 들고있는 아이템
    
@@ -37,6 +37,7 @@ public class Player_Manager : MonoBehaviour
 
         staminaBar = GameObject.FindWithTag("StaminaBar").GetComponent<StaminaBar>();
     }
+
     private void Start()
     {
         player_Movement = GetComponent<Player_Movement>();
@@ -71,19 +72,24 @@ public class Player_Manager : MonoBehaviour
         }
     }
 
+    //오브젝트 확인 후 존재할 경우만 상호작용 실행하는 메소드
+    void CheckInteract(Item.ItemID itemID)
+    {
+        Interact interact;
+        
+        interact = player_Interact.Interact();
+        if (interact != null)
+        {
+            if((int)interact.useTool == (int)itemID)
+            {
+                interact.DoInteract(character);
+            }
+        }
+    }
+
     void UseTool()
     {
-        //***********************************************************************************************************************************************************************************
-        //*                                                                                                                                                                                 *
-        //*    지금은 임시로 물뿌리개랑 씨앗 등 전부 따로 분리했는데 toolSelected에서 먼저 확인하고 그 다음 어떤 아이템인지 확인하도록 변경하도록 할거임(UseItem이라는 메소드 만들 예정)    *
-        //*                                                                                                                                                                                 *
-        //***********************************************************************************************************************************************************************************
-
-        //도구 선택했을 때(게임오브젝트 태그를 확인해서 어떤 도구인지 확인하고 그 도구에 맞는 동작 수행)
-
-
         if (seedSelected == true) { player_Farming.Seed(); } //임시 작물 프리펩 사용해서 현재는 한가지만 심을 수 있음
-
 
         if (handItem == null)   // 아이템을 들고있을 때만 수행하도록
             return;
@@ -94,8 +100,10 @@ public class Player_Manager : MonoBehaviour
         switch (handItem.ItemId)
         {
             case Item.ItemID.Axe: // 나무캐기
+                CheckInteract(Item.ItemID.Axe);
                 break;
             case Item.ItemID.Pick: // 돌부수기
+                CheckInteract(Item.ItemID.Pick);
                 break;
             case Item.ItemID.Hoe:  // 땅 갈구기
                 player_Farming.Plow();
@@ -106,17 +114,10 @@ public class Player_Manager : MonoBehaviour
         }
         UseStamina();   // 스태미나 소모
 
-        // 위와 아래 코드 중복되는 것들이 있어 수정이 필요함
-
-        if (toolSelected == true) { player_Farming.Plow(); }
-        if (wateringToolSelected == true) { player_Farming.Watering(); }
-       
-
-        //그 외 상황은 상호작용
-        else { player_Interact.Interact(); }
-
-        player_Farming.Harvesting();
+        //수확 기능 구현 먼저하기
+        //player_Farming.Harvesting();
     }
+
 
     private void UseStamina()
     {

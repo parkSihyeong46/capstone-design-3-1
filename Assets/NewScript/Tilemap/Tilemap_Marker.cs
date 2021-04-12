@@ -16,7 +16,7 @@ public class Tilemap_Marker : MonoBehaviour
     Vector3Int oldCellPosition;                 //이전에 마킹되었던 타일
     public Vector3Int markedCellPosition;       //마킹될 타일 위치
     public bool isShow;                         //마커를 표시할지 결정할 값
-    float markerMaxDistance = 2f;               //마커가 표시될 최대 거리
+    [SerializeField] float markerMaxDistance;   //마커가 표시될 최대 거리
 
     void Update()
     {
