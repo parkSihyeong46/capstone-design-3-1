@@ -11939,6 +11939,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebc1bf01967c0614181244cefe42bd9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dayTime_Controller: {fileID: 1070940634}
 --- !u!114 &675453946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15219,7 +15220,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 6:50
+  m_Text: 6:00
 --- !u!222 &1067413866
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15296,7 +15297,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1070940630}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db4580c71cbe0574d8a7d5529d085a77, type: 3}
   m_Name: 
@@ -15373,6 +15374,10 @@ MonoBehaviour:
     m_RotationOrder: 4
   nightLightColor: {r: 0.11587752, g: 0.14647357, b: 0.26415092, a: 1}
   timeScale: 6000
+  globalLight: {fileID: 1934204670}
+  week: 0
+  month: 1
+  day: 1
 --- !u!114 &1070940638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22247,6 +22252,10 @@ MonoBehaviour:
     m_RotationOrder: 4
   nightLightColor: {r: 0, g: 0, b: 0, a: 0}
   timeScale: 60
+  globalLight: {fileID: 0}
+  week: 0
+  month: 1
+  day: 0
 --- !u!114 &1934204670
 MonoBehaviour:
   m_ObjectHideFlags: 0

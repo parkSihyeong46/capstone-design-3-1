@@ -53,7 +53,7 @@ public class Player_Interact : MonoBehaviour
         {
             Interactable hit = c.GetComponent<Interactable>();
 
-            Debug.Log(hit);
+            //Debug.Log(hit);
 
             if (hit != null)
             {
