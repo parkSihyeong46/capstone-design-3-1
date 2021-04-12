@@ -50,6 +50,5 @@ public class StaminaBar : MonoBehaviour
         gaugePercent = (float)stamina / maxStamina;
 
         rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, staminaBarHeight * gaugePercent);
-        Debug.Log(stamina);
     }
 }

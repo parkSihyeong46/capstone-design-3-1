@@ -16,6 +16,7 @@ public class QuickSlotSelectUI : MonoBehaviour
     private void Start()
     {
         quickSlotSelectUI = this.transform;
+        SetSelectItem();
     }
 
     private void Update()

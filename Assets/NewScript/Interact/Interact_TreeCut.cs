@@ -30,6 +30,8 @@ public class Interact_TreeCut : Interact
             dropPosition.x += spread * UnityEngine.Random.value - spread / 2;   // 분산값만큼 x좌표를 랜덤으로 배치
             dropPosition.y += spread * UnityEngine.Random.value - spread / 2;   // 분산값만큼 y좌표를 랜덤으로 배치
 
+            // 아이템 위치 저장 코드는 itemSpawnManager에서 처리하는게 좋을듯??
+            //ItemSpawnManager.Instance.SpawnItem(dropPosition, ItemManager.Instance.GetItem(5).DeepCopy());
             //Item_SpawnManager.instance.SpawnItem(dropPosition, item, itemCountInOneDrop);
         }
 
