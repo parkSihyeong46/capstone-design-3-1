@@ -16,8 +16,6 @@ public class StaminaUI : MonoBehaviour
     {
         staminaGuageText.UpdateStaminaText(staminaBar.stamina, staminaBar.maxStamina);
         staminaGuageText.SetColor(1);
-
-        Debug.Log("enter test");
     }
 
     public void OnMouseExit()

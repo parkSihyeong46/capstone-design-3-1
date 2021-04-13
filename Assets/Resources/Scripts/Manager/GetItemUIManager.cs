@@ -31,7 +31,7 @@ public class GetItemUIManager
     private GetItemUIManager()
     {
         parentObject = new GameObject("GetItemUI");
-        parentObject.transform.parent = GameObject.Find("UI").transform;
+        parentObject.transform.SetParent(GameObject.Find("UI").transform);
     }
     public List<GetItemUI> GetItemUIList()
     {
@@ -43,7 +43,7 @@ public class GetItemUIManager
         getItemUIList.Add(
                 GameObject.Instantiate(Resources.Load<GameObject>(UIPrefabPath)).GetComponent<GetItemUI>()  // 오브젝트 생성
                 );
-        getItemUIList[getItemUIList.Count - 1].GetComponent<Transform>().parent = parentObject.transform;   // 오브젝트 정리 (부모 등록)
+        getItemUIList[getItemUIList.Count - 1].GetComponent<Transform>().SetParent(parentObject.transform); // 오브젝트 정리 (부모 등록)
         getItemUIList[getItemUIList.Count - 1].isPrintcount = item.IsPrintCount;        // 수량 출력 여부 등록
         getItemUIList[getItemUIList.Count - 1].SetImageNText(item);                     // 아이템 이미지 등록
         getItemUIList[getItemUIList.Count - 1].ReSizeTextBox(item.ItemName.Length);     // 아이템 이름에 따라 상자 이미지 크기 수정
