@@ -57,14 +57,14 @@ public class PriceDataManager : MonoBehaviour
         {
             priceData = JsonUtility.FromJson<PriceData>(www.downloadHandler.text);
             Debug.Log(www.downloadHandler.text);
+
+            if (onChangePriceData != null)
+                onChangePriceData.Invoke();
         }
         else
         {
-            Debug.Log("error");
-        }
-
-        if(onChangePriceData != null)
-            onChangePriceData.Invoke();
+            Debug.Log("server connect fail / 가격 정보를 받아올 수 없습니다.");
+        }      
     }
 
     public int GetPrice(string itemName)
