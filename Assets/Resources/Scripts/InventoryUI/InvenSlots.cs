@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 public class InvenSlots : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler,
     IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
@@ -105,10 +106,17 @@ public class InvenSlots : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         {
             if (eventData.button == PointerEventData.InputButton.Right) // 우클릭 시
             {
-                // 아직 아이템 시세를 반영 안해서 debug로 일단 처리 중
-                Debug.Log(item.ItemName + " 팔기");
-                // 캐릭터 돈 ++
+                string itemId = item.ItemId.ToString();
+                itemId = itemId.Substring(0,1).ToLower() + itemId.Substring(1, itemId.Length-1);   // json으로 받아오는 변수 이름의 첫글자가 소문자, 프로그램 변수는 대문자라서 변환 필요
+
+                int itemPrice = PriceDataManager.instance.GetPrice(itemId);
+                if (-1 == itemPrice)
+                    return;
+
+                OnPointerExit(null);
+                Inventory.Instance.Money += itemPrice;
                 Inventory.Instance.DeleteItem(slotNumber);
+                OnPointerEnter(null);
             }
         }
     }
@@ -122,6 +130,7 @@ public class InvenSlots : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         toolTipScript.SetColor(1);
         toolTipScript.SetToolTipItem(this.item);
     }
+
 
     public void OnPointerExit(PointerEventData eventData)
     {

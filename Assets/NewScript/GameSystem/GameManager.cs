@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     private GameObject player;
     private Inventory inventory;
+
+    public bool isOpenShop;
+
     void Awake()
     {
         instance = this;

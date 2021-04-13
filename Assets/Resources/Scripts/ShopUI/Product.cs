@@ -29,12 +29,16 @@ public class Product : MonoBehaviour, IPointerClickHandler
     {
         if(eventData.button == PointerEventData.InputButton.Left)
         {
-            if (-1 == cellItem.price)
+            if (0 >= cellItem.price)
                 return;
 
-            // 돈 빠지는 코드 추가 해야 함
-            // 클릭하면 바로 추가되는게 아니라 스타듀밸리처럼 손에 들고있다가 원하는 위치에 놓을 수 있도록 수정하기
+            if (cellItem.price > Inventory.Instance.Money)  // 돈 부족하면 종료
+                return;
+
+            Inventory.Instance.Money -= cellItem.price;
             Inventory.Instance.AddItem(cellItem.item);
-        }
+
+            // 스타듀 밸리처럼 구입하면 손에 들고있다가 옮기는 것도 추가하면 좋을듯
+        }      
     }
 }

@@ -52,10 +52,14 @@ public class Shop : MonoBehaviour
     {
         PriceDataManager.instance.onChangePriceData += SyncProductUI;
         PriceDataManager.instance.InitPriceData();
+
+        GameManager.instance.isOpenShop = true;
     }
     private void OnDisable()
     {
         PriceDataManager.instance.onChangePriceData -= SyncProductUI;
+
+        GameManager.instance.isOpenShop = false;
     }
     public void SyncProductUI()
     {

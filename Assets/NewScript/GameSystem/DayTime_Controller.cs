@@ -31,7 +31,10 @@ public class DayTime_Controller : MonoBehaviour
     
     void Update()
     {
-        TimePass();
+        if(!(Inventory.Instance.IsOpen) && !(GameManager.instance.isOpenShop))  // 인벤, 상점 열려있지 않을 때만 시간이 가도록 설정
+        {
+            TimePass();
+        }
     }
 
     void TimePass()
