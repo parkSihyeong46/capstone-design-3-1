@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GetItemUI : MonoBehaviour
 {
     public Transform itemImageTransform;
+    private Transform itemNameTextTailTransform;
 
     public Image itemboxImage;
     public Image itemNameTextBodyImage;
@@ -15,18 +16,23 @@ public class GetItemUI : MonoBehaviour
     public Text explainTextText;
     public Text countTextText;
 
+    private RectTransform itemNameTextBodyRectTransform;
     private RectTransform imageRectTransform;
 
     public bool isPrintcount = false;
     private bool isReduceSize = false;
 
-    private const int MaxImageSize = 64;
-    private const int MinImageSize = 48;
-    private const int StartImageSize = 60;
+    private const int INIT_TEXTBOX_SIZE = 2;  // 초기 텍스트 상자 사이즈
+    private const int INIT_TEXTBOX_TAIL_LOCATION = 43;  // 늘어난 텍스트상자 이미지 끝에 꼭다리 (맨 우측 둥그런 테두리)
+    private const int WORLD_DISTANCE = 20;   // 글자 하나당 변경될 텍스트상자 크기
 
-    private const float resizeSpeed = 30.0f;
+    private const int MAX_IMAGE_SIZE = 64;
+    private const int MIN_IMAGE_SIZE = 48;
+    private const int START_IMAGE_SIZE = 60;
+
+    private const float RESIZE_SPEED = 30.0f;
     private float accumResizeTime = 0.0f;
-    private const float waitTime = 1.0f;
+    private const float WAIT_TIME = 1.0f;
     private float accumWaitTime = 0.0f;
     private float accumDisapearTime = 0.0f;
 
@@ -43,12 +49,26 @@ public class GetItemUI : MonoBehaviour
         explainTextText = transform.GetChild(4).GetComponent<Text>();
         countTextText = transform.GetChild(5).GetComponent<Text>();
 
+        itemNameTextBodyRectTransform = transform.GetChild(1).GetComponent<RectTransform>();
         imageRectTransform = itemImageTransform.GetComponent<RectTransform>();
+    }
+
+    public void ReSizeTextBox(int textLength)
+    {
+        int expandSize = textLength * WORLD_DISTANCE + INIT_TEXTBOX_SIZE;
+        itemNameTextBodyRectTransform.sizeDelta = new Vector2(expandSize, itemNameTextBodyRectTransform.sizeDelta.y);
+        itemNameTextTailImage.transform.localPosition = new Vector3
+            (INIT_TEXTBOX_TAIL_LOCATION + expandSize, itemNameTextTailImage.transform.localPosition.y, itemNameTextTailImage.transform.localPosition.z);
     }
 
     public void ResetImageSize()
     {
+        isReduceSize = false;
+        imageRectTransform.sizeDelta = new Vector2(START_IMAGE_SIZE, START_IMAGE_SIZE); 
+        accumResizeTime = 0.0f;
+        accumWaitTime = 0.0f;
         accumDisapearTime = 0.0f;
+        SetColor(1, isPrintcount);
     }
 
     private void Update()
@@ -56,22 +76,22 @@ public class GetItemUI : MonoBehaviour
         if(!isReduceSize)
         {
             accumResizeTime += Time.deltaTime;
-            imageRectTransform.sizeDelta = new Vector2(StartImageSize + (accumResizeTime * resizeSpeed), StartImageSize + (accumResizeTime * resizeSpeed));
+            imageRectTransform.sizeDelta = new Vector2(START_IMAGE_SIZE + (accumResizeTime * RESIZE_SPEED), START_IMAGE_SIZE + (accumResizeTime * RESIZE_SPEED));
 
-            if(imageRectTransform.sizeDelta.x >= MaxImageSize)
+            if(imageRectTransform.sizeDelta.x >= MAX_IMAGE_SIZE)
             {
-                imageRectTransform.sizeDelta = new Vector2(MaxImageSize, MaxImageSize);
+                imageRectTransform.sizeDelta = new Vector2(MAX_IMAGE_SIZE, MAX_IMAGE_SIZE);
                 accumResizeTime = 0.0f;
                 isReduceSize = true;
             }
         }
-        else if (imageRectTransform.sizeDelta.x > MinImageSize)
+        else if (imageRectTransform.sizeDelta.x > MIN_IMAGE_SIZE)
         {
             accumResizeTime += Time.deltaTime;
 
-            imageRectTransform.sizeDelta = new Vector2(MaxImageSize - (accumResizeTime * resizeSpeed), MaxImageSize - (accumResizeTime * resizeSpeed));
+            imageRectTransform.sizeDelta = new Vector2(MAX_IMAGE_SIZE - (accumResizeTime * RESIZE_SPEED), MAX_IMAGE_SIZE - (accumResizeTime * RESIZE_SPEED));
         }
-        else if(accumWaitTime < waitTime)
+        else if(accumWaitTime < WAIT_TIME)
         {
             accumWaitTime+= Time.deltaTime;
         }
@@ -80,8 +100,21 @@ public class GetItemUI : MonoBehaviour
             accumDisapearTime += Time.deltaTime;
 
             SetColor(1.0f - accumDisapearTime, isPrintcount);
-            if ((0.0f - 0.01f) > GetColor())
+            if (!((0.0f + 0.02f) > GetColor()))
+                return;
+
+            List<GetItemUI> uiList = GetItemUIManager.Instance.GetItemUIList();
+            for (int i = 0; i < uiList.Count; i++)
+            {
+                if (uiList[i] != this)
+                    continue;
+
+                uiList.Remove(this);
                 Destroy(gameObject);
+
+                GetItemUIManager.Instance.ResetLocation();
+                return;
+            }     
         }
     }
 

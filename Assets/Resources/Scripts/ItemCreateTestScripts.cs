@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ItemCreateTestScripts : MonoBehaviour
 {
+    static int itemID = 0;
 
     public void test()
     {
@@ -32,5 +33,23 @@ public class ItemCreateTestScripts : MonoBehaviour
     public void addStamina()
     {
         GameObject.Find("staminaBar").GetComponent<StaminaBar>().AddStamina(20);
+    }
+
+    public void addItemUITest()
+    {
+        try
+        {
+            GetItemUIManager.Instance.PrintUI(ItemManager.Instance.GetItem((int)itemID));
+            itemID++;
+        }
+        catch
+        {
+            itemID = 0;
+        }
+    }
+
+    public void addCountItemUITest()
+    {
+        GetItemUIManager.Instance.PrintUI(ItemManager.Instance.GetItem(7));
     }
 }

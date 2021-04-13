@@ -19,8 +19,6 @@ public class GameManager : MonoBehaviour
         inventory.AddItem(ItemManager.Instance.GetItem((int)Item.ItemID.Pick));
         inventory.AddItem(ItemManager.Instance.GetItem((int)Item.ItemID.Hoe));
         inventory.AddItem(ItemManager.Instance.GetItem((int)Item.ItemID.WateringCans));
-
-        GetItemUIManager.Instance.PrintUI(ItemManager.Instance.GetItem((int)Item.ItemID.Axe));
     }
 
     private void Update()
