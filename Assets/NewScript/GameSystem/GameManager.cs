@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyUp(KeyCode.I))
+        if (Input.GetKeyUp(KeyCode.Escape))
         {
             InputEventManager.Instance.OpenInventory();
         }
