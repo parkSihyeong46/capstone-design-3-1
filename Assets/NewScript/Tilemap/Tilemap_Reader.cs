@@ -17,7 +17,7 @@ public class Tilemap_Reader : MonoBehaviour
     public LayerMask layerMask_Object;  //오브젝트 판별 레이어
     public LayerMask layerMask_Crop;    //작물 판별 레이어
     public bool isObjectEmpty;          //마우스가 있는 곳에 오브젝트 있는지 확인
-    public bool isCropEmpty;            //마우스가 있는 곳에 작물 있는지 확인
+    //public bool isCropEmpty;            //마우스가 있는 곳에 작물 있는지 확인
 
     public Vector3 worldPosition;
 
@@ -40,15 +40,15 @@ public class Tilemap_Reader : MonoBehaviour
         worldPosition = Camera.main.ScreenToWorldPoint(mousePos);
 
         RaycastHit2D hit_Object = Physics2D.Raycast(worldPosition, transform.forward, 15f, layerMask_Object);
-        RaycastHit2D hit_Crop = Physics2D.Raycast(worldPosition, transform.forward, 15f, layerMask_Crop);
+        //RaycastHit2D hit_Crop = Physics2D.Raycast(worldPosition, transform.forward, 15f, layerMask_Crop);
 
         //오브젝트 유무 판별
         if (hit_Object) { isObjectEmpty = false; }
         else { isObjectEmpty = true; }
 
         //작물 유무 판별
-        if (hit_Crop) { isCropEmpty = false; }
-        else { isCropEmpty = true; }
+        //if (hit_Crop) { isCropEmpty = false; }
+        //else { isCropEmpty = true; }
 
         Vector3Int gridPosition = tilemap.WorldToCell(worldPosition);    //마우스좌표를 Vector3Int형으로 변환 하기위해 WorldToCell(마우스 좌표) 사용
         

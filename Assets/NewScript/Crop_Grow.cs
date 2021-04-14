@@ -16,17 +16,15 @@ public class Crop_Grow : MonoBehaviour
         StartCoroutine("CropGrowing");
     }
 
-    private void Update()
-    {
-        spriteRenderer.sortingOrder = -(Mathf.RoundToInt(transform.position.y));
-    }
-
     IEnumerator CropGrowing()
     {
         while(isFullyGrown == false)
         {
             yield return new WaitForEndOfFrame();
+            if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)
+            {
+                isFullyGrown = true;
+            }
         }
-        isFullyGrown = true;
     }
 }
