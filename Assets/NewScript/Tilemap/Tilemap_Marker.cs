@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+//마커 필요한 아이템 선택했을때만 나타나도록 수정(e.g.)호미, 물뿌리개, 씨앗 등)
+
 public class Tilemap_Marker : MonoBehaviour
 {
     [SerializeField] Player_Manager player_Manager;

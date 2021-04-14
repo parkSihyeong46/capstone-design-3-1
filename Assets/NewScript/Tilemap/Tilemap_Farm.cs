@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 
-//한번 경작한 땅을 어떻게 다시 원상복구 시킬까?
-//경작한 순서대로 원래대로 돌아갔으면 좋겠는데
+//한번 경작한 땅을 어떻게 다시 원상복구 시킬까? 경작한 순서대로 원래대로 돌아갔으면 좋겠는데
 //아무것도 심어져 있지 않을 때만 복구
 //당장 생각나는 방법은 리스트나 배열 사용해서 좌표값 저장한다음 일정 시간 지나면 타일 없앰. 만약 뭔가 심어져있으면 다음 순번으로 넘어감.
 
@@ -53,7 +52,7 @@ public class Tilemap_Farm : MonoBehaviour
         //타일이 있을 때, 오브젝트가 없을 때만 모종(타일이 있다는 건 경작지라는 뜻)
         if (tilemap_Marker.isShow == true)
         {
-            if (farmingTilemap.GetTile(cellPos) != null && tilemap_Reader.isObjectEmpty == true && tilemap_Reader.isCropEmpty == true)
+            if (farmingTilemap.GetTile(cellPos) != null && tilemap_Reader.isObjectEmpty == true)
             {
                 //씨앗 심기
                 float spread = UnityEngine.Random.Range(0.4f, 0.6f);
@@ -110,19 +109,17 @@ public class Tilemap_Farm : MonoBehaviour
     public void CropHarvest()
     {
         RaycastHit2D hit_Crop = Physics2D.Raycast(tilemap_Reader.worldPosition, transform.forward, tilemap_Reader.layerMask_Crop);
-        GameObject selectedCrop = hit_Crop.collider.gameObject;
+        Crop_Grow selectedCrop = hit_Crop.collider.GetComponent<Crop_Grow>();
 
         bool checkCrop = GetComponent<Crop_Grow>().isFullyGrown;
 
         if (selectedCrop != null)
         {
-            //if (여기에 작물이 다 자랐는지 여부 판별)
-            //{
-            //    //추후 획득 애니메이션 추가
+            //다 자란 경우
+            if (checkCrop)
+            {
 
-            //    //아이템 획득
-            //    //Destroy(selectedCrop)
-            //}
+            }
             Destroy(selectedCrop);
         }
         else
@@ -130,12 +127,4 @@ public class Tilemap_Farm : MonoBehaviour
             return;
         }
     }
-
-
-
-    //체크할 타일맵의 모든 타일을 검사?
-    //1. 마우스 위치를 그리드포지션으로 반환
-    //2. 그 위치(그리드포지션)의 타일을 가져옴
-    //3. 그 타일은 체크타일맵의 타일임
-    //4. 그 좌표상에는 체크타일맵 말고 다른 오브젝트나 타일이 없어야함
 }

@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
         inventory.AddItem(ItemManager.Instance.GetItem((int)Item.ItemID.Pick));
         inventory.AddItem(ItemManager.Instance.GetItem((int)Item.ItemID.Hoe));
         inventory.AddItem(ItemManager.Instance.GetItem((int)Item.ItemID.WateringCans));
+        inventory.AddItem(ItemManager.Instance.GetItem((int)Item.ItemID.CauliflowerSeed));
     }
 
     private void Update()

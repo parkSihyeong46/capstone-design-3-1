@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 8208940676682307991}
   - component: {fileID: 3717329076158789254}
   - component: {fileID: -2403990921226843102}
+  - component: {fileID: -2284805484613480615}
+  - component: {fileID: 460982317008236966}
   m_Layer: 9
   m_Name: TempCrop
   m_TagString: Untagged
@@ -143,3 +145,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFullyGrown: 0
+--- !u!114 &-2284805484613480615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3285628382912576876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 591789c0042a2d447b600af92bc29f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useTool: 0
+--- !u!114 &460982317008236966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3285628382912576876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ffcd5db8c9e2e74396858f4fdbfd2b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
