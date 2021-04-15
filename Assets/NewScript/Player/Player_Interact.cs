@@ -26,7 +26,7 @@ public class Player_Interact : MonoBehaviour
     {
         //기존 오버랩서클 >> 마우스 위치한 곳에 레이캐스트(또는 박스캐스트)로 오브젝트 받기
 
-        player_Manager.animator.SetBool("usingTool", true);     //플레이어 애니메이션 실행(오브젝트에 따라서 수행하는 동작 다르게하기
+        player_Manager.animator.SetTrigger("Work");     //플레이어 애니메이션 실행(오브젝트에 따라서 수행하는 동작 다르게하기
 
         RaycastHit2D checkedObject = tilemap_Reader.ObjectCheck(Input.mousePosition);   //마우스 위치에 있는 레이캐스트 정보 가져오기
         Collider2D c = checkedObject.collider;                                          //레이에 맞은 오브젝트의 콜라이더 대입

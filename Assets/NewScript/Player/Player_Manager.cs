@@ -63,10 +63,10 @@ public class Player_Manager : MonoBehaviour
 
             player_Interact.UseTool();
         }
-        else if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)    //현재 애니메이션이 끝나면 false로 바꿔서 반복 안함. 그냥 Loop 체크 안하면 되지않나?
-        {
-            animator.SetBool("usingTool", false);
-        }
+        //else if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)    //현재 애니메이션이 끝나면 false로 바꿔서 반복 안함. 그냥 Loop 체크 안하면 되지않나?
+        //{
+        //    animator.SetBool("Work", false);
+        //}
     }
 
     public void UseStamina()

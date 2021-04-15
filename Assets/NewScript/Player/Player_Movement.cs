@@ -26,15 +26,15 @@ public class Player_Movement : MonoBehaviour
         playerManager.rigidbody.velocity = playerDirection.normalized * moveSpeed;
 
         isMoving = h != 0 || v != 0;
-        playerManager.animator.SetBool("isMoving", isMoving);
+        playerManager.animator.SetBool("Move", isMoving);
 
         if (h != 0 || v != 0)
         {
             playerDirection = new Vector2(h, v).normalized;
-            playerManager.animator.SetFloat("lastHorizontal", h);
-            playerManager.animator.SetFloat("lastVertical", v);
+            playerManager.animator.SetFloat("Last_X", h);
+            playerManager.animator.SetFloat("Last_Y", v);
         }
-        playerManager.animator.SetFloat("horizontal", h);
-        playerManager.animator.SetFloat("vertical", v);
+        playerManager.animator.SetFloat("X", h);
+        playerManager.animator.SetFloat("Y", v);
     }
 }
