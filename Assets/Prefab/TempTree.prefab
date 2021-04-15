@@ -147,15 +147,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2862840468530539502}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f9139a4f204c3a47b3c25529639106c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b7fa444585beb54e929d9030162c122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpDrops: {fileID: 494299829324157355, guid: 8e9e852d1f0db73498289c6f85168599,
-    type: 3}
-  spread: 1
-  item: {fileID: 11400000, guid: eb965a44a29bd184f940487d22994fce, type: 2}
-  itemCountInOneDrop: 1
-  dropCount: 3
+  useTool: -1
 --- !u!114 &-1026413151303701441
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -49,9 +49,6 @@ public class Player_Manager : MonoBehaviour
     private void FixedUpdate()
     {
         player_Movement.Move();
-
-        //레이어 정렬
-        spriteRenderer.sortingOrder = -(Mathf.RoundToInt(transform.position.y));
     }
 
     private void Update()
