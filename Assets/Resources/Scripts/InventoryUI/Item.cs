@@ -92,6 +92,8 @@ public class Item
         SurvivalHambuger = 12,
         FriedEgg = 13,
         CheeseCauliflower = 14,
+        Wood = 15,
+        Rock = 16,
     }
     // 도구, 씨앗, 음식, 재료 순
     public enum ItemTypes

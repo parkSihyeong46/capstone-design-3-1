@@ -31,6 +31,5 @@ public class GameManager : MonoBehaviour
         {
             InputEventManager.Instance.OpenInventory();
         }
-
     }
 }
