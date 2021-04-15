@@ -57,6 +57,7 @@ public class ItemSpawnManager
 
             fieldItemList.Add(newSpawnItem);
 
+            newSpawnItem.GetComponent<FieldItem>().Init(item);
             newSpawnItem.GetComponent<SpriteRenderer>().sprite = item.ItemImage;    // 필드아이템 이미지 변경
             newSpawnItem.transform.position = position; // 위치 설정
             newSpawnItem.GetComponent<ItemSpawnAnimation>().StartSpawnAnimation();  // 스폰 애니메이션 시작

@@ -4,36 +4,46 @@ using UnityEngine;
 
 public class ItemSpawnAnimation : MonoBehaviour
 {
+    FieldItem fieldItem;
+
     public bool isStartAnimation = false;
-    public bool isGet = false;
+    public bool isDone = false;
 
     public float spreadSize = 0.7f;  // 흩어짐 범위
-    private Vector3 targetPosition;
+    public const float SPAWN_SPEED = 0.05f; // 이동시간 (스폰 속도)
 
+    private const float ERROR_RANGE_GET = 0.1f;  // 오차범위 (아이템 획득)
+    private const float ERROR_RANGE_STOP = 0.03f;  // 오차범위 (애니메이션 중지)
+    private Vector3 targetPosition;
+    private void Start()
+    {
+        fieldItem = GetComponent<FieldItem>();
+    }
     private void Update()
     {
         if (!isStartAnimation)  // 애니메이션이 시작전 리턴
             return;
 
-        if (Mathf.Abs(transform.localPosition.x + 0.1f) >= Mathf.Abs(targetPosition.x) &&
-            Mathf.Abs(transform.localPosition.x - 0.1f) <= Mathf.Abs(targetPosition.x) &&
-            Mathf.Abs(transform.localPosition.y + 0.1f) >= Mathf.Abs(targetPosition.y) &&
-            Mathf.Abs(transform.localPosition.y - 0.1f) <= Mathf.Abs(targetPosition.y)
+        if (transform.localPosition.x + ERROR_RANGE_GET >= targetPosition.x &&
+            transform.localPosition.x - ERROR_RANGE_GET <= targetPosition.x &&
+            transform.localPosition.y + ERROR_RANGE_GET >= targetPosition.y &&
+            transform.localPosition.y - ERROR_RANGE_GET <= targetPosition.y
             )
         {
-            isGet = true;
+            fieldItem.isGet = true;
         }
 
-        if (Mathf.Abs(transform.localPosition.x + 0.03f) >= Mathf.Abs(targetPosition.x) &&
-            Mathf.Abs(transform.localPosition.x - 0.03f) <= Mathf.Abs(targetPosition.x) &&
-            Mathf.Abs(transform.localPosition.y + 0.03f) >= Mathf.Abs(targetPosition.y) &&
-            Mathf.Abs(transform.localPosition.y - 0.03f) <= Mathf.Abs(targetPosition.y)
+        if (transform.localPosition.x + ERROR_RANGE_STOP >= targetPosition.x &&
+            transform.localPosition.x - ERROR_RANGE_STOP <= targetPosition.x &&
+            transform.localPosition.y + ERROR_RANGE_STOP >= targetPosition.y &&
+            transform.localPosition.y - ERROR_RANGE_STOP <= targetPosition.y
             )
         {
-            isStartAnimation = true;
+            isStartAnimation = false;
+            isDone = true;
         }
 
-        transform.localPosition = Vector3.Slerp(transform.localPosition, targetPosition, 0.05f);
+        transform.localPosition = Vector3.Slerp(transform.localPosition, targetPosition, SPAWN_SPEED);
     }
 
     public void StartSpawnAnimation()

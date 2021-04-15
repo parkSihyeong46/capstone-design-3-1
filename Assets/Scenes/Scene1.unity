@@ -51840,8 +51840,8 @@ GameObject:
   - component: {fileID: 2047967627}
   - component: {fileID: 2047967626}
   m_Layer: 0
-  m_Name: "\uD14C\uC2A4\uD2B8 \uCE90\uB9AD\uD130"
-  m_TagString: Untagged
+  m_Name: "\uCE90\uB9AD\uD130"
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

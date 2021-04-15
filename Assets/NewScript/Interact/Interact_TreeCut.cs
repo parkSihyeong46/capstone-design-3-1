@@ -9,7 +9,7 @@ public class Interact_TreeCut : Interact
     private void Start()
     {
         useTool = UseTool.Axe;
-        spawnItemList.Add(ItemManager.Instance.GetItem(15).DeepCopy());
+        spawnItemList.Add(ItemManager.Instance.GetItem((int)Item.ItemID.Wood).DeepCopy());
     }
 
     public override void DoInteract(Character character)
