@@ -21,7 +21,6 @@ public class DayTime_Controller : MonoBehaviour
     public float Hours { get { return time / 3600f; } }
     public float Minutes { get { return time % 3600f / 60f; } }
 
-    //[SerializeField] Text text;
     [SerializeField] Light2D globalLight;
 
     public WeekDay week = WeekDay.Monday;   // 요일
@@ -44,7 +43,6 @@ public class DayTime_Controller : MonoBehaviour
         int hour = (int)Hours;
         int min = (int)Minutes;
 
-        //text.text = hour.ToString("00") + ":" + min.ToString("00");
         float v = nightTimeCurve.Evaluate(Hours);
         Color c = Color.Lerp(dayLightColor, nightLightColor, v);
         globalLight.color = c;

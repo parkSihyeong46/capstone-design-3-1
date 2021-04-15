@@ -14,7 +14,7 @@ public class LayerSorting_Player : MonoBehaviour
     }
     void FixedUpdate()
     {
-        Debug.Log(spriteRenderer.sortingOrder);
+        //Debug.Log(spriteRenderer.sortingOrder);
         spriteRenderer.sortingOrder = -(Mathf.RoundToInt(transform.position.y)) + firstIndex;
     }
 }

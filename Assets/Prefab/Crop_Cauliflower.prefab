@@ -15,8 +15,9 @@ GameObject:
   - component: {fileID: -2403990921226843102}
   - component: {fileID: -2284805484613480615}
   - component: {fileID: 460982317008236966}
+  - component: {fileID: -3719610695809714544}
   m_Layer: 9
-  m_Name: TempCrop
+  m_Name: Crop_Cauliflower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,7 +100,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 1
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,6 +145,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7ce2a55142603e4f963a2124f23dbe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dayTime_Controller: {fileID: 0}
+  sprites:
+  - {fileID: -6772013665464216415, guid: 4ac4397416ea46f459395ae93c29e3e7, type: 3}
+  - {fileID: 5594019617455039092, guid: 4ac4397416ea46f459395ae93c29e3e7, type: 3}
+  - {fileID: -7446749001258220890, guid: 4ac4397416ea46f459395ae93c29e3e7, type: 3}
+  - {fileID: -7057964512062853252, guid: 4ac4397416ea46f459395ae93c29e3e7, type: 3}
+  - {fileID: 4158359818088888013, guid: 4ac4397416ea46f459395ae93c29e3e7, type: 3}
+  - {fileID: -670388714076970605, guid: 4ac4397416ea46f459395ae93c29e3e7, type: 3}
+  - {fileID: -9222271867939016289, guid: 4ac4397416ea46f459395ae93c29e3e7, type: 3}
   isFullyGrown: 0
 --- !u!114 &-2284805484613480615
 MonoBehaviour:
@@ -168,5 +178,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ffcd5db8c9e2e74396858f4fdbfd2b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3719610695809714544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3285628382912576876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d7a4233ef264246a4a25ac2e4ae6c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
