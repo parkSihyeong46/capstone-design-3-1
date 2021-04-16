@@ -27,6 +27,7 @@ public class DayTime_Controller : MonoBehaviour
     public const int maxMonthDay = 28; // 28일 == 1달
     public Month month = Month.Spring;
     public int day = 1;
+    public int year = 1;
     
     void Update()
     {
@@ -72,12 +73,14 @@ public class DayTime_Controller : MonoBehaviour
             week = WeekDay.Monday;
         }
 
-        if (day <= maxMonthDay)  // 29일 이전이면 무시
+        if (day < maxMonthDay)  // 29일 이전이면 무시
             return;
 
+        day = 0;
         month += 1;    // 다음달 변경
-        if((int)month > (int)Month.Winter)  // 겨울 다음달은 봄
+        if(Month.Winter == month)  // 겨울 다음달은 봄
         {
+            year += 1;
             month = Month.Spring;
         }
     }
