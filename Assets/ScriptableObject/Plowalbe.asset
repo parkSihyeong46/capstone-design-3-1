@@ -13,5 +13,14 @@ MonoBehaviour:
   m_Name: Plowalbe
   m_EditorClassIdentifier: 
   tiles:
-  - {fileID: 11400000, guid: 2e910cb3a046e97469ed8e4873049050, type: 2}
+  - {fileID: 11400000, guid: 1dff9db01cf5f8a408ee4b1ff21255b4, type: 2}
+  - {fileID: 11400000, guid: 4c030420791372a41acb5705c2fb0f12, type: 2}
+  - {fileID: 11400000, guid: 31091fbe6692ad74fa6b9579e8c86b4b, type: 2}
+  - {fileID: 11400000, guid: 31419ebe3fe2dd146ae06615106d87e6, type: 2}
+  - {fileID: 11400000, guid: cf6dcd9a114b47b4f924303a03f2e5f5, type: 2}
+  - {fileID: 11400000, guid: a0bbb04a566511047b55d7165223e787, type: 2}
+  - {fileID: 11400000, guid: ca133a30fddb2a848a9c3e5fadacd4f1, type: 2}
+  - {fileID: 11400000, guid: 38300bffecfe2554f85c20d4bac1021d, type: 2}
+  - {fileID: 11400000, guid: 26120276420091b46838a8c468732d0a, type: 2}
+  - {fileID: 11400000, guid: ee49aa5ac7031114fbffb892941a154a, type: 2}
   plowable: 1
