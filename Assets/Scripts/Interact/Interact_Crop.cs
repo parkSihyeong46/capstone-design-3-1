@@ -23,7 +23,7 @@ public class Interact_Crop : Interact
 
         if (checkCrop) //다 자란 경우
         {
-            //작물 획득. 아이템 획득 로직 확인 후 추가하기
+            Inventory.Instance.AddItem(ItemManager.Instance.GetItem((int)Item.ItemID.Cauliflower).DeepCopy());
         }
         Destroy(gameObject);    //다 자랐든 안 자랐든 Destroy
     }

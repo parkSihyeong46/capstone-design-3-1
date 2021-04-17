@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GetItemUI : MonoBehaviour
+public class GetItemUI : MonoBehaviour  // 싱글톤으로 만들기
 {
     public Transform itemImageTransform;
     private Transform itemNameTextTailTransform;

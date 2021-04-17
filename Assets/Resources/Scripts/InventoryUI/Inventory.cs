@@ -100,6 +100,8 @@ public class Inventory
             onChangeItem.Invoke();
     }
 
+    // 인벤에서 찾아가지고 delete 할 수 있도록 추가하기
+
     public void SwitchItem(int index1, int index2)
     {
         if (index1 == index2)

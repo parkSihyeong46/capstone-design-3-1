@@ -41,7 +41,7 @@ public class DayTime_Controller : MonoBehaviour
     void Update()
     {
         // 인벤, 상점 열려있지 않을 때, 애니메이션 시간이 아닐 경우 시간이 가도록 설정
-        if (!(Inventory.Instance.IsOpen) && 
+        if (!(Inventory.Instance.IsOpen) &&     // 인벤토리 null ??
             !(GameManager.instance.isOpenShop) &&
             !(sleepUI.isPlayAnimation))  
         {

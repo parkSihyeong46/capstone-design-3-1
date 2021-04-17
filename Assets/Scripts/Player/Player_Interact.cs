@@ -31,7 +31,8 @@ public class Player_Interact : MonoBehaviour
         RaycastHit2D checkedObject = tilemap_Reader.ObjectCheck(Input.mousePosition);   //마우스 위치에 있는 레이캐스트 정보 가져오기
         Collider2D c = checkedObject.collider;                                          //레이에 맞은 오브젝트의 콜라이더 대입
 
-        Debug.Log(c.gameObject);
+        if(c != null)
+            Debug.Log(c.gameObject);
 
         if (checkedObject)
         {
