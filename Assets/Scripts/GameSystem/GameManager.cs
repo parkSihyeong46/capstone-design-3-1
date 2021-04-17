@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Escape))
         {
-            InputEventManager.Instance.OpenInventory();
+            InputEventManager.Instance.OpenOptionTab();
         }
     }
 }

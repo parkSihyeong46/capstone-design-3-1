@@ -19,21 +19,21 @@ public class InputEventManager
         }
     }
 
-    public GameObject inventoryObject;
+    public GameObject optionTabObject;
     private InputEventManager() 
     {
-        inventoryObject = GameObject.Find("UI").transform.GetChild(1).gameObject;
+        optionTabObject = GameObject.Find("UI").transform.GetChild(1).gameObject;
     }
 
-    public void OpenInventory()
+    public void OpenOptionTab()
     {
-        if (!Inventory.Instance.IsOpen) // 꺼져있다면 
+        if (!optionTabObject.activeSelf) // 꺼져있다면 
         {
-            inventoryObject.SetActive(true);
+            optionTabObject.SetActive(true);
         }
         else
         {
-            inventoryObject.SetActive(false);
+            optionTabObject.SetActive(false);
         }   
     }
 }
