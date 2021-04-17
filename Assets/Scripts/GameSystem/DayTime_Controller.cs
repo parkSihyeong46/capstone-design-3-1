@@ -11,6 +11,8 @@ public class DayTime_Controller : MonoBehaviour
     public OnChangeUI onChangeTime;
 
     const float secondsInDay = 86400f;
+    private const int EXHAUSTED_HOUR = 2;   // 탈진 시간
+    private const int WAKEUP_HOUR = 6;   // 기상 시간
 
     [SerializeField] Color dayLightColor = Color.white;
     [SerializeField] AnimationCurve nightTimeCurve;
@@ -22,16 +24,26 @@ public class DayTime_Controller : MonoBehaviour
     public float Minutes { get { return time % 3600f / 60f; } }
 
     [SerializeField] Light2D globalLight;
+    [SerializeField]
+    SleepUI sleepUI;
 
     public WeekDay week = WeekDay.Monday;   // 요일
     public const int maxMonthDay = 28; // 28일 == 1달
     public Month month = Month.Spring;
     public int day = 1;
     public int year = 1;
-    
+
+    private void Start()
+    {
+        time = 3600f * WAKEUP_HOUR;     // 게임 시작 시간 6시로 초기화
+    }
+
     void Update()
     {
-        if(!(Inventory.Instance.IsOpen) && !(GameManager.instance.isOpenShop))  // 인벤, 상점 열려있지 않을 때만 시간이 가도록 설정
+        // 인벤, 상점 열려있지 않을 때, 애니메이션 시간이 아닐 경우 시간이 가도록 설정
+        if (!(Inventory.Instance.IsOpen) && 
+            !(GameManager.instance.isOpenShop) &&
+            !(sleepUI.isPlayAnimation))  
         {
             TimePass();
         }
@@ -51,8 +63,13 @@ public class DayTime_Controller : MonoBehaviour
         {
             NextDay();
 
-            if(onChangeDay != null)
+            if (onChangeDay != null)
                 onChangeDay.Invoke();
+        }
+
+        if(hour == EXHAUSTED_HOUR)
+        {
+            Sleep();
         }
 
         if (0 != ((int)Minutes % 5)) // 현재 분 != 5의배수 종료
@@ -64,7 +81,7 @@ public class DayTime_Controller : MonoBehaviour
 
     void NextDay()
     {
-        time = 0;
+        time = 0f;
         day++;
 
         week += 1;
@@ -85,6 +102,11 @@ public class DayTime_Controller : MonoBehaviour
         }
     }
 
+    public void Sleep()
+    {
+        // sleepUI.PlaySleepAnimation();  이거 키면 2시 될때 다음날로 넘어가는 애니메이션 실행됨
+        time = 3600f * WAKEUP_HOUR;
+    }
     public enum Month
     {
         Spring = 0,

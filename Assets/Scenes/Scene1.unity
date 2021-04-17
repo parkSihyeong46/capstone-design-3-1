@@ -30447,6 +30447,7 @@ MonoBehaviour:
   nightLightColor: {r: 0.11587752, g: 0.14647357, b: 0.26415092, a: 1}
   timeScale: 12000
   globalLight: {fileID: 1934204670}
+  sleepUI: {fileID: 1369515014}
   week: 0
   month: 0
   day: 1
@@ -36970,6 +36971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayTime_Controller: {fileID: 1070940634}
+  isPlayAnimation: 0
 --- !u!1 &1371325279
 GameObject:
   m_ObjectHideFlags: 0

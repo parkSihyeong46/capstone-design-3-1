@@ -8,10 +8,14 @@ public class SleepUI : MonoBehaviour
     [SerializeField]
     private DayTime_Controller dayTime_Controller;
     private Text messageText;
+    private Animator animator;
+
+    public bool isPlayAnimation = false;
 
     private void Start()
     {
         messageText = transform.GetChild(3).GetChild(0).GetComponent<Text>();
+        animator = transform.GetComponent<Animator>();
     }
 
     public void UpdateTimeText()
@@ -41,4 +45,20 @@ public class SleepUI : MonoBehaviour
     {
         messageText.text = year + "년째, " + season + "의 " + day + "일째";
     }
+
+    public void PlaySleepAnimation()
+    {
+        animator.Play("FadeOut");
+    }
+
+    public void SetTrueIsPlayAnimation()
+    {
+        isPlayAnimation = true;
+    }
+
+    public void SetFalseIsPlayAnimation()
+    {
+        isPlayAnimation = false;
+    }
+
 }
