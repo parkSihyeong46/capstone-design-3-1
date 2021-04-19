@@ -11,17 +11,17 @@ public class PriceDataManager : MonoBehaviour
 
     public class PriceData
     {
-        public int parsnip;
-        public int parsnipSeed;
-        public int cauliflower;
-        public int cauliflowerSeed;
-        public int strawberry;
-        public int strawberrySeed;
-        public int seeds;
-        public int icecream;
-        public int survivalHamburger;
-        public int friedEgg;
-        public int cheeseCauliflower;
+        public int parsnip = -1;
+        public int parsnipSeed = -1;
+        public int cauliflower = -1;
+        public int cauliflowerSeed = -1;
+        public int strawberry = -1;
+        public int strawberrySeed = -1;
+        public int seeds = -1;
+        public int icecream = -1;
+        public int survivalHamburger = -1;
+        public int friedEgg = -1;
+        public int cheeseCauliflower = -1;
     }
 
     UnityWebRequest www;

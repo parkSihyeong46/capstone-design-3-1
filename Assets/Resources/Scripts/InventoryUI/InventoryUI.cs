@@ -9,6 +9,8 @@ public class InventoryUI : MonoBehaviour
     [SerializeField]
     private DragSlot dragSlot;
     private InvenSlots[] invenSlot;
+    private GameObject toolTipObject;
+    private Vector3 toolTipStartPosition;
 
     public UILocation GetUILocation()
     {
@@ -26,7 +28,10 @@ public class InventoryUI : MonoBehaviour
     }
     private void Start()
     {
-        switch(uiLocation)
+        toolTipObject = GameObject.FindWithTag("ToolTip");
+        toolTipStartPosition = toolTipObject.transform.localPosition;
+
+        switch (uiLocation)
         {
             case UILocation.Inven:
                 var list = new List<InvenSlots>();
@@ -53,6 +58,8 @@ public class InventoryUI : MonoBehaviour
     {
         Inventory.Instance.IsOpen = false;
         Inventory.Instance.onChangeItem-= RedrawUI;
+
+        toolTipObject.transform.localPosition = toolTipStartPosition;
     }
 
     public void RedrawUI()
