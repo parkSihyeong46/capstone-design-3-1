@@ -8,7 +8,6 @@ public class Player_Movement : MonoBehaviour
     public Vector2 playerDirection;
 
     [SerializeField] float moveSpeed = 5f;
-    [SerializeField] public bool isMoving;
 
     private void Start()
     {
@@ -17,16 +16,14 @@ public class Player_Movement : MonoBehaviour
 
     public void Move()
     {
-        isMoving = true;
-
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
         playerDirection = new Vector2(h, v);
 
         playerManager.rigidbody.velocity = playerDirection.normalized * moveSpeed;
 
-        isMoving = h != 0 || v != 0;
-        playerManager.animator.SetBool("Move", isMoving);
+        playerManager.isMoving = h != 0 || v != 0;    //입력이 되면 true, 아니면 false
+        playerManager.animator.SetBool("Move", playerManager.isMoving);
 
         if (h != 0 || v != 0)
         {

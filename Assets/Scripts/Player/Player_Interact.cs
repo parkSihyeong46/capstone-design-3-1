@@ -12,7 +12,6 @@ public class Player_Interact : MonoBehaviour
     Player_Manager player_Manager;
     Player_Movement player_Movement;
     Player_Farming player_Farming;
-    [SerializeField] float interactRange = 1.5f;
 
     private void Start()
     {
@@ -21,12 +20,9 @@ public class Player_Interact : MonoBehaviour
         player_Farming = GetComponent<Player_Farming>();
     }
 
-    //플레이어 앞 1칸으로 상호작용 범위 축소, 현재 마우스 포인터가 위치한 곳의 오브젝트를 받아오도록 수정하기 >> 그러면 작물 하나하나 수확하는것 가능할 듯
     public Interact Interact()
     {
-        //기존 오버랩서클 >> 마우스 위치한 곳에 레이캐스트(또는 박스캐스트)로 오브젝트 받기
-
-        player_Manager.animator.SetTrigger("Work");     //플레이어 애니메이션 실행(오브젝트에 따라서 수행하는 동작 다르게하기
+        StartCoroutine("AnimationCheck");
 
         RaycastHit2D checkedObject = tilemap_Reader.ObjectCheck(Input.mousePosition);   //마우스 위치에 있는 레이캐스트 정보 가져오기
         Collider2D c = checkedObject.collider;                                          //레이에 맞은 오브젝트의 콜라이더 대입
@@ -39,8 +35,27 @@ public class Player_Interact : MonoBehaviour
             Interact hit = c.GetComponent<Interact>();  //오브젝트가 가지고있는 Interact 스크립트 대입
             return hit;
         }
-
         return null;
+    }
+
+    IEnumerator AnimationCheck()
+    {
+        player_Manager.isAnimation = true;
+
+        //여기에 스위치문 추가
+
+        player_Manager.animator.SetTrigger("Work");     //플레이어 애니메이션 실행(오브젝트에 따라서 수행하는 동작 다르게하기`
+
+        while (player_Manager.animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1.7f)
+        {
+            yield return null;
+        }
+
+        if (player_Manager.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+        {
+            player_Manager.isAnimation = false;
+        }
+        //player_Manager.isAnimation = false;
     }
 
     //오브젝트 및 아이템 확인 후 상호작용 실행하는 메소드

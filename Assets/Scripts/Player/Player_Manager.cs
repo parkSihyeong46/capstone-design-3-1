@@ -20,6 +20,11 @@ public class Player_Manager : MonoBehaviour
    
     public static Player_Manager instance = null;   // 다른곳에서 playerManager를 참조하기 위한 static instance
 
+    [Header("상태 및 설정 값")]
+    public bool isMoving;
+    public bool isAnimation;
+    public float interactRange = 1.5f;
+
     private void Awake()    // 다른곳에서 instance를 사용하게 되면 하나의 playerManager만을 참조할 수 있도록 설정
     {
         if (null == instance)
@@ -48,22 +53,24 @@ public class Player_Manager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        player_Movement.Move();
+        if(isAnimation == false)
+            player_Movement.Move();
     }
 
     private void Update()
     { 
-        if (Input.GetMouseButtonDown(0) && player_Movement.isMoving == false)
+        if (Input.GetMouseButtonDown(0))
         {
             if (Inventory.Instance.IsOpen)  // 인벤토리 활성화 일 경우 사용 X
                 return;
 
-            player_Interact.UseTool();
+            if(isAnimation == false)        //애니메이션이 실행되고 있지 않을 경우
+            {
+                player_Interact.UseTool();          //도구(아이템)사용
+                //isMoving = false;                   //못 움직이게
+                rigidbody.velocity = Vector2.zero;  //속도0으로 만들어 정지
+            }
         }
-        //else if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.99f)    //현재 애니메이션이 끝나면 false로 바꿔서 반복 안함. 그냥 Loop 체크 안하면 되지않나?
-        //{
-        //    animator.SetBool("Work", false);
-        //}
     }
 
     public void UseStamina()
