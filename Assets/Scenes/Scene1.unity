@@ -1520,8 +1520,7 @@ MonoBehaviour:
   plowedTile: {fileID: 11400000, guid: 8299ce9679883c64baf30820018c9d93, type: 2}
   wateringTilemap: {fileID: 884774876}
   wateringTile: {fileID: 11400000, guid: 93d6f32a48f7c8841a8b3772bc77c38b, type: 2}
-  tempCrop: {fileID: 3285628382912576876, guid: f64976436197c1a49944a1cf43474109,
-    type: 3}
+  selectedCrop: {fileID: 0}
 --- !u!1 &86631741
 GameObject:
   m_ObjectHideFlags: 0
@@ -37279,7 +37278,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03, y: 0.3}
+  m_Offset: {x: 0, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -37290,7 +37289,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 0.5}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!4 &1321023718
 Transform:
@@ -53546,7 +53545,7 @@ MonoBehaviour:
   nonMarked: {fileID: 11400000, guid: bbdfd5b9c47470440a60924380c4cfdc, type: 2}
   markedCellPosition: {x: 0, y: 0, z: 0}
   isShow: 0
-  markerMaxDistance: 2
+  checkTool: 0
 --- !u!483693784 &2036848389
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -53947,7 +53946,7 @@ MonoBehaviour:
   plowedTile: {fileID: 11400000, guid: 8299ce9679883c64baf30820018c9d93, type: 2}
   wateringTilemap: {fileID: 884774876}
   wateringTile: {fileID: 11400000, guid: 93d6f32a48f7c8841a8b3772bc77c38b, type: 2}
-  tempCrop: {fileID: 3285628382912576876, guid: f64976436197c1a49944a1cf43474109,
+  selectedCrop: {fileID: 3285628382912576876, guid: f64976436197c1a49944a1cf43474109,
     type: 3}
 --- !u!114 &2047967627
 MonoBehaviour:
@@ -54448,7 +54447,7 @@ MonoBehaviour:
   nonMarked: {fileID: 11400000, guid: bbdfd5b9c47470440a60924380c4cfdc, type: 2}
   markedCellPosition: {x: 0, y: 0, z: 0}
   isShow: 0
-  markerMaxDistance: 2
+  checkTool: 0
 --- !u!212 &2060412944
 SpriteRenderer:
   m_ObjectHideFlags: 0

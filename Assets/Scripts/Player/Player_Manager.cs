@@ -67,8 +67,7 @@ public class Player_Manager : MonoBehaviour
             if(isAnimation == false)        //애니메이션이 실행되고 있지 않을 경우
             {
                 player_Interact.UseTool();          //도구(아이템)사용
-                //isMoving = false;                   //못 움직이게
-                rigidbody.velocity = Vector2.zero;  //속도0으로 만들어 정지
+                rigidbody.velocity = Vector2.zero;  //속도0으로 만들어 정지, isAnimation이 true가 되면 다시 Move 실행 가능
             }
         }
     }

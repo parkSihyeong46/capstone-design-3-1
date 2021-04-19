@@ -10,27 +10,31 @@ public class Tilemap_Marker : MonoBehaviour
 {
     [SerializeField] Player_Manager player_Manager;
     [SerializeField]Tilemap_Reader tilemap_Reader;
-    [SerializeField] Tilemap targetTilemap;             //마커가 그려질 타일맵
-    [SerializeField] TileBase marked;                   //마커에 사용될 스프라이트
-    [SerializeField] TileBase nonMarked;                //상호작용 안될때 사용될 스프라이트
-
+    [SerializeField] Tilemap targetTilemap;     //마커가 그려질 타일맵
+    [SerializeField] TileBase marked;           //마커에 사용될 스프라이트
+    [SerializeField] TileBase nonMarked;        //상호작용 안될때 사용될 스프라이트
     
-    Vector3Int oldCellPosition;                 //이전에 마킹되었던 타일
-    public Vector3Int markedCellPosition;       //마킹될 타일 위치
-    public bool isShow;                         //마커를 표시할지 결정할 값
-    [SerializeField] float markerMaxDistance;   //마커가 표시될 최대 거리
+    Vector3Int oldCellPosition;             //이전에 마킹되었던 타일
+    public Vector3Int markedCellPosition;   //마킹될 타일 위치
+    public bool isShow;                     //마커를 표시할지 결정할 값
+    public bool checkTool;                  //마커를 표시해야하는 아이템인지 확인할 때 사용
+    float markerMaxDistance = 1.4f;         //마커가 표시될 최대 거리
+
+    Item item;
 
     void Update()
     {
         Marking();
-        CheckRange();
+        CheckRangeAndTool();
     }
 
-    void CheckRange()
+    void CheckRangeAndTool()
     {
         Vector2 playerPos = new Vector2(player_Manager.transform.position.x, player_Manager.transform.position.y + 0.5f);   //0.5 더해서 플레이어 중심점 개선
-        Vector2 cameraPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        isShow = Vector2.Distance(playerPos, cameraPos) < markerMaxDistance;
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        isShow = Vector2.Distance(playerPos, mousePos) < markerMaxDistance;
+
+        //도구인지 확인 후 checkTool 변경
     }
 
     void Marking()

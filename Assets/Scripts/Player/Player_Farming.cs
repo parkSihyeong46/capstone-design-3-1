@@ -17,12 +17,13 @@ public class Player_Farming : MonoBehaviour
 
     [Header("Watering")]
     [SerializeField] Tilemap wateringTilemap;   //물뿌려진 땅이 그려질 타일맵
-    [SerializeField] TileBase wateringTile;      //물뿌려진 타일이미지(룰타일)
+    [SerializeField] TileBase wateringTile;     //물뿌려진 타일이미지(룰타일)
 
     [Header("Crop")]
-    [SerializeField] GameObject tempCrop;       //심어질 작물. 다른거 고르면 바뀌게 해야함
+    [SerializeField] GameObject selectedCrop;   //심어질 작물. 다른거 고르면 바뀌게 해야함
 
     Vector3Int cellPos;
+
     bool isPlowed;  //필요할까?
 
     private void Start()
@@ -41,6 +42,8 @@ public class Player_Farming : MonoBehaviour
         {
             if (isPlowalbe == true && tilemap_Reader.isObjectEmpty == true)
             {
+                //=============================임시로 애니메이션 재생하도록 함. Player_Interact의 AnimationCheck 코루틴 사용할 예정=============================
+                player_Manager.animator.SetTrigger("Work");
                 farmingTilemap.SetTile(cellPos, plowedTile);
             }
         }
@@ -50,15 +53,14 @@ public class Player_Farming : MonoBehaviour
     {
         cellPos = tilemap_Marker.markedCellPosition;
 
-        //타일이 있을 때, 오브젝트가 없을 때만 모종(타일이 있다는 건 경작지라는 뜻)
+        //타일이 있을 때, 오브젝트가 없을 때만 모종(타일이 있다는 건 경작된 땅이라는 뜻)
         if (tilemap_Marker.isShow == true)
         {
             if (farmingTilemap.GetTile(cellPos) != null && tilemap_Reader.isObjectEmpty == true)
             {
                 //씨앗 심기
-                //float spread = UnityEngine.Random.Range(0.4f, 0.6f);
                 Vector3 cropPos = new Vector3(cellPos.x + 0.5f, cellPos.y, 0);
-                Instantiate(tempCrop, cropPos, Quaternion.identity);
+                Instantiate(selectedCrop, cropPos, Quaternion.identity);
             }
         }
     }
@@ -100,10 +102,4 @@ public class Player_Farming : MonoBehaviour
 
         //시간 지나면 없어지도록 함, 땅은 젖은 땅으로 교체되도록 해야함
     }
-
-    //public void Harvesting()
-    //{
-    //    RaycastHit2D hit_Crop = Physics2D.Raycast(tilemap_Reader.worldPosition, transform.forward, tilemap_Reader.layerMask_Crop);  //레이캐스트로 받아온 정보
-    //    GameObject selectedCrop = hit_Crop.collider.gameObject;             //위 코드에서 받아온 정보 중 게임오브젝트를 게임오브젝트 선언 후 대입
-    //}
 }
