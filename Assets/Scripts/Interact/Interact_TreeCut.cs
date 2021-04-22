@@ -8,20 +8,25 @@ public class Interact_TreeCut : Interact
 
     private void Start()
     {
-        useTool = UseTool.Axe;
+        itemID = Item.ItemID.Axe;
         spawnItemList.Add(ItemManager.Instance.GetItem((int)Item.ItemID.Wood).DeepCopy());
     }
 
-    public override void DoInteract(Character character)
+    public override void DoInteract(Character character, Item.ItemID itemID)
     {
-        foreach (Item spawnItem in spawnItemList)
-        {
-            // 이 오브젝트 위치를 기반으로 아이템 생성
-            ItemSpawnManager.Instance.SpawnItem(transform.position, spawnItem);
-        }
+        Debug.Log("나무에 필요한 도구: " + this.itemID + "   들고있는 도구: " + itemID);
 
-        // 도구에 맞았으면 이 오브젝트를 Destroy 한다
-        Destroy(gameObject);
+        if(itemID == this.itemID)
+        {
+            foreach (Item spawnItem in spawnItemList)
+            {
+                // 이 오브젝트 위치를 기반으로 아이템 생성
+                ItemSpawnManager.Instance.SpawnItem(transform.position, spawnItem);
+            }
+            // 도구에 맞았으면 이 오브젝트를 Destroy 한다
+            Destroy(gameObject);
+        }
+        else {return;}
     }
 
 }

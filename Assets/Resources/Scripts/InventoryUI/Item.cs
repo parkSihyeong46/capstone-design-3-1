@@ -77,6 +77,7 @@ public class Item
     // 도구, 열매, 씨앗, 음식 순
     public enum ItemID
     {
+        Hand = -1,
         Axe = 0,
         Pick = 1,
         Hoe = 2,

@@ -8,6 +8,7 @@ TagManager:
   - ToolTip
   - Inventory
   - StaminaBar
+  - Crop
   layers:
   - Default
   - TransparentFX

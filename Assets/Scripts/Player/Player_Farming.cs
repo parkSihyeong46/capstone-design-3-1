@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 public class Player_Farming : MonoBehaviour
 {
     Player_Manager player_Manager;
+    Player_Interact player_Interact;
 
     [Header("Get Script")]
     [SerializeField] Tilemap_Reader tilemap_Reader;
@@ -29,6 +30,7 @@ public class Player_Farming : MonoBehaviour
     private void Start()
     {
         player_Manager = GetComponent<Player_Manager>();
+        player_Interact = GetComponent<Player_Interact>();
     }
 
     public void Plow()
@@ -42,8 +44,7 @@ public class Player_Farming : MonoBehaviour
         {
             if (isPlowalbe == true && tilemap_Reader.isObjectEmpty == true)
             {
-                //=============================임시로 애니메이션 재생하도록 함. Player_Interact의 AnimationCheck 코루틴 사용할 예정=============================
-                player_Manager.animator.SetTrigger("Work");
+                player_Interact.StartCoroutine("AnimationCheck");
                 farmingTilemap.SetTile(cellPos, plowedTile);
             }
         }
@@ -64,26 +65,6 @@ public class Player_Farming : MonoBehaviour
             }
         }
     }
-
-    #region 코루틴
-    void CropSystem()
-    {
-        //코루틴으로 자라는 시간 설정해서 일정시간 지나면 다 자라게 함. 아니면 시간 시스템 있으니까 그거 이용해서 얼마 지나면 다 자라도록 함
-    }
-
-    IEnumerator CropGrowing()
-    {
-        //작물이 자라는 코루틴(알아서 잘 자라게 해야하나? 아니면 단계별로 물줘야 자라게 해야하나?)
-        //지금은 애니메이션으로 구현해놓음
-        return null;
-    }
-
-    IEnumerator CropRusting()
-    {
-        //수확하지 않으면 썩는 코루틴
-        return null;
-    }
-    #endregion
 
     public void Watering()
     {

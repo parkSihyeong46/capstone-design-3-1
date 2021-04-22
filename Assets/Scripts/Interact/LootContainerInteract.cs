@@ -8,7 +8,7 @@ public class LootContainerInteract : Interact
     [SerializeField] GameObject opened;
     [SerializeField] bool isOpened;
 
-    public override void DoInteract(Character character)
+    public override void DoInteract(Character character, Item.ItemID itemID)
     {
         if(isOpened == false)
         {

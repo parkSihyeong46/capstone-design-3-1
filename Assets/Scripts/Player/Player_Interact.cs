@@ -43,12 +43,10 @@ public class Player_Interact : MonoBehaviour
     {
         player_Manager.isAnimation = true;
 
-        //여기에 스위치문 추가
-
-        player_Manager.animator.SetTrigger("Work");     //플레이어 애니메이션 실행(오브젝트에 따라서 수행하는 동작 다르게하기`
+        player_Manager.animator.SetTrigger("Work");     //플레이어 애니메이션 실행(오브젝트에 따라서 수행하는 동작 다르게하기
 
         //애니메이션 종료 체크
-        while (player_Manager.animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1.7f)
+        while (player_Manager.animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1.8f)
         {
             yield return null;
         }
@@ -73,6 +71,7 @@ public class Player_Interact : MonoBehaviour
                 CheckInteract(Item.ItemID.Pick);
                 break;
             case Item.ItemID.Hoe:  // 땅 갈구기
+                CheckInteract(Item.ItemID.Hoe);
                 player_Farming.Plow();
                 break;
             case Item.ItemID.WateringCans: // 물주기
@@ -91,15 +90,14 @@ public class Player_Interact : MonoBehaviour
     //오브젝트 및 아이템 확인 후 상호작용 실행하는 메소드
     void CheckInteract(Item.ItemID itemID)
     {
-        Interact interact;
+        Debug.Log(itemID);
 
+        Interact interact;
         interact = Interact();
+
         if (interact != null)
         {
-            if ((int)interact.useTool == (int)itemID)   //아이템 코드가 같을 경우
-            {
-                interact.DoInteract(player_Manager.character);
-            }
+            interact.DoInteract(player_Manager.character, itemID);
         }
     }
 }

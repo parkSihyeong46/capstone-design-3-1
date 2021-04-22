@@ -37261,7 +37261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9078dc9d4e489843a61ec678bc23bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useTool: 0
+  itemID: -1
   closed: {fileID: 1885844219}
   opened: {fileID: 660753078}
   isOpened: 0
@@ -41371,6 +41371,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 79621534538715965, guid: c43ddc48a98cb7448a03a4f95a988e53,
+        type: 3}
+      propertyPath: useTool
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2862840468530539502, guid: c43ddc48a98cb7448a03a4f95a988e53,
         type: 3}
       propertyPath: m_Name
@@ -52621,6 +52626,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2284805484613480615, guid: f64976436197c1a49944a1cf43474109,
+        type: 3}
+      propertyPath: useTool
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1568082498230001425, guid: f64976436197c1a49944a1cf43474109,
         type: 3}
       propertyPath: m_RootOrder
@@ -52680,6 +52690,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Crop_Cauliflower
+      objectReference: {fileID: 0}
+    - target: {fileID: 3285628382912576876, guid: f64976436197c1a49944a1cf43474109,
+        type: 3}
+      propertyPath: m_TagString
+      value: Crop
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f64976436197c1a49944a1cf43474109, type: 3}
@@ -53885,6 +53900,7 @@ GameObject:
   - component: {fileID: 2047967628}
   - component: {fileID: 2047967627}
   - component: {fileID: 2047967626}
+  - component: {fileID: 2047967632}
   m_Layer: 10
   m_Name: "\uCE90\uB9AD\uD130"
   m_TagString: Player
@@ -53988,7 +54004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8d5c014b7fff6c44994e5783f05fbab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 0}
+  character: {fileID: 2047967632}
   animator: {fileID: 2047967624}
   rigidbody: {fileID: 0}
   isMoving: 0
@@ -54041,6 +54057,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2047967632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047967623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41e52271d3a2f3c4f88917ce1f16a9aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2048009983
 GameObject:
   m_ObjectHideFlags: 0

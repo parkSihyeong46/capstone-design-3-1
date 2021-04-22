@@ -17,9 +17,13 @@ public class Interact_Crop : Interact
         checkCrop = crop.isFullyGrown;
     }
 
-    public override void DoInteract(Character character)
+    public override void DoInteract(Character character, Item.ItemID itemID)
     {
-        Debug.Log(crop);
+        Player_Interact player_Interact = character.GetComponent<Player_Interact>();
+
+        Debug.Log("얘는 아무거나 상관없이 상호작용");
+
+        player_Interact.StartCoroutine("AnimationCheck");
 
         if (checkCrop) //다 자란 경우
         {
