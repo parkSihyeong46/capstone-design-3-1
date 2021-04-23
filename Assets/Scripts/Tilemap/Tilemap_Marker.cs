@@ -30,11 +30,14 @@ public class Tilemap_Marker : MonoBehaviour
 
     void CheckRangeAndTool()
     {
-        Vector2 playerPos = new Vector2(player_Manager.transform.position.x, player_Manager.transform.position.y + 0.5f);   //0.5 더해서 플레이어 중심점 개선
+        Vector2 playerPos = new Vector2(player_Manager.transform.position.x, player_Manager.transform.position.y + 0.5f);   //0.5 더해서 플레이어 중심점 개선(피봇이 bottom이기 때문에)
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        isShow = Vector2.Distance(playerPos, mousePos) < markerMaxDistance;
 
-        //도구인지 확인 후 checkTool 변경
+        //==================================== null오류 뜨는거 수정하기 ====================================
+        if (Vector2.Distance(playerPos, mousePos) < markerMaxDistance && (player_Manager.handItem.ItemType == Item.ItemTypes.Tool || player_Manager.handItem.ItemType == Item.ItemTypes.Seed)) 
+        {isShow = true;}
+        else 
+        {isShow = false;}
     }
 
     void Marking()

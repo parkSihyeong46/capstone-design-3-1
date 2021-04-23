@@ -13,6 +13,8 @@ public class Player_Interact : MonoBehaviour
     Player_Movement player_Movement;
     Player_Farming player_Farming;
 
+    float animationTime;
+
     private void Start()
     {
         player_Manager = GetComponent<Player_Manager>();
@@ -22,7 +24,7 @@ public class Player_Interact : MonoBehaviour
 
     public Interact Interact()
     {
-        StartCoroutine("AnimationCheck");
+        StartCoroutine("AnimationCheck", "Work");
 
         RaycastHit2D checkedObject = tilemap_Reader.ObjectCheck(Input.mousePosition);   //마우스 위치에 있는 레이캐스트 정보 가져오기
         Collider2D c = checkedObject.collider;                                          //레이에 맞은 오브젝트의 콜라이더 대입
@@ -38,16 +40,17 @@ public class Player_Interact : MonoBehaviour
         return null;
     }
 
-    //애니메이션 재생 및 애니메이션 상태 체크 코루틴(더블클릭 버그 수정 필요함)
-    IEnumerator AnimationCheck()
+    //애니메이션 재생 및 애니메이션 상태 체크 코루틴
+    IEnumerator AnimationCheck(string parameter)
     {
+        //(더블클릭 버그 수정 필요함)
         player_Manager.isAnimation = true;
-
-        player_Manager.animator.SetTrigger("Work");     //플레이어 애니메이션 실행(오브젝트에 따라서 수행하는 동작 다르게하기
+        player_Manager.animator.SetTrigger(parameter);
 
         //애니메이션 종료 체크
         while (player_Manager.animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1.8f)
         {
+            Debug.Log("while문 실행 중");
             yield return null;
         }
         player_Manager.isAnimation = false;
@@ -78,9 +81,11 @@ public class Player_Interact : MonoBehaviour
                 player_Farming.Watering();
                 break;
             case Item.ItemID.CauliflowerSeed:   //콜리플라워 씨앗 심기
+                //Hold_Item 체크하는 기능 추가하기
                 player_Farming.Seed();
                 break;
             case Item.ItemID.ParsnipSeed:       //파스닙 씨앗 심기
+                //Hold_Item 체크하는 기능 추가하기
                 player_Farming.Seed();
                 break;
         }

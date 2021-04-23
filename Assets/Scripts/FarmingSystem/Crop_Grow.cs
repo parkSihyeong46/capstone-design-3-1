@@ -34,8 +34,8 @@ public class Crop_Grow : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
 
-            //하루가 지나면 성장하도록 함(다음 스프라이트로 교체) 대소비교 하지않은 이유는 월말에서 월초로 넘어가는것 때문
-            if (dayPassCheck != daytime.day)
+            //하루가 지나고 6시가 되면 성장하도록 함. 00시에 심은 작물은 6시가 되어도 성장 안 함(하루가 넘어간게 아니기때문). 대소비교 하지않은 이유는 월말에서 월초로 넘어가는것 때문
+            if (dayPassCheck != daytime.day && daytime.Hours == 6)
             {
                 spriteRenderer.sprite = sprites[growLevel];
                 dayPassCheck = daytime.day;

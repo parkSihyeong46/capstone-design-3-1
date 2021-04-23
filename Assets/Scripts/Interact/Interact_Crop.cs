@@ -21,9 +21,9 @@ public class Interact_Crop : Interact
     {
         Player_Interact player_Interact = character.GetComponent<Player_Interact>();
 
-        Debug.Log("얘는 아무거나 상관없이 상호작용");
+        Debug.Log("도구 가리지 않고 상관없이 상호작용");
 
-        player_Interact.StartCoroutine("AnimationCheck");
+        player_Interact.StartCoroutine("AnimationCheck", "PickUp_Item");
 
         if (checkCrop) //다 자란 경우
         {
