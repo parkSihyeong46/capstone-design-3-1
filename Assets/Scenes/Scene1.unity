@@ -378,6 +378,7 @@ GameObject:
   - component: {fileID: 23493996}
   - component: {fileID: 23493998}
   - component: {fileID: 23493997}
+  - component: {fileID: 23493999}
   m_Layer: 5
   m_Name: OptionTab
   m_TagString: Untagged
@@ -451,6 +452,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 23493995}
   m_CullTransparentMesh: 0
+--- !u!114 &23493999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23493995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5939311380acc6419da707e2840015b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+  - {fileID: 738984933}
+  - {fileID: 1339561628}
+  - {fileID: 266738545}
+  - {fileID: 537465125}
+  - {fileID: 1639815591}
+  - {fileID: 1969023128}
+  - {fileID: 1602782390}
+  - {fileID: 1709040588}
+  option:
+  - {fileID: 234042851}
 --- !u!1 &24123264
 GameObject:
   m_ObjectHideFlags: 0
@@ -6567,13 +6591,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 234042851}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 23493999}
+        m_MethodName: SetOptionState
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -17970,13 +17994,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 234042851}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 23493999}
+        m_MethodName: SetOptionState
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -22721,9 +22745,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 234042851}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 23493999}
+        m_MethodName: SetOptionState
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -37909,13 +37933,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 234042851}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 23493999}
+        m_MethodName: SetOptionState
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -44508,13 +44532,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 234042851}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 23493999}
+        m_MethodName: SetOptionState
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -45272,13 +45296,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 234042851}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 23493999}
+        m_MethodName: SetOptionState
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -46649,13 +46673,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 234042851}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 23493999}
+        m_MethodName: SetOptionState
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 7
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -52535,13 +52559,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 234042851}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 23493999}
+        m_MethodName: SetOptionState
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
