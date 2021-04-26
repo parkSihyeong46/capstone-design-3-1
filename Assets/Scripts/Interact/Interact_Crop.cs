@@ -28,6 +28,7 @@ public class Interact_Crop : Interact
         if (checkCrop) //다 자란 경우
         {
             Inventory.Instance.AddItem(ItemManager.Instance.GetItem((int)Item.ItemID.Cauliflower).DeepCopy());
+            GetItemUIManager.Instance.PrintUI(ItemManager.Instance.GetItem((int)Item.ItemID.Cauliflower));
         }
         Destroy(gameObject);    //다 자랐든 안 자랐든 Destroy
     }
