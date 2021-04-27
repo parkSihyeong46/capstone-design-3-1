@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Player_Interact : MonoBehaviour
 {
+    
     Character character;
 
     [SerializeField] Tilemap_Reader tilemap_Reader;
+    [SerializeField] Tilemap_Marker tilemap_Marker;
     [SerializeField] Highlight_Controller highlightController;
 
     Player_Manager player_Manager;
@@ -24,8 +26,6 @@ public class Player_Interact : MonoBehaviour
 
     public Interact Interact()
     {
-        StartCoroutine("AnimationCheck", "Work");
-
         RaycastHit2D checkedObject = tilemap_Reader.ObjectCheck(Input.mousePosition);   //마우스 위치에 있는 레이캐스트 정보 가져오기
         Collider2D c = checkedObject.collider;                                          //레이에 맞은 오브젝트의 콜라이더 대입
 
@@ -35,25 +35,9 @@ public class Player_Interact : MonoBehaviour
         if (checkedObject)
         {
             Interact hit = c.GetComponent<Interact>();  //오브젝트가 가지고있는 Interact 스크립트 대입
-            return hit;
+            return hit; //오브젝트의 Interact 리턴
         }
         return null;
-    }
-
-    //애니메이션 재생 및 애니메이션 상태 체크 코루틴
-    IEnumerator AnimationCheck(string parameter)
-    {
-        //(더블클릭 버그 수정 필요함)
-        player_Manager.isAnimation = true;
-        player_Manager.animator.SetTrigger(parameter);
-
-        //애니메이션 종료 체크
-        while (player_Manager.animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1.8f)
-        {
-            Debug.Log("while문 실행 중");
-            yield return null;
-        }
-        player_Manager.isAnimation = false;
     }
 
     public void UseTool()
@@ -78,18 +62,31 @@ public class Player_Interact : MonoBehaviour
                 player_Farming.Plow();
                 break;
             case Item.ItemID.WateringCans: // 물주기
+                CheckInteract(Item.ItemID.WateringCans);
                 player_Farming.Watering();
                 break;
             case Item.ItemID.CauliflowerSeed:   //콜리플라워 씨앗 심기
-                //Hold_Item 체크하는 기능 추가하기
+                CheckInteract(Item.ItemID.CauliflowerSeed);
                 player_Farming.Seed();
                 break;
             case Item.ItemID.ParsnipSeed:       //파스닙 씨앗 심기
-                //Hold_Item 체크하는 기능 추가하기
+                CheckInteract(Item.ItemID.ParsnipSeed);
                 player_Farming.Seed();
                 break;
         }
         player_Manager.UseStamina();   // 스태미나 소모
+    }
+
+    void HoldItem()
+    {
+        if(player_Manager.handItem.ItemType == Item.ItemTypes.Seed)
+        {
+            player_Manager.animator.SetBool("Hold_Item", true);
+        }
+        else
+        {
+            player_Manager.animator.SetBool("Hold_Item", false);
+        }
     }
 
     //오브젝트 및 아이템 확인 후 상호작용 실행하는 메소드
@@ -100,7 +97,7 @@ public class Player_Interact : MonoBehaviour
         Interact interact;
         interact = Interact();
 
-        if (interact != null)
+        if (interact != null && tilemap_Marker.isShow == true)
         {
             interact.DoInteract(player_Manager.character, itemID);
         }

@@ -10,7 +10,7 @@ public class LayerSorting : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sortingOrder = -(Mathf.RoundToInt(transform.position.y)) + 1;
+        spriteRenderer.sortingOrder = -(Mathf.RoundToInt(transform.position.y));
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -20,8 +20,6 @@ public class Tilemap_Marker : MonoBehaviour
     public bool checkTool;                  //마커를 표시해야하는 아이템인지 확인할 때 사용
     float markerMaxDistance = 1.4f;         //마커가 표시될 최대 거리
 
-    Item item;
-
     void Update()
     {
         Marking();

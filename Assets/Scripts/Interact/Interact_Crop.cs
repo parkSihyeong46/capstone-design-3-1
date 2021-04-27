@@ -19,11 +19,11 @@ public class Interact_Crop : Interact
 
     public override void DoInteract(Character character, Item.ItemID itemID)
     {
-        Player_Interact player_Interact = character.GetComponent<Player_Interact>();
+        Player_Manager player_Manager = character.GetComponent<Player_Manager>();
 
         Debug.Log("도구 가리지 않고 상관없이 상호작용");
 
-        player_Interact.StartCoroutine("AnimationCheck", "PickUp_Item");
+        player_Manager.RunAnimation("PickUp_Item");
 
         if (checkCrop) //다 자란 경우
         {

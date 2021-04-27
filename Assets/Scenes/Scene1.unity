@@ -54637,6 +54637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap_Reader: {fileID: 1070940639}
+  tilemap_Marker: {fileID: 2036848388}
   highlightController: {fileID: 1070940633}
 --- !u!114 &2047967628
 MonoBehaviour:
@@ -54651,7 +54652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDirection: {x: 0, y: 0}
-  moveSpeed: 5
+  moveSpeed: 4.5
 --- !u!114 &2047967629
 MonoBehaviour:
   m_ObjectHideFlags: 0

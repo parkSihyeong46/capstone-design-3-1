@@ -22,7 +22,7 @@ public class Player_Manager : MonoBehaviour
 
     [Header("상태 및 설정 값")]
     public bool isMoving;
-    public bool isAnimation;
+    public bool isAnimation;    //Player_Interact의 AnimationCheck에서도 사용
     public float interactRange = 1.5f;
 
     private void Awake()    // 다른곳에서 instance를 사용하게 되면 하나의 playerManager만을 참조할 수 있도록 설정
@@ -55,6 +55,8 @@ public class Player_Manager : MonoBehaviour
     {
         if(isAnimation == false)
             player_Movement.Move();
+
+        HoldItem();
     }
 
     private void Update()
@@ -72,7 +74,7 @@ public class Player_Manager : MonoBehaviour
         }
     }
 
-    public void UseStamina()
+    public void UseStamina()    //스태미나 사용 메소드
     {
         Tool tool;
 
@@ -81,5 +83,32 @@ public class Player_Manager : MonoBehaviour
         {
             staminaBar.UseStamina(tool.UseStamina);
         }
+    }
+
+    void HoldItem()
+    {
+        if (handItem.ItemType == Item.ItemTypes.Seed)
+        {
+            animator.SetBool("Hold_Item", true);
+        }
+        else
+        {
+            animator.SetBool("Hold_Item", false);
+        }
+    }
+
+    public void RunAnimation(string parameter)  //애니메이션 실행 명령 메소드
+    {
+        animator.SetTrigger(parameter);
+    }
+
+    public void StartAnimation()    //애니메이션 시작 시점 이벤트용 메소드
+    {
+        isAnimation = true;
+    }
+
+    public void EndAniamtion()      //애니메이션 종료 시점 이벤트용 메소드
+    {
+        isAnimation = false;
     }
 }

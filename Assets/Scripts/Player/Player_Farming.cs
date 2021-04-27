@@ -44,7 +44,7 @@ public class Player_Farming : MonoBehaviour
         {
             if (isPlowalbe == true && tilemap_Reader.isObjectEmpty == true)
             {
-                player_Interact.StartCoroutine("AnimationCheck", "Work");
+                player_Manager.RunAnimation("Work");
                 farmingTilemap.SetTile(cellPos, plowedTile);
             }
         }
