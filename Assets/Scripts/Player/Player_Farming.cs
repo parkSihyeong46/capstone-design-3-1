@@ -5,6 +5,8 @@ using UnityEngine.Tilemaps;
 
 public class Player_Farming : MonoBehaviour
 {
+    [SerializeField] CropManager cropManager;
+
     Player_Manager player_Manager;
     Player_Interact player_Interact;
 
@@ -20,12 +22,7 @@ public class Player_Farming : MonoBehaviour
     [SerializeField] Tilemap wateringTilemap;   //물뿌려진 땅이 그려질 타일맵
     [SerializeField] TileBase wateringTile;     //물뿌려진 타일이미지(룰타일)
 
-    [Header("Crop")]
-    [SerializeField] GameObject selectedCrop;   //심어질 작물. 다른거 고르면 바뀌게 해야함
-
     Vector3Int cellPos;
-
-    bool isPlowed;  //필요할까?
 
     private void Start()
     {
@@ -53,6 +50,8 @@ public class Player_Farming : MonoBehaviour
     public void Seed()
     {
         cellPos = tilemap_Marker.markedCellPosition;
+
+        GameObject selectedCrop = cropManager.CropSelect();
 
         //타일이 있을 때, 오브젝트가 없을 때만 모종(타일이 있다는 건 경작된 땅이라는 뜻)
         if (tilemap_Marker.isShow == true)

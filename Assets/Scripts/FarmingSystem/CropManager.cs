@@ -3,51 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class Crops
-{
-
-}
-
 public class CropManager : MonoBehaviour
 {
-    [SerializeField] TileBase plowed;       //경작한 땅 스프라이트
-    [SerializeField] TileBase seeded;       //씨앗 스프라이트
-    [SerializeField] Tilemap targetTilemap; //위의 것들을 그려질 타일맵
+    [SerializeField] Player_Manager player_Manager;
 
-    Dictionary<Vector2Int, Crops> crops; // 여기에는 심어질 농작물의 종류와 위치가 들어감
+    [SerializeField] GameObject[] crops;
 
-    private void Start()
+    public GameObject CropSelect()
     {
-        crops = new Dictionary<Vector2Int, Crops>();
-    }
+        GameObject selectedCrop = null;
 
-    public bool Check(Vector3Int position)
-    {
-        return crops.ContainsKey((Vector2Int)position);
-    }
-
-    public void Plow(Vector3Int position)
-    {
-        //이미 심어져있으면 리턴
-        if (crops.ContainsKey((Vector2Int)position))
+        if(player_Manager.handItem.ItemType == Item.ItemTypes.Seed)
         {
-            return;
+            if(player_Manager.handItem.ItemId == Item.ItemID.ParsnipSeed)
+            {
+                selectedCrop = crops[0];
+            }
+            if (player_Manager.handItem.ItemId == Item.ItemID.CauliflowerSeed)
+            {
+                selectedCrop = crops[1];
+            }
+            // 여기에 작물 추가
         }
-
-        //경작한 땅 생성
-        CreatePlowedTile(position);
-    }
-
-    public void Seed(Vector3Int position)
-    {
-        targetTilemap.SetTile(position, seeded);
-    }
-
-    void CreatePlowedTile(Vector3Int position)
-    {
-        Crops crop = new Crops();
-        crops.Add((Vector2Int)position, crop);
-
-        targetTilemap.SetTile(position, plowed);
+        return selectedCrop;
     }
 }

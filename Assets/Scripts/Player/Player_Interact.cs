@@ -77,18 +77,6 @@ public class Player_Interact : MonoBehaviour
         player_Manager.UseStamina();   // 스태미나 소모
     }
 
-    void HoldItem()
-    {
-        if(player_Manager.handItem.ItemType == Item.ItemTypes.Seed)
-        {
-            player_Manager.animator.SetBool("Hold_Item", true);
-        }
-        else
-        {
-            player_Manager.animator.SetBool("Hold_Item", false);
-        }
-    }
-
     //오브젝트 및 아이템 확인 후 상호작용 실행하는 메소드
     void CheckInteract(Item.ItemID itemID)
     {

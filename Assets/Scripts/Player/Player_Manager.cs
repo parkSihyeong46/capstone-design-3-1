@@ -87,6 +87,8 @@ public class Player_Manager : MonoBehaviour
 
     void HoldItem()
     {
+        if(handItem == null) { return; }
+
         if (handItem.ItemType == Item.ItemTypes.Seed)
         {
             animator.SetBool("Hold_Item", true);

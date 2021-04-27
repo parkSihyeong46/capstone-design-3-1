@@ -12,7 +12,7 @@ public class LayerSorting_Player : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         firstIndex = spriteRenderer.sortingOrder;
     }
-    void FixedUpdate()
+    void Update()
     {
         //Debug.Log(spriteRenderer.sortingOrder);
         spriteRenderer.sortingOrder = -(Mathf.RoundToInt(transform.position.y)) + firstIndex;
