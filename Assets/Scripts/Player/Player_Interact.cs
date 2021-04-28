@@ -57,7 +57,7 @@ public class Player_Interact : MonoBehaviour
             case Item.ItemID.Pick: // 돌부수기
                 CheckInteract(Item.ItemID.Pick);
                 break;
-            case Item.ItemID.Hoe:  // 땅 갈구기
+            case Item.ItemID.Hoe:  // 땅 갈기
                 CheckInteract(Item.ItemID.Hoe);
                 player_Farming.Plow();
                 break;

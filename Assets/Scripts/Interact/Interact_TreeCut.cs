@@ -17,10 +17,10 @@ public class Interact_TreeCut : Interact
         Debug.Log("나무에 필요한 도구: " + this.itemID + "   들고있는 도구: " + itemID);
 
         Player_Manager player_Manager = character.GetComponent<Player_Manager>();
-        player_Manager.RunAnimation("Work");
-
+        
         if (itemID == this.itemID)
         {
+            player_Manager.RunAnimation("Work");
             foreach (Item spawnItem in spawnItemList)
             {
                 // 이 오브젝트 위치를 기반으로 아이템 생성
