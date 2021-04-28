@@ -23,7 +23,6 @@ public class InventoryUI : MonoBehaviour
     }
     private void OnEnable()
     {
-        Inventory.Instance.IsOpen = true;
         Inventory.Instance.onChangeItem += RedrawUI;
     }
     private void Start()
@@ -56,9 +55,7 @@ public class InventoryUI : MonoBehaviour
 
     private void OnDisable()
     {
-        Inventory.Instance.IsOpen = false;
         Inventory.Instance.onChangeItem-= RedrawUI;
-
         toolTipObject.transform.localPosition = toolTipStartPosition;
     }
 

@@ -18,6 +18,7 @@ public class DayTime_Controller : MonoBehaviour
     [SerializeField] AnimationCurve nightTimeCurve;
     [SerializeField] Color nightLightColor;
     [SerializeField] float timeScale = 60f;
+    [SerializeField] private GameObject optionTab;
 
     float time;
     public float Hours { get { return time / 3600f; } }
@@ -40,8 +41,8 @@ public class DayTime_Controller : MonoBehaviour
 
     void Update()
     {
-        // 인벤, 상점 열려있지 않을 때, 애니메이션 시간이 아닐 경우 시간이 가도록 설정
-        if (!(Inventory.Instance.IsOpen) &&     // 인벤토리 null ??
+        // 옵션, 상점 열려있지 않을 때, 애니메이션 시간이 아닐 경우 시간이 가도록 설정
+        if (!(optionTab.activeSelf) &&     // 인벤토리 null ??
             !(GameManager.instance.isOpenShop) &&
             !(sleepUI.isPlayAnimation))  
         {

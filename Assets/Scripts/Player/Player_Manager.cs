@@ -16,6 +16,7 @@ public class Player_Manager : MonoBehaviour
     public Animator animator;
     public Rigidbody2D rigidbody;
 
+    [SerializeField] private GameObject optionTab;
     public Item handItem;  // 손에 들고있는 아이템
    
     public static Player_Manager instance = null;   // 다른곳에서 playerManager를 참조하기 위한 static instance
@@ -63,7 +64,7 @@ public class Player_Manager : MonoBehaviour
     { 
         if (Input.GetMouseButtonDown(0))
         {
-            if (Inventory.Instance.IsOpen)  // 인벤토리 활성화 일 경우 사용 X
+            if (optionTab.activeSelf)  // 옵션창 활성화 -> 사용 X
                 return;
 
             if(isAnimation == false)        //애니메이션이 실행되고 있지 않을 경우
