@@ -94,7 +94,41 @@ public class Inventory
             onChangeItem.Invoke();
     }
 
-    // 인벤에서 찾아가지고 delete 할 수 있도록 추가하기
+    public void DeleteItemId(Item.ItemID itemId, int count = 1)
+    {
+        if (onChangeItem != null)
+            onChangeItem.Invoke();
+
+        for (int i = 0; i < inventorySize; i++)
+        {
+            if (items[i] == null)
+                continue;
+
+            if (!((items[i].ItemId == itemId) && items[i].IsPrintCount))
+                continue;
+
+            items[i].Count -= count;
+            if (0 >= items[i].Count)
+                items[i] = null;
+
+            if (onChangeItem != null)
+                onChangeItem.Invoke();
+
+            return;
+        }
+
+        for (int i = 0; i < inventorySize; i++)
+        {
+            if (items[i].ItemId == itemId)
+            {
+                items[i] = ItemManager.Instance.GetItem((int)itemId).DeepCopy();
+
+                if (onChangeItem != null)
+                    onChangeItem.Invoke();
+                return;
+            }
+        }
+    }
 
     public void SwitchItem(int index1, int index2)
     {

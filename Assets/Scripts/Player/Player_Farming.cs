@@ -53,12 +53,16 @@ public class Player_Farming : MonoBehaviour
 
         GameObject selectedCrop = cropManager.CropSelect();
 
+        if (null == selectedCrop)
+            return;
+
         //타일이 있을 때, 오브젝트가 없을 때만 모종(타일이 있다는 건 경작된 땅이라는 뜻)
         if (farmingTilemap.GetTile(cellPos) != null && tilemap_Reader.isObjectEmpty == true)
         {
             //씨앗 심기
             Vector3 cropPos = new Vector3(cellPos.x + 0.5f, cellPos.y, 0);
             Instantiate(selectedCrop, cropPos, Quaternion.identity);
+            Inventory.Instance.DeleteItemId(player_Manager.handItem.ItemId); // 심은 씨앗 인벤에서 제거
         }
     }
 
