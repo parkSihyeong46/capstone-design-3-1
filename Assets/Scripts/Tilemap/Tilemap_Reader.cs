@@ -30,7 +30,7 @@ public class Tilemap_Reader : MonoBehaviour
     //Vector3형을 Vector3Int형으로 변환하는 메소드(타일맵 마커 등에 사용)
     public Vector3Int MousePosToGridPos(Vector3 mousePos)
     {
-        worldPosition = Camera.main.ScreenToWorldPoint(mousePos);
+        worldPosition = Camera.main.ScreenToWorldPoint(mousePos);   //마우스 좌표를 월드좌표로 변경
 
         RaycastHit2D hit_Object = Physics2D.Raycast(worldPosition, transform.forward, 15f, layerMask_Object);
 
