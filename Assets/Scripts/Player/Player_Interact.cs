@@ -75,6 +75,7 @@ public class Player_Interact : MonoBehaviour
                 break;
         }
         player_Manager.UseStamina();   // 스태미나 소모
+        player_Movement.Redirection();  //방향 재설정
     }
 
     //오브젝트 및 아이템 확인 후 상호작용 실행하는 메소드
@@ -85,9 +86,13 @@ public class Player_Interact : MonoBehaviour
         Interact interact;
         interact = Interact();
 
-        if (interact != null && tilemap_Marker.isShow == true)
+        if (interact != null && tilemap_Marker.isInRange)
         {
             interact.DoInteract(player_Manager.character, itemID);
+        }
+        else
+        {
+            player_Manager.RunAnimation("Unable");
         }
     }
 }

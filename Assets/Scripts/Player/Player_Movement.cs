@@ -34,4 +34,13 @@ public class Player_Movement : MonoBehaviour
         playerManager.animator.SetFloat("X", h);
         playerManager.animator.SetFloat("Y", v);
     }
+
+    public void Redirection()
+    {
+        Vector2 redirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        redirection.Normalize();
+
+        playerManager.animator.SetFloat("Last_X", redirection.x);
+        playerManager.animator.SetFloat("Last_Y", redirection.y);
+    }
 }

@@ -17,8 +17,7 @@ public class Tilemap_Marker : MonoBehaviour
     Vector3Int oldCellPosition;             //이전에 마킹되었던 타일
     public Vector3Int markedCellPosition;   //마킹될 타일 위치
     public bool isShow;                     //마커를 표시할지 결정할 값
-    public bool checkTool;                  //마커를 표시해야하는 아이템인지 확인할 때 사용
-    float markerMaxDistance = 1.4f;         //마커가 표시될 최대 거리
+    public bool isInRange;                  //상호작용 범위에 들어왔는지를 확인할 때 쓰는 값
 
     void Update()
     {
@@ -31,11 +30,8 @@ public class Tilemap_Marker : MonoBehaviour
         Vector2 playerPos = new Vector2(player_Manager.transform.position.x, player_Manager.transform.position.y + 0.5f);   //0.5 더해서 플레이어 중심점 개선(피봇이 bottom이기 때문에)
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        //==================================== null오류 뜨는거 수정하기 ====================================
-        if (Vector2.Distance(playerPos, mousePos) < markerMaxDistance && (player_Manager.handItem.ItemType == Item.ItemTypes.Tool || player_Manager.handItem.ItemType == Item.ItemTypes.Seed)) 
-        {isShow = true;}
-        else 
-        {isShow = false;}
+        isShow = player_Manager.handItem.ItemId == Item.ItemID.Hoe || player_Manager.handItem.ItemType == Item.ItemTypes.Seed;
+        isInRange = Vector2.Distance(playerPos, mousePos) < player_Manager.interactRange;
     }
 
     void Marking()

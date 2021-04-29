@@ -54,14 +54,11 @@ public class Player_Farming : MonoBehaviour
         GameObject selectedCrop = cropManager.CropSelect();
 
         //타일이 있을 때, 오브젝트가 없을 때만 모종(타일이 있다는 건 경작된 땅이라는 뜻)
-        if (tilemap_Marker.isShow == true)
+        if (farmingTilemap.GetTile(cellPos) != null && tilemap_Reader.isObjectEmpty == true)
         {
-            if (farmingTilemap.GetTile(cellPos) != null && tilemap_Reader.isObjectEmpty == true)
-            {
-                //씨앗 심기
-                Vector3 cropPos = new Vector3(cellPos.x + 0.5f, cellPos.y, 0);
-                Instantiate(selectedCrop, cropPos, Quaternion.identity);
-            }
+            //씨앗 심기
+            Vector3 cropPos = new Vector3(cellPos.x + 0.5f, cellPos.y, 0);
+            Instantiate(selectedCrop, cropPos, Quaternion.identity);
         }
     }
 
@@ -79,7 +76,6 @@ public class Player_Farming : MonoBehaviour
                 wateringTilemap.SetTile(cellPos, wateringTile);
             }
         }
-
         //시간 지나면 없어지도록 함, 땅은 젖은 땅으로 교체되도록 해야함
     }
 }
