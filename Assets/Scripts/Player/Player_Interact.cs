@@ -86,7 +86,7 @@ public class Player_Interact : MonoBehaviour
         Interact interact;
         interact = Interact();
 
-        if (interact != null && tilemap_Marker.isInRange)
+        if (interact != null && tilemap_Marker.isInRange)   //상호작용 범위에 있을 때 실행함
         {
             interact.DoInteract(player_Manager.character, itemID);
         }

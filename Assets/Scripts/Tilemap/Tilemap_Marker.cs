@@ -36,13 +36,10 @@ public class Tilemap_Marker : MonoBehaviour
 
     void Marking()
     {
-        //경작 가능할 때 초록색
-        //안될 때 빨간색
-
         markedCellPosition = tilemap_Reader.MousePosToGridPos(Input.mousePosition);
         bool isPlowable = tilemap_Reader.GetMousePosTileData(markedCellPosition);
 
-        if (isShow == true)
+        if (isShow == true && isInRange == true)
         {
             if (isPlowable == true && tilemap_Reader.isObjectEmpty == true)
             {
