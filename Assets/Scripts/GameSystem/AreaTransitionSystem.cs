@@ -5,6 +5,8 @@ using UnityEngine;
 public class AreaTransitionSystem : MonoBehaviour
 {
     Player_Manager player_Manager;
+    [SerializeField] AreaTransitionSystem_UI areaTransitionUI;
+
     Transform playerPos;
     public GameObject connectedGate;
 
@@ -14,7 +16,9 @@ public class AreaTransitionSystem : MonoBehaviour
 
         player_Manager = collision.GetComponent<Player_Manager>();
         playerPos = collision.gameObject.transform;    //플레이어의 위치 가져옴. 플레이어 위치를 변경할 수 있음
-        ChangeArea();
+
+        areaTransitionUI.areaTransition = this;
+        areaTransitionUI.TransitionFadeOut();
     }
 
     public void ChangeArea()
