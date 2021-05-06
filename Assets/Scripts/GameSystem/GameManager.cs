@@ -8,7 +8,9 @@ public class GameManager : MonoBehaviour
     private GameObject player;
     private Inventory inventory;
 
+    public GameObject talkPanel;
     public bool isOpenShop;
+    public bool isOpenTalkPanel;
 
     void Awake()
     {
