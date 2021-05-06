@@ -44,7 +44,8 @@ public class DayTime_Controller : MonoBehaviour
         // 옵션, 상점 열려있지 않을 때, 애니메이션 시간이 아닐 경우 시간이 가도록 설정
         if (!(optionTab.activeSelf) &&     // 인벤토리 null ??
             !(GameManager.instance.isOpenShop) &&
-            !(sleepUI.isPlayAnimation))  
+            !(sleepUI.isPlayAnimation) &&
+            !(GameManager.instance.isOpenTalkPanel))  
         {
             TimePass();
         }
