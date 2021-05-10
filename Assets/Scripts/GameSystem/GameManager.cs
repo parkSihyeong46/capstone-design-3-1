@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     private Inventory inventory;
 
     public GameObject talkPanel;
+    public GameObject shopObj;
     public bool isOpenShop;
     public bool isOpenTalkPanel;
 
@@ -32,7 +33,14 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Escape))
         {
-            InputEventManager.Instance.OpenOptionTab();
+            if(!(GameManager.instance.isOpenShop))
+            {
+                InputEventManager.Instance.OpenOptionTab();
+            }
+            else
+            {
+                shopObj.SetActive(false);
+            }
         }
     }
 }

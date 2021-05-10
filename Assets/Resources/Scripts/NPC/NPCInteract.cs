@@ -8,14 +8,14 @@ public class NPCInteract : MonoBehaviour
     public Sprite cursorSprite;
     public Sprite npcSprite;
     public string npcName;
+
     public Text talkText;
     public GameObject talkPanel;
     public TalkUI talkUI;
 
-    private void Start()
-    {
-        //talkUI = talkPanel.GetComponent<TalkUI>();
-    }
+    public GameObject shopObject;
+    public GameObject optionTab;
+    public State state;
 
     private void OnTriggerEnter2D(Collider2D other) // 마우스 커서 바꿀거
     {
@@ -25,10 +25,26 @@ public class NPCInteract : MonoBehaviour
 
     }
 
-    private void OnMouseDown()  // 대화
+    private void OnMouseDown()  // 상호작용
     {
-        talkPanel.SetActive(true);
-        GameManager.instance.isOpenTalkPanel = true;
+        switch (state)
+        {
+            case State.TALK:
+                talkPanel.SetActive(true);
+                GameManager.instance.isOpenTalkPanel = true;
+                break;
+            case State.TRADE:
+                if(!GameManager.instance.isOpenTalkPanel)
+                {
+                    if(optionTab.activeSelf)
+                    {
+                        optionTab.SetActive(false);
+                    }
+
+                    shopObject.SetActive(true);
+                }
+                break;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision) // 마우스 커서 바꿀거
@@ -39,4 +55,9 @@ public class NPCInteract : MonoBehaviour
 
     }
 
+    public enum State
+    {
+        TALK = 0,
+        TRADE = 1,
+    }
 }
