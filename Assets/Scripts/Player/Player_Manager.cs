@@ -107,7 +107,10 @@ public class Player_Manager : MonoBehaviour
 
     public void StartAnimation()    //애니메이션 시작 시점 이벤트용 메소드
     {
+        
         isAnimation = true;
+        rigidbody.velocity = Vector2.zero;
+        animator.SetBool("Move", false); //이동 애니메이션 실행 안하려고 넣은 코드(이거 안쓰면 게이트 이동할 때 걷는 애니메이션 계속 나와서)
     }
 
     public void EndAniamtion()      //애니메이션 종료 시점 이벤트용 메소드

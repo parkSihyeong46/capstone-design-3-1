@@ -30880,8 +30880,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6957caf42c553204ab0f08a25b15d1f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player_Manager: {fileID: 2047967629}
   areaTransition: {fileID: 0}
-  fadeState: 0
 --- !u!95 &426429393
 Animator:
   serializedVersion: 3
@@ -34718,6 +34718,24 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 601654117}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &601974895 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7764448879571009584, guid: aca991439332fc84a9809b1e96eb8f34,
+    type: 3}
+  m_PrefabInstance: {fileID: 7764448880442145555}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &601974901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601974895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ffcd5db8c9e2e74396858f4fdbfd2b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &603530820
 PrefabInstance:
   m_ObjectHideFlags: 0

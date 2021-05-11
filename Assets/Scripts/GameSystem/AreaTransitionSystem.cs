@@ -15,9 +15,9 @@ public class AreaTransitionSystem : MonoBehaviour
         Debug.Log(collision.gameObject.name);
 
         player_Manager = collision.GetComponent<Player_Manager>();
-        playerPos = collision.gameObject.transform;    //플레이어의 위치 가져옴. 플레이어 위치를 변경할 수 있음
+        playerPos = collision.gameObject.transform;     //플레이어의 위치 가져옴. 플레이어 위치를 변경할 수 있음
 
-        areaTransitionUI.areaTransition = this;
+        areaTransitionUI.areaTransition = this;         //areaTransitionUI에 자신(연결된 게이트)을 대입
         areaTransitionUI.TransitionFadeOut();
     }
 
