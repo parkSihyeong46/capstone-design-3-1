@@ -5,11 +5,15 @@ using UnityEngine;
 public class Interact_TreeCut : Interact
 {
     public List<Item> spawnItemList = new List<Item>();
+    private Animator animator;
+    private const int interactCount = 5;
+    private int accumInteractCount = 0;
 
     private void Start()
     {
         itemID = Item.ItemID.Axe;
         spawnItemList.Add(ItemManager.Instance.GetItem((int)Item.ItemID.Wood).DeepCopy());
+        animator = GetComponent<Animator>();
     }
 
     public override void DoInteract(Character character, Item.ItemID itemID)
@@ -21,13 +25,19 @@ public class Interact_TreeCut : Interact
         if (itemID == this.itemID)
         {
             player_Manager.RunAnimation("Work");
-            foreach (Item spawnItem in spawnItemList)
+            accumInteractCount++;
+            animator.Play("ChopAnimation");
+
+            if (accumInteractCount >= interactCount)
             {
-                // 이 오브젝트 위치를 기반으로 아이템 생성
-                ItemSpawnManager.Instance.SpawnItem(transform.position, spawnItem);
+                foreach (Item spawnItem in spawnItemList)
+                {
+                    // 이 오브젝트 위치를 기반으로 아이템 생성
+                    ItemSpawnManager.Instance.SpawnItem(transform.position, spawnItem);
+                }
+                // 도구에 맞았으면 이 오브젝트를 Destroy 한다
+                Destroy(gameObject);
             }
-            // 도구에 맞았으면 이 오브젝트를 Destroy 한다
-            Destroy(gameObject);
         }
         else {return;}
     }
