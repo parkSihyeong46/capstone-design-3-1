@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player_Interact : MonoBehaviour
 {
-    
     Character character;
 
     [SerializeField] Tilemap_Reader tilemap_Reader;
@@ -14,10 +13,11 @@ public class Player_Interact : MonoBehaviour
     Player_Manager player_Manager;
     Player_Movement player_Movement;
     Player_Farming player_Farming;
+    [SerializeField] ItemSelector itemSelector;
 
     float animationTime;
 
-    private void Start()
+    void Start()
     {
         player_Manager = GetComponent<Player_Manager>();
         player_Movement = GetComponent<Player_Movement>();
@@ -52,12 +52,15 @@ public class Player_Interact : MonoBehaviour
         switch (player_Manager.handItem.ItemId)
         {
             case Item.ItemID.Axe: // 나무캐기
+                itemSelector.ToolSelect();
                 CheckInteract(Item.ItemID.Axe);
                 break;
             case Item.ItemID.Pick: // 돌부수기
+                itemSelector.ToolSelect();
                 CheckInteract(Item.ItemID.Pick);
                 break;
             case Item.ItemID.Hoe:  // 땅 갈기
+                itemSelector.ToolSelect();
                 CheckInteract(Item.ItemID.Hoe);
                 player_Farming.Plow();
                 break;
@@ -89,10 +92,6 @@ public class Player_Interact : MonoBehaviour
         if (interact != null && tilemap_Marker.isInRange)   //상호작용 범위에 있을 때 실행함
         {
             interact.DoInteract(player_Manager.character, itemID);
-        }
-        else
-        {
-            player_Manager.RunAnimation("Unable");
         }
     }
 }

@@ -40,6 +40,34 @@ public class Player_Movement : MonoBehaviour
         Vector2 redirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         redirection.Normalize();
 
+        //파라미터로 사용할 값(Last_X, Last_Y)을 정수만으로 표현하기 위해서 값 수정 
+        if (redirection.x > 0)
+        {
+            if (redirection.y > 0)
+            {
+                redirection.x = Mathf.Abs(redirection.x) > Mathf.Abs(redirection.y) ? 1 : 0;
+                redirection.y = redirection.x == 0 ? 1 : 0;
+            }
+            else
+            {
+                redirection.x = Mathf.Abs(redirection.x) > Mathf.Abs(redirection.y) ? 1 : 0;
+                redirection.y = redirection.x == 0 ? -1 : 0;
+            }
+        }
+        else if (redirection.x < 0)
+        {
+            if (redirection.y > 0)
+            {
+                redirection.x = Mathf.Abs(redirection.x) > Mathf.Abs(redirection.y) ? -1 : 0;
+                redirection.y = redirection.x == 0 ? 1 : 0;
+            }
+            else
+            {
+                redirection.x = Mathf.Abs(redirection.x) > Mathf.Abs(redirection.y) ? -1 : 0;
+                redirection.y = redirection.x == 0 ? -1 : 0;
+            }
+        }
+
         playerManager.animator.SetFloat("Last_X", redirection.x);
         playerManager.animator.SetFloat("Last_Y", redirection.y);
     }
