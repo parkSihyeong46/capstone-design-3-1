@@ -117,4 +117,25 @@ public class Player_Manager : MonoBehaviour
     {
         isAnimation = false;
     }
+
+    public void PlayWalkSound()
+    {
+        GameManager.instance.PlayEffectSound(0);
+    }
+
+    public void PlayEffectSound()
+    {
+        switch(handItem.ItemId)
+        {
+            case Item.ItemID.Axe:
+                GameManager.instance.PlayEffectSound(1);
+                break;
+            case Item.ItemID.Pick:
+                GameManager.instance.PlayEffectSound(2);
+                break;
+            case Item.ItemID.Hoe:
+                GameManager.instance.PlayEffectSound(3);
+                break;
+        }
+    }
 }

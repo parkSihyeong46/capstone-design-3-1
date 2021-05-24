@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,10 +14,14 @@ public class GameManager : MonoBehaviour
     public bool isOpenShop;
     public bool isOpenTalkPanel;
 
+    public AudioClip[] clips;
+    AudioSource audioSource;
+
     void Awake()
     {
         instance = this;
         inventory = Inventory.Instance;
+        audioSource = GetComponent<AudioSource>();
     }
     private void Start()
     {
@@ -41,6 +46,56 @@ public class GameManager : MonoBehaviour
             {
                 shopObj.SetActive(false);
             }
+        }
+    }
+
+    public void ChangeScene()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    public enum EffectSound
+    {
+        SAND_WALK = 0,
+        AXE = 1,
+        PICK = 2,
+        HOE = 3,
+        SWING = 4,
+    }
+
+    public void PlayEffectSound(int effectSound)
+    {
+        switch(effectSound)
+        {
+            case (int)EffectSound.SAND_WALK:
+                audioSource.clip = clips[0];
+                if(!audioSource.isPlaying)
+                    audioSource.Play();
+                break;
+            case (int)EffectSound.AXE:
+                audioSource.clip = clips[1];
+                if (audioSource.isPlaying)
+                    audioSource.Stop();
+                audioSource.Play();
+                break;
+            case (int)EffectSound.PICK:
+                audioSource.clip = clips[2];
+                if (audioSource.isPlaying)
+                    audioSource.Stop();
+                audioSource.Play();
+                break;
+            case (int)EffectSound.HOE:
+                audioSource.clip = clips[3];
+                if (audioSource.isPlaying)
+                    audioSource.Stop();
+                audioSource.Play();
+                break;
+            case (int)EffectSound.SWING:
+                audioSource.clip = clips[4];
+                if (audioSource.isPlaying)
+                    audioSource.Stop();
+                audioSource.Play();
+                break;
         }
     }
 }
